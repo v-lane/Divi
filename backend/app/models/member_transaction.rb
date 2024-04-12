@@ -1,0 +1,2 @@
+class MemberTransaction < ApplicationRecord
+end

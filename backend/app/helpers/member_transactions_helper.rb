@@ -1,0 +1,2 @@
+module MemberTransactionsHelper
+end

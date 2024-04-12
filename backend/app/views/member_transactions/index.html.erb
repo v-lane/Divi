@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Member transactions</h1>
+
+<div id="member_transactions">
+  <% @member_transactions.each do |member_transaction| %>
+    <%= render member_transaction %>
+    <p>
+      <%= link_to "Show this member transaction", member_transaction %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New member transaction", new_member_transaction_path %>
