@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notifications
   resources :member_transactions
   resources :transactions
   resources :users
