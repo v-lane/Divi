@@ -12,16 +12,16 @@ const TopNavigationBar = (props) => {
       <span className="logo">DIVI</span>
       <ul>
         <li>
-          <Button  color="primary_nav" >Login</Button>
+          <Button variant="contained" color="primary_nav">Login</Button>
         </li>
         <li>
           <Button variant="contained" color="primary_nav">Register</Button>
         </li>
         <li>
-          <Button variant="outlined" color="primary_nav">Logout</Button>
+          <Button variant="contained" color="primary_nav">Logout</Button>
         </li>
         <li>
-          <Icon >notifications_none</Icon>
+          <Icon>notifications_none</Icon>
         </li>
       </ul>
 
