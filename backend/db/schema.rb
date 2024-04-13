@@ -16,39 +16,55 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_12_203521) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "group_type"
     t.boolean "is_archived"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "member_transactions", force: :cascade do |t|
-    t.string "type"
+    t.bigint "transaction_id", null: false
+    t.string "member_transaction_type"
     t.integer "amount"
+    t.integer "owner_id"
+    t.integer "recipient_id"
+    t.integer "group_id"
+    t.integer "member_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["transaction_id"], name: "index_member_transactions_on_transaction_id"
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.string "type"
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.string "notification_type"
     t.boolean "is_read"
     t.boolean "is_archived"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_notifications_on_group_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.string "type"
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.string "transaction_type"
     t.integer "amount"
+    t.integer "recipient_id"
     t.date "transaction_date"
     t.boolean "is_deleted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_transactions_on_group_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "user_groups", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "group_id", null: false
+    t.boolean "is_owner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_user_groups_on_group_id"
@@ -63,6 +79,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_12_203521) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "member_transactions", "transactions"
+  add_foreign_key "notifications", "groups"
+  add_foreign_key "notifications", "users"
+  add_foreign_key "transactions", "groups"
+  add_foreign_key "transactions", "users"
   add_foreign_key "user_groups", "groups"
   add_foreign_key "user_groups", "users"
 end
