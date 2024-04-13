@@ -7,6 +7,7 @@
 1. Set up frontend
   - `cd frontend`
   - Run `npm install` to install dependencies
+  - `npm run`
 
 2. Set up backend
   - `cd backend`
