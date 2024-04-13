@@ -5,7 +5,7 @@ const theme = createTheme({
   palette: {
     primary_nav: {
       light: blueGrey[400],
-      main: blueGrey[500],
+      main: blueGrey[600],
       dark: blueGrey[800],
       contrastText: blueGrey[50],
     },

@@ -1,9 +1,13 @@
 .top-nav-bar {
+  position: fixed;
+  top: 0;
+  max-width: 1600px;
+  width:100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--primary-color-200);
+  background-color: var(--primary-color-100);
   color: var(--text-color-primary);
   border: 1px solid var(--primary-color-800);
   border-top: 0px;
