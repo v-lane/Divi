@@ -18,4 +18,18 @@ const theme = createTheme({
   },
 });
 
+// To override default styles, use theme heading
+// - primary
+// - secondary
+// - error
+// - warning
+// - info
+// - success
+
+// theme must only contain four colour tokens:
+// - main (main shade of color)
+// - light (lighter shade of main)
+// - dark (darker shade of main)
+// - contrastText (text color, intended to contrast with main)
+
 export default theme

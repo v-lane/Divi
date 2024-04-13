@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
   --primary-color-800: #37474f;
   --primary-color-700: #455a64;
   --primary-color-600: #54637a;
@@ -13,9 +14,16 @@
   --primary-color-100: #cfd8dc;
   --text-color-primary: #263238;
   --text-color-light: #eceff1;
-
 }
 
 body {
   margin-top: 75px;
+
+  main {
+    margin-left: 20vw;
+  }
 }
+
+// Font: https://fonts.google.com/specimen/Roboto
+// Weight 100, 300, 400, 500, 700, 900
+// all can be italic
