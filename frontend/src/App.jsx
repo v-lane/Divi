@@ -5,6 +5,7 @@ import TopNavigationBar from './components/TopNavigationBar';
 import SideNavigationBar from './components/SideNavigationBar';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './styles/createTheme';
+import ThreeSectionBody from './components/ThreeSectionBody';
 
 
 function App() {
