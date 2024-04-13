@@ -1,15 +1,83 @@
 .side-nav-bar {
   position: fixed;
   left: 0;
-  width:20vw;
-  height:100vw;
+  width: 20vw;
+  height: 100%;
   display: flex;
   flex-direction: column;
   // justify-content: space-between;
   // align-items: center;
-  background-color: var(--primary-color-200);
+  background-color: var(--primary-color-100);
   // color: var(--text-color-primary);
   border: 1px solid var(--primary-color-800);
   border-left: 0px;
   border-bottom: 0px;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    li {
+      padding-left: 1em;
+      padding-bottom: .5em;     
+
+    }
+  }
+
+  .active {
+    font-weight: 800;
+  }
+  
+  #username-header, #groupname-header {
+    background-color: var(--primary-color-600);
+  }
+
+  #groupname-header {
+    margin-top:0.5em;
+    border: 4px solid var(--text-color-primary);
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  a {
+    color: var(--text-color-primary);
+
+  }
+  a:hover {
+    font-weight: 800;
+  }
+
+  h2, h3 {
+    margin: 0;
+  }
+
+  #transactions-header, #groups-header, #group-transactions-header {
+    background-color: var(--primary-color-400);
+    width: 100%;
+    border: 2px solid var(--text-color-primary);
+    border-bottom: 0;
+    border-left: 0;
+    border-right: 0;
+    margin-top: 0.5em;
+  }
+
+
+
+  // Below overrides default accordion values
+
+  .MuiCollapse-root {
+    background-color: var(--primary-color-100);
+  }
+
+  .MuiAccordionDetails-root {
+    padding: 0;
+  }
+
+  .css-1086bdv-MuiPaper-root-MuiAccordion-root {
+    box-shadow: none;
+  }
+
+  .css-eqpfi5-MuiAccordionSummary-content.Mui-expanded, .css-eqpfi5-MuiAccordionSummary-content.Mui-expanded, .css-1f773le-MuiButtonBase-root-MuiAccordionSummary-root, .css-eqpfi5-MuiAccordionSummary-content {
+    margin: 0;
+  }
 }
