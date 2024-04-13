@@ -4,6 +4,7 @@ import './App.scss';
 import TopNavigationBar from './components/TopNavigationBar';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './styles/createTheme';
+import ThreeSectionBody from './components/ThreeSectionBody';
 
 
 function App() {
@@ -13,9 +14,11 @@ function App() {
         <header>
           <TopNavigationBar />
         </header>
-        <body>
-          <h1>Welcome to DIVI</h1>
-        </body>
+        <main>
+          <section>
+          <ThreeSectionBody/>
+          </section>
+        </main>
     </ThemeProvider>
   );
 }
