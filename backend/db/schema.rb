@@ -29,7 +29,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_12_203521) do
     t.integer "owner_id"
     t.integer "recipient_id"
     t.integer "group_id"
-    t.integer "member_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["transaction_id"], name: "index_member_transactions_on_transaction_id"

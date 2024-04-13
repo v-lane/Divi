@@ -7,7 +7,6 @@ class CreateMemberTransactions < ActiveRecord::Migration[7.0]
       t.integer :owner_id
       t.integer :recipient_id
       t.integer :group_id
-      t.integer :member_id
 
       t.timestamps
     end
