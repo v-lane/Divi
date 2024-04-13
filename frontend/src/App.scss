@@ -1,6 +1,18 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  // text-align: center;
+  --primary-color-800: #37474f;
+  --primary-color-700: #455a64;
+  --primary-color-600: #54637a;
+  --primary-color-500: #607d8b;
+  --primary-color-400: #78909c;
+  --primary-color-300: #90a4ae;
+  --primary-color-200: #b0bec5;
+  --primary-color-100: #cfd8dc;
+  --text-color-primary: #263238;
+  --text-color-light: #eceff1;
+
 }
