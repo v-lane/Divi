@@ -1,0 +1,15 @@
+.side-nav-bar {
+  position: fixed;
+  left: 0;
+  width:20vw;
+  height:100vw;
+  display: flex;
+  flex-direction: row;
+  // justify-content: space-between;
+  // align-items: center;
+  background-color: var(--primary-color-200);
+  // color: var(--text-color-primary);
+  border: 1px solid var(--primary-color-800);
+  border-left: 0px;
+  border-bottom: 0px;
+}
