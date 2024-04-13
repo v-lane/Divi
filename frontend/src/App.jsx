@@ -15,12 +15,12 @@ function App() {
       <header>
         <TopNavigationBar />
       </header>
-      <body>
+      <main>
         <SideNavigationBar />
-        <main>
-          <h1>Welcome to DIVI</h1>
-        </main>
-      </body>
+        <section>
+          <ThreeSectionBody/>
+        </section>
+      </main>
     </ThemeProvider>
   );
 }
