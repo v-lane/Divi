@@ -4,7 +4,7 @@ import { format } from 'date-fns'
 const TransactionItem = (props) => {
 
 const transactions = props.transactionData.flat();
-console.log(transactions)
+// console.log(transactions)
 
   
   return (

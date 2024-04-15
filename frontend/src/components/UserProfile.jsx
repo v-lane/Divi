@@ -3,6 +3,8 @@ import React from 'react';
 import '../styles/UserProfile.scss';
 
 import { Button } from "@mui/material";
+import { format } from 'date-fns'
+
 
 
 const UserProfile = (props) => {
@@ -21,7 +23,12 @@ const UserProfile = (props) => {
           </tr>
           <tr>
             <th>Email:</th>
-            <td>{userProfileData.email}</td>
+            <td>{userProfileData.email}
+            </td>
+          </tr>
+          <tr>
+            <th>Profile Created:</th>
+            <td>{format((userProfileData.created_at), 'MMMM dd, yyyy')}</td>
           </tr>
         </tbody>
       </table>

@@ -42,17 +42,9 @@ function App() {
   // fetch user groups data
   useEffect(() => {
     axios
-    .get(`api/groups/${userId}`)
-    .then((res) => res.data)
-    .then(setGroup);
+    .get(`/api/groups/${userId}`)
+    .then((res) => setGroup(res.data))
   }, [])
-
-  // if modal open, on refresh, navigate back to root
-  window.onbeforeunload = () => {
-    if (background) {
-      navigate('/', {replace: true})
-    }
-  }
 
   useEffect(() => {
     axios
@@ -70,7 +62,7 @@ function App() {
         <main>
           <SideNavigationBar location={background || location} />
           <Routes location={background || location}>
-            <Route path='/' element={<ThreeSectionBody transactionData={transactions}/>} >
+            <Route path='/' element={<ThreeSectionBody transactionData={transactions} userGroups={group}/>} >
               <Route path='profile' element={<ModalView />} />
             </Route>
           </Routes>
