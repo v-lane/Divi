@@ -11,6 +11,7 @@ const ModalView = (props) => {
   const { handleClick, userProfileData } = props;
   const [profileView, setProfileView] = useState(true);
 
+  
 
 
   return (
