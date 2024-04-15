@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import '../styles/ModalView.scss';
 
@@ -9,6 +9,7 @@ import UserProfile from '../components/UserProfile';
 
 const ModalView = (props) => {
   const { handleClick, userProfileData } = props;
+  const [profileView, setProfileView] = useState(true);
 
 
 
@@ -17,9 +18,11 @@ const ModalView = (props) => {
       <Box className="modal">
         <header>
           <Icon className='close-button' onClick={handleClick}>close</Icon>
-          <h2>Modal Header</h2>
+          <h2>
+            {profileView && "Profile"}
+          </h2>
         </header>
-        <UserProfile userProfileData={userProfileData}/>
+        {profileView && <UserProfile userProfileData={userProfileData} />}
       </Box>
     </section>
   );
