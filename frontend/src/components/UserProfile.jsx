@@ -9,6 +9,8 @@ const UserProfile = (props) => {
   const { userProfileData } = props;
 
   return (
+    ( userProfileData && 
+
     <section className='user-profile'>
       <table>
         <tbody>
@@ -27,8 +29,8 @@ const UserProfile = (props) => {
         <Button className="profile-button" variant="contained" color="info">Edit</Button>
         <Button className="profile-button" variant="contained" color="error">Delete</Button>
       </footer>
-
     </section>
+    )
   );
 };
 
