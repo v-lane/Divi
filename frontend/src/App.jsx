@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 import './App.scss';
 import TopNavigationBar from './components/TopNavigationBar';
 import SideNavigationBar from './components/SideNavigationBar';
-import ThreeSectionBody from './components/ThreeSectionBody';
-import ModalView from './components/ModalView';
+import ThreeSectionBody from './routes/ThreeSectionBody';
+import ModalView from './routes/ModalView';
 import theme from './styles/createTheme';
 
 import { ThemeProvider } from '@mui/material/styles';
