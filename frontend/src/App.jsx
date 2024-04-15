@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -20,11 +20,19 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const background = location.state && location.state.background;
-
+  const [user, setUser] = useState(null);
 
   const handleClick = (() => {
     navigate(-1);
   });
+
+  // useEffect(() => {
+  //   axios
+  //   .get("/api/user/:id")
+  //   .then((res) => res.data)
+  //   .then(setUser);
+  // }, [])
+
 
   return (
     <div className='App'>
@@ -36,7 +44,7 @@ function App() {
           <SideNavigationBar location={background || location}/>
           <Routes location={background || location}>
             <Route path='/' element={<ThreeSectionBody/>} >
-              <Route path="profile" element={<ModalView />} />
+              <Route path='profile' element={<ModalView />} />
             </Route>
             
           </Routes>
