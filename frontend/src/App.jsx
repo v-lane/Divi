@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from 'axios';
 
+
 import './App.scss';
 import TopNavigationBar from './components/TopNavigationBar';
 import SideNavigationBar from './components/SideNavigationBar';
@@ -32,6 +33,13 @@ function App() {
     .then((res) => res.data)
     .then(setUser);
   }, [])
+
+  // if modal open, on refresh, navigate back to root
+  window.onbeforeunload = () => {
+    if (background) {
+      navigate('/', {replace: true})
+    }
+  }
 
 
   return (
