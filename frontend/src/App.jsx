@@ -17,9 +17,7 @@ function App() {
       </header>
       <main>
         <SideNavigationBar />
-        <section>
-          <ThreeSectionBody/>
-        </section>
+        <ThreeSectionBody />
       </main>
     </ThemeProvider>
   );

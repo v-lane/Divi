@@ -1,9 +1,10 @@
-section .body-articles{
+.body-articles{
   display: flex;
   flex-direction: row;
   align-items: stretch;
   width: 80vw;
   height: 90vh;
+  color: var(--text-color-light);
 
   .left {
     display: flex;
@@ -12,13 +13,13 @@ section .body-articles{
     width: 70%;
     
     .top {
-      background-color: red;
+      background-color: var(--primary-color-700);
       margin: 1.5em 1.5em 0em 1.5em;
       padding: 1.5em;
       height: 50%;
     }
     .bottom {
-      background-color: red;
+      background-color: var(--primary-color-700);
       margin: 1.5em 1.5em 0em 1.5em;
       padding: 1.5em;
       height: 50%;
@@ -30,6 +31,6 @@ section .body-articles{
     margin-top: 1.5em;
     margin-right: 1.5em;
     padding: 1.5em;
-    background-color: red;
+    background-color: var(--primary-color-700);
   }
 }
