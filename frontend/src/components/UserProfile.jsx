@@ -21,14 +21,6 @@ const UserProfile = (props) => {
             <th>Email:</th>
             <td>{userProfileData.email}</td>
           </tr>
-          <tr>
-            <th>Profile Created:</th>
-            <td>{userProfileData.created_at}</td>
-          </tr>
-          <tr>
-            <th>month:</th>
-            <td>{month}</td>
-          </tr>
         </tbody>
       </table>
       <footer>
