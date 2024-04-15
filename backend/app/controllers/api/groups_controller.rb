@@ -1,4 +1,4 @@
-class GroupsController < ApplicationController
+class Api::GroupsController < ApplicationController
 
   # GET /groups/1
   def show
