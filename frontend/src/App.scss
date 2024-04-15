@@ -1,5 +1,6 @@
 #root {
   max-width: 1280px;
+  min-width: 300px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -14,6 +15,7 @@
   --primary-color-100: #cfd8dc;
   --text-color-primary: #263238;
   --text-color-light: #eceff1;
+  --modal-page-background: rgba(81, 81, 81, 0.7);
 }
 
 body {

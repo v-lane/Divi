@@ -1,0 +1,48 @@
+.overlay {
+  /* Positioning and size */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* color */
+  background-color: var(--modal-page-background);
+}
+
+.modal {
+  /* positioning in center of page */
+  position: fixed;
+  display:flex;
+  flex-direction: column;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  padding: 2em;
+  /* size */
+  height: 60%;
+  width: 60%;
+  /* styles */
+  background-color: var(--primary-color-100);
+  border: 2px solid #000;
+  box-shadow: 8px 16px 16px hsl(0deg 0% 1% / .25)
+
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+
+  .close-button {
+    cursor: pointer
+
+  }
+
+  .close-button:hover {
+    font-weight: bolder;
+  }
+
+  h2 {
+    align-self: center; 
+  } 
+
+}
