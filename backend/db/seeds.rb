@@ -57,6 +57,8 @@ UserGroup.create!(user_id: users[7].id, group_id: groups[1].id, is_owner: false)
 UserGroup.create!(user_id: users[8].id, group_id: groups[2].id, is_owner: false)
 UserGroup.create!(user_id: users[9].id, group_id: groups[0].id, is_owner: false)
 UserGroup.create!(user_id: users[9].id, group_id: groups[1].id, is_owner: false)
+UserGroup.create!(user_id: users[0].id, group_id: groups[1].id, is_owner: false)
+UserGroup.create!(user_id: users[0].id, group_id: groups[2].id, is_owner: false)
 
 puts 'UserGroups Created'
 
