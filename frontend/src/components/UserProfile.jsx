@@ -1,10 +1,12 @@
 import React from 'react';
 
 import '../styles/UserProfile.scss';
+
 import { Button } from "@mui/material";
 
+
 const UserProfile = (props) => {
-  const {userProfileData} = props
+  const { userProfileData } = props;
 
   return (
     <section className='user-profile'>
@@ -21,7 +23,11 @@ const UserProfile = (props) => {
           </tr>
           <tr>
             <th>Profile Created:</th>
-            <td>{userProfileData.date_created}</td>
+            <td>{userProfileData.created_at}</td>
+          </tr>
+          <tr>
+            <th>month:</th>
+            <td>{month}</td>
           </tr>
         </tbody>
       </table>

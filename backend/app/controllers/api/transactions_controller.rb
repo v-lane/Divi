@@ -1,4 +1,4 @@
-class TransactionsController < ApplicationController
+class Api::TransactionsController < ApplicationController
 
   # GET /transactions/1
   def show

@@ -1,7 +1,10 @@
-class UsersController < ApplicationController
+class Api::UsersController < ApplicationController
 
   # GET /users/1
   def show
+    user=User.find(params[:id])
+    pp user.created_at
+    render json: user
   end
 
   # POST /users
