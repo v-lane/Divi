@@ -1,7 +1,7 @@
 import React from'react'
 
 import '../styles/ThreeSectionBody.scss';
-import RecentTransaction from './RecentTransaction';
+import RecentTransaction from '../components/RecentTransaction';
 
 const ThreeSectionBody = (props) => {
 

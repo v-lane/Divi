@@ -1,6 +1,6 @@
 import React from 'react'
 
-import '../styles/RecentTransaction.scss'
+import '../styles/TransactionItem.scss'
 import TransactionItem from './TransactionItem';
 
 const RecentTransaction = (props) => {
