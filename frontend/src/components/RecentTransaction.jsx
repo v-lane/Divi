@@ -5,10 +5,12 @@ import TransactionItem from './TransactionItem';
 
 const RecentTransaction = (props) => {
 
+  
+
   return (
-    <article>
-      <TransactionItem/>
-    </article>
+    <>
+      <TransactionItem transactionData={props.transactionData}/>
+    </>
   );
 };
 
