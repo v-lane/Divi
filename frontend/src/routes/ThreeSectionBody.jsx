@@ -7,11 +7,13 @@ import Groups from '../components/Groups';
 const ThreeSectionBody = (props) => {
   const { userGroups } = props;
 
+  
+
   return (
     <section className='body-articles'>
       <div className='left'>
         <article className='top'>top left</article>
-        <article className='bottom'><RecentTransaction /></article>
+        <article className='bottom'><RecentTransaction transactionData={props.transactionData}/></article>
       </div>
       <article className='right'>
         <Groups userGroups={userGroups}/>

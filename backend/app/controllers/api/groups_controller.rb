@@ -3,7 +3,7 @@ class Api::GroupsController < ApplicationController
   # GET /groups/1
   def show
     group=Group.all().joins(:users).where(users: {id: params[:id]})
-    render json: group
+    render json: group, include: [:users]
   end
 
   # POST /groups
