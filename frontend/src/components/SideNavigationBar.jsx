@@ -5,9 +5,13 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
+import { Link, useLocation } from "react-router-dom";
+
 
 const SideNavigationBar = (props) => {
+  const location = useLocation();
+
 
   return (
     <aside className="side-nav-bar">
@@ -141,7 +145,7 @@ const SideNavigationBar = (props) => {
       <footer>
         <ul>
           <li>
-            <Link href="#" underline="none">
+            <Link to="profile" state={{ background: location }}>
               My Profile
             </Link>
           </li>

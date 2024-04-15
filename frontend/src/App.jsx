@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useNavigate, useLocation } from "react-router-dom";
+
 
 import './App.scss';
 import TopNavigationBar from './components/TopNavigationBar';
@@ -11,26 +14,40 @@ import { ThemeProvider } from '@mui/material/styles';
 
 
 //// MOCK DATA
-import userProfileData from './mock_data/userProfileData'
+import userProfileData from './mock_data/userProfileData';
 
 function App() {
-  const [modalView, setModalView] = useState(true)
+  const navigate = useNavigate();
+  const location = useLocation();
+  const background = location.state && location.state.background;
+
 
   const handleClick = (() => {
-    setModalView(false);
-  })
+    navigate(-1);
+  });
 
   return (
-    <ThemeProvider theme={theme}>
-      <header>
-        <TopNavigationBar />
-      </header>
-      <main>
-        <SideNavigationBar />
-        <ThreeSectionBody />
-        {modalView && <ModalView handleClick={handleClick} userProfileData={userProfileData}/>}
-      </main>
-    </ThemeProvider>
+    <div className='App'>
+      <ThemeProvider theme={theme}>
+        <header>
+          <TopNavigationBar location={background || location}/>
+        </header>
+        <main>
+          <SideNavigationBar location={background || location}/>
+          <Routes location={background || location}>
+            <Route path='/' element={<ThreeSectionBody/>} >
+              <Route path="profile" element={<ModalView />} />
+            </Route>
+            
+          </Routes>
+          {background && (
+            <Routes>
+              <Route path='profile' element={<ModalView handleClick={handleClick} userProfileData={userProfileData} />} />
+            </Routes>
+          )}
+        </main>
+      </ThemeProvider>
+    </div>
   );
 }
 
