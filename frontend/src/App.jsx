@@ -21,17 +21,29 @@ function App() {
   const location = useLocation();
   const background = location.state && location.state.background;
   const [user, setUser] = useState(null);
+  const [group, setGroup] = useState(null);
 
   const handleClick = (() => {
     navigate(-1);
   });
 
+  // temp userid (to be replaced by cookies)
   const userId = 1;
+
+  // fetch user data
   useEffect(() => {
     axios
-    .get(`http://localhost:3001/api/users/${userId}`)
+    .get(`/api/users/${userId}`)
     .then((res) => res.data)
     .then(setUser);
+  }, [])
+
+  // fetch user groups data
+  useEffect(() => {
+    axios
+    .get(`api/groups/${userId}`)
+    .then((res) => res.data)
+    .then(setGroup);
   }, [])
 
   // if modal open, on refresh, navigate back to root
@@ -46,12 +58,12 @@ function App() {
     <div className='App'>
       <ThemeProvider theme={theme}>
         <header>
-          <TopNavigationBar location={background || location} />
+          <TopNavigationBar location={background || location}/>
         </header>
         <main>
-          <SideNavigationBar location={background || location} />
-          <Routes location={background || location}>
-            <Route path='/' element={<ThreeSectionBody />} >
+          <SideNavigationBar location={background || location}  />
+          <Routes location={background || location} >
+            <Route path='/' element={<ThreeSectionBody c/>} >
               <Route path='profile' element={<ModalView />} />
             </Route>
           </Routes>
