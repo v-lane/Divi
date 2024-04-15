@@ -13,8 +13,7 @@ import theme from './styles/createTheme';
 import { ThemeProvider } from '@mui/material/styles';
 
 
-//// MOCK DATA
-import userProfileData from './mock_data/userProfileData';
+
 
 function App() {
   const navigate = useNavigate();
