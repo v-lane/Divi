@@ -1,4 +1,4 @@
-class MemberTransactionsController < ApplicationController
+class Api::MemberTransactionsController < ApplicationController
   before_action :set_member_transaction, only: %i[ show edit update destroy ]
 
   # GET /member_transactions
