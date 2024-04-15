@@ -9,6 +9,10 @@ import theme from './styles/createTheme';
 
 import { ThemeProvider } from '@mui/material/styles';
 
+
+//// MOCK DATA
+import userProfileData from './mock_data/userProfileData'
+
 function App() {
   const [modalView, setModalView] = useState(true)
 
@@ -24,7 +28,7 @@ function App() {
       <main>
         <SideNavigationBar />
         <ThreeSectionBody />
-        {modalView && <ModalView handleClick={handleClick}/>}
+        {modalView && <ModalView handleClick={handleClick} userProfileData={userProfileData}/>}
       </main>
     </ThemeProvider>
   );

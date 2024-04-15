@@ -3,9 +3,8 @@ import React from 'react';
 import '../styles/UserProfile.scss';
 import { Button } from "@mui/material";
 
-
-
 const UserProfile = (props) => {
+  const {userProfileData} = props
 
   return (
     <section className='user-profile'>
@@ -14,15 +13,15 @@ const UserProfile = (props) => {
 
           <tr>
             <th>Username:</th>
-            <td>BestRoommate12</td>
+            <td>{userProfileData.username}</td>
           </tr>
           <tr>
             <th>Email:</th>
-            <td>bessy@example.com</td>
+            <td>{userProfileData.email}</td>
           </tr>
           <tr>
             <th>Profile Created:</th>
-            <td>January 12, 2024</td>
+            <td>{userProfileData.date_created}</td>
           </tr>
         </tbody>
       </table>

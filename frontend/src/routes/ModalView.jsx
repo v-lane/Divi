@@ -8,7 +8,7 @@ import UserProfile from '../components/UserProfile';
 
 
 const ModalView = (props) => {
-  const { handleClick } = props;
+  const { handleClick, userProfileData } = props;
 
 
 
@@ -19,7 +19,7 @@ const ModalView = (props) => {
           <Icon className='close-button' onClick={handleClick}>close</Icon>
           <h2>Modal Header</h2>
         </header>
-        <UserProfile />
+        <UserProfile userProfileData={userProfileData}/>
       </Box>
     </section>
   );
