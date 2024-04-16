@@ -9,8 +9,12 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link, useLocation } from "react-router-dom";
 
 
-const SideNavigationBar = (props) => {
+const SideNavigationBar = ({openModal}) => {
   const location = useLocation();
+
+  const clickProfile = () => {
+    openModal('profile')
+  }
 
 
   return (
@@ -144,8 +148,8 @@ const SideNavigationBar = (props) => {
       </header>
       <footer>
         <ul>
-          <li>
-            <Link to="profile" state={{ background: location }}>
+          <li onClick={clickProfile}>
+            <Link to="profile" state={{ background: location }} >
               My Profile
             </Link>
           </li>

@@ -13,7 +13,7 @@ import theme from './styles/createTheme';
 
 import { ThemeProvider } from '@mui/material/styles';
 
-
+import useModalView from './hooks/useModalView';
 
 
 function App() {
@@ -23,9 +23,13 @@ function App() {
   const [user, setUser] = useState(null);
   const [group, setGroup] = useState(null);
   const [transactions, setTransactions] = useState([])
+  const {profileView, newGroupView, setProfileView, setNewGroupView, closeModal, openModal } = useModalView()
+  // const [profileView, setProfileView] = useState(true);
+  // const [newGroupView, setNewGroupView] = useState(false);
 
   const handleClick = (() => {
     navigate(-1);
+    closeModal();
   });
 
   // temp userid (to be replaced by cookies)
@@ -55,25 +59,24 @@ function App() {
 
   return (
     <div className='App'>
-      <ModalView/>
-      {/* <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
         <header>
           <TopNavigationBar location={background || location}/>
         </header>
         <main>
-          <SideNavigationBar location={background || location} />
+          <SideNavigationBar location={background || location} openModal={openModal}/>
           <Routes location={background || location}>
             <Route path='/' element={<ThreeSectionBody transactionData={transactions} userGroups={group}/>} >
-              <Route path='profile' element={<ModalView />} />
+              <Route path='profile' element={<ModalView />} useModalView={{profileView, newGroupView, setProfileView, setNewGroupView }}/>
             </Route>
           </Routes>
           {background && (
             <Routes>
-              <Route path='profile' element={<ModalView handleClick={handleClick} userProfileData={user} />} />
+              <Route path='profile' element={<ModalView handleClick={handleClick} userProfileData={user} useModalView={{profileView, newGroupView, setProfileView, setNewGroupView }}/>} />
             </Routes>
           )}
         </main>
-      </ThemeProvider> */}
+      </ThemeProvider>
     </div>
   );
 }

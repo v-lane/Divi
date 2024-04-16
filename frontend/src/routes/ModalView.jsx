@@ -7,10 +7,11 @@ import CreateGroupForm from '../components/modals/CreateGroupForm';
 import Box from '@mui/material/Box';
 import Icon from '@mui/material/Icon';
 
+
 const ModalView = (props) => {
-  const { handleClick, userProfileData } = props;
-  const [profileView, setProfileView] = useState(false);
-  const [newGroupView, setNewGroupView] = useState(true);
+  const { handleClick, userProfileData, useModalView } = props;
+
+
 
   
 
@@ -21,12 +22,12 @@ const ModalView = (props) => {
         <header>
           <Icon className='close-button' onClick={handleClick}>close</Icon>
           <h2>
-            {profileView && "Profile"}
-            {newGroupView && "New Group"}
+            {useModalView.profileView && "Profile"}
+            {/* {newGroupView && "New Group"} */}
           </h2>
         </header>
-        {profileView && <UserProfile userProfileData={userProfileData} />}
-        {newGroupView && <CreateGroupForm />}
+        {useModalView.profileView && <UserProfile userProfileData={userProfileData} useModalView={useModalView} />}
+        {/* {newGroupView && <CreateGroupForm />} */}
       </Box>
     </section>
   );
