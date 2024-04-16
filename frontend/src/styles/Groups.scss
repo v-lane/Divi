@@ -20,6 +20,10 @@
     padding: 0;
   }
 
+  .groups-list {
+    padding-bottom: 3em;
+  }
+
 
 
   li {
@@ -42,26 +46,28 @@
   }
 
   footer {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    padding: 0;
-    bottom: 1em;
-    margin-bottom: 0.5em;
-    background-color: var(--primary-color-700);
-    position: absolute;
-    width: 23vw;
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: stretch;
+    // padding: 0;
+    // bottom: 1em;
+    // margin-bottom: 0.5em;
+    // background-color: var(--primary-color-700);
+    // position: absolute;
+    // width: 23vw;
+      position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1;
 
-    .more-button {
-      background-color: var(--primary-color-700);
-
-      .material-icons {
-        font-size: 3rem;
-      }
+    .material-icons {
+      font-size: 3rem;
+      padding-right: 0.5em;
     }
-
-
-    .MuiButtonBase-root {}
   }
+
+
+    .MuiButtonBase-root {
+      margin: .4em;
+    }
 }
