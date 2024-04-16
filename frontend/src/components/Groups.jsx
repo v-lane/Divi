@@ -3,8 +3,8 @@ import React from 'react';
 import '../styles/Groups.scss';
 import GroupItem from './GroupItem';
 
-import { Button, Icon } from '@mui/material';
-
+import { Button } from '@mui/material';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 
 const Groups = (props) => {
@@ -21,11 +21,9 @@ const Groups = (props) => {
           />
         ))}
       </ul>
-      <footer>
-      <Button className="profile-button" variant="contained" color="info">Create New Group</Button>
-      <div className='more-button'>
-          <Icon>arrow_forward</Icon>
-      </div>
+      <footer className='groups-section-footer'>
+        <Button className="new-group-button" variant="contained" color="info">Create New Group</Button>
+        <Button className="groups-button" variant="contained" color="info"><ArrowForwardIcon /></Button>
       </footer>
     </article>
   );

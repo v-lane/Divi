@@ -3,7 +3,17 @@
   flex-direction: column;
   max-height: 80vh;
 
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+    padding: 0.5em 0;
 
+    h3 {
+      margin: 0;
+    }
+  }
 
   h2 {
     text-align: center;
@@ -16,13 +26,15 @@
     margin: 0;
   }
 
+  p {
+    margin: 0;
+  }
+
   ul {
     padding: 0;
   }
 
-  .groups-list {
-    padding-bottom: 3em;
-  }
+ 
 
 
 
@@ -42,32 +54,33 @@
     border-radius: 15px;
     padding: 0.1em 1.5em 1em;
     margin: 1em 0;
-    box-shadow: 4px 8px 8px hsl(0deg 0% 1% / .25)
+    box-shadow: 4px 8px 8px hsl(0deg 0% 1% / .25);
   }
 
-  footer {
-    // display: flex;
-    // justify-content: space-between;
-    // align-items: stretch;
-    // padding: 0;
-    // bottom: 1em;
-    // margin-bottom: 0.5em;
-    // background-color: var(--primary-color-700);
-    // position: absolute;
-    // width: 23vw;
-      position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 1;
+ .group-item:hover {
+  box-shadow: 8px 16px 16px hsl(0deg 0% 1% / .5);
+  background-color: var(--primary-color-100);
 
-    .material-icons {
-      font-size: 3rem;
-      padding-right: 0.5em;
+  }
+  
+  .groups-section-footer {
+    display: flex; 
+    justify-content: space-between;
+    padding: 0.5em;
+    bottom: 0;
+    background-color: var(--primary-color-700);
+    position: sticky;
+    width: 21vw;
+
+    .new-group-button, .groups-button {
+      padding: 1em 0.5em;
+      margin-right: 1em;
     }
+
+
+  
   }
 
 
-    .MuiButtonBase-root {
-      margin: .4em;
-    }
+
 }
