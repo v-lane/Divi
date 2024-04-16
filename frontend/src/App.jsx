@@ -29,7 +29,7 @@ function App() {
   });
 
   // temp userid (to be replaced by cookies)
-  const userId = 1;
+  const userId = 41;
 
   // fetch user data
   useEffect(() => {
