@@ -1,5 +1,5 @@
 class Api::MemberTransactionsController < ApplicationController
-  before_action :set_member_transaction, only: %i[ show edit update destroy ]
+  # before_action :set_member_transaction, only: %i[ show edit update destroy ]
 
   # GET /member_transactions
   def index
@@ -8,6 +8,9 @@ class Api::MemberTransactionsController < ApplicationController
 
   # GET /member_transactions/1
   def show
+    user = User.find(params[:id])
+    member_transactions = MemberTransaction.where("owner_id = ? OR recipient_id = ?", user.id, user.id)
+    render json: member_transactions.as_json
   end
 
   # GET /member_transactions/new

@@ -6,15 +6,15 @@ import Groups from '../components/Groups';
 import TransactionChart from '../components/TransactionChart';
 
 const ThreeSectionBody = (props) => {
-  const { userGroups } = props;
+  const { user, userGroups, transactionData, memberTransactions } = props;
 
   
 
   return (
     <section className='body-articles'>
       <div className='left'>
-        <article className='top'></article>
-        <article className='bottom'><RecentTransaction transactionData={props.transactionData}/></article>
+        <article className='top'><section className='chart-area' ><TransactionChart transactionData={transactionData} memberTransactions={memberTransactions} user={user} group={userGroups}/></section></article>
+        <article className='bottom'><RecentTransaction transactionData={transactionData} /></article>
       </div>
       <article className='right'>
         <Groups userGroups={userGroups}/>

@@ -21,8 +21,9 @@ function App() {
   const location = useLocation();
   const background = location.state && location.state.background;
   const [user, setUser] = useState(null);
-  const [group, setGroup] = useState(null);
+  const [group, setGroup] = useState([]);
   const [transactions, setTransactions] = useState([])
+  const [memberTransactions, setMemberTransactions] = useState([])
 
   const handleClick = (() => {
     navigate(-1);
@@ -46,10 +47,18 @@ function App() {
     .then((res) => setGroup(res.data))
   }, [])
 
+  // fetch transaction data for a specific user
   useEffect(() => {
     axios
     .get(`http://localhost:3001/api/transactions/${userId}`)
     .then((res) => setTransactions(res.data))
+  }, [])
+
+  // fetch member transaction data for a specific user
+  useEffect(() => {
+    axios
+    .get(`http://localhost:3001/api/member_transactions/${userId}`)
+    .then((res) => setMemberTransactions(res.data))
   }, [])
 
 
@@ -62,7 +71,7 @@ function App() {
         <main>
           <SideNavigationBar location={background || location} />
           <Routes location={background || location}>
-            <Route path='/' element={<ThreeSectionBody transactionData={transactions} userGroups={group}/>} >
+            <Route path='/' element={<ThreeSectionBody transactionData={transactions} memberTransactions={memberTransactions} userGroups={group} user={user}/>} >
               <Route path='profile' element={<ModalView />} />
             </Route>
           </Routes>
