@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import '../../styles/CreateGroupForm.scss';
 
@@ -10,60 +11,74 @@ import { Button, FormControl, Input, Select, InputLabel, MenuItem, TextField } f
 const CreateGroupForm = ({ useModalView }) => {
   const groupTypes = ['Household', 'Trip', 'Personal'];
   const navigate = useNavigate();
-  const [groupName, setGroupName] = useState('');
-  const [groupNameError, setGroupNameError] = useState(false);
-  const [groupType, setGroupType] = useState('');
-  // const [groupTypeError, setGroupTypeError] = useState(false);
-  const [memberEmail, setMemberEmail] = useState('');
-
-  const handleSubmit = ((event) => {
-    event.preventDefault();
-    console.log('submitted');
-    // navigate('/');
-    // useModalView.closeModal();
-
+  const [formValue, setFormValue] = useState({
+    groupName: '',
+    groupType: '',
+    memberEmail: ''
   });
 
-  const handleGroupNameChange = (event) => {
-    setGroupName(event.target.value);
-    if (event.target.validity.valid) {
-      setGroupNameError(false);
-    } else {
-      setGroupNameError(true);
-    }
+  const handleChange = (event) => {
+    setFormValue({
+      ...formValue,
+      [event.target.name]: event.target.value
+    });
   };
 
-  const handleSelectChange = (event) => {
-    setGroupType(event.target.value);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = {
+      name: formValue.groupName,
+      group_type: formValue.groupType    
+    }
+    console.log(formData);
+    axios
+      .post(`/api/groups/`, formData)
+      .then((response) => {
+        console.log('post created:', response.data);
+        navigate('/');
+        useModalView.closeModal();
+      })
+      .catch((error) => {
+        console.error("Error creating post:", error);
+      });
   };
+
 
   return (
     <form className='new-group-form' autoComplete="off" onSubmit={handleSubmit}>
       <TextField
+        id='group-name'
         required
+        type="text"
+        name="groupName"
         label="Group Name"
-        value={groupName}
-        onChange={handleGroupNameChange}
-        error={groupNameError}
-        helperText={groupNameError ? "Please enter group name" : ""}
+        value={formValue.groupName}
+        onChange={handleChange}
       />
 
       <TextField
+        id='group-type'
         required
         select
+        name="groupType"
         label="Group Type"
-        value={groupType}
-        onChange={handleSelectChange}
+        value={formValue.groupType}
+        onChange={handleChange}
       >
         {groupTypes.map((type, index) => (
           <MenuItem key={index} value={type}>{type}</MenuItem>
         ))}
       </TextField>
 
-      <FormControl variant='standard'>
-        <InputLabel htmlFor="new-member-email">New Member Email</InputLabel>
-        <Input id="new-member-email" defaultValue="" />
-      </FormControl>
+      <TextField
+        id="member-email"
+        type="email"
+        name="memberEmail"
+        label="New Member Email"
+        value={formValue.memberEmail}
+        onChange={handleChange}
+      />
+
       <small>+ Additional members can be added after group is created from the group dashboard.</small>
       <Button type="submit" className="create-group-button" variant="contained" color="info">Create Group</Button>
     </form>
