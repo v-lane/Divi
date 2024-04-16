@@ -34,9 +34,9 @@ puts 'Users Created'
 ## Groups
 puts 'Creating Groups'
 
-Group.create!(name: Faker::Games::Dota.team, group_type: 'Household', is_archived: false)
-Group.create!(name: Faker::Games::Dota.team, group_type: 'Trip', is_archived: false)
-Group.create!(name: Faker::Games::Dota.team, group_type: 'Household', is_archived: false)
+Group.create!(name: Faker::Games::Dota.team, group_type: 'Household', user_id: 1, is_archived: false)
+Group.create!(name: Faker::Games::Dota.team, group_type: 'Trip', user_id: 2, is_archived: false)
+Group.create!(name: Faker::Games::Dota.team, group_type: 'Household', user_id: 3, is_archived: false)
 
 puts 'Groups Created'
 
