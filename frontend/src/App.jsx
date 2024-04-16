@@ -77,7 +77,7 @@ function App() {
           </Routes>
           {background && (
             <Routes>
-              <Route element={<ModalView handleClick={handleClick} userProfileData={user} useModalView={{ profileView, newGroupView, setProfileView, setNewGroupView }} />} >
+              <Route element={<ModalView handleClick={handleClick} userProfileData={user} useModalView={{ profileView, newGroupView, closeModal }} />} >
                 <Route path='profile' element={<UserProfile />} />
                 <Route path='new-group' element={<CreateGroupForm />} />
               </Route>

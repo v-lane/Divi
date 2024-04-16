@@ -10,6 +10,11 @@
   width: 70%;
  }
 
+ .MuiFormControl-root {
+  background-color: var(--text-color-light);
+  border-radius: 5px;
+ }
+
  .create-group-button {
   padding: 1em;
  }

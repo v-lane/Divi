@@ -27,7 +27,7 @@ const ModalView = (props) => {
           </h2>
         </header>
         {useModalView.profileView && <UserProfile userProfileData={userProfileData} useModalView={useModalView} />}
-        {useModalView.newGroupView && <CreateGroupForm />}
+        {useModalView.newGroupView && <CreateGroupForm useModalView={useModalView}/>}
       </Box>
     </section>
   );
