@@ -5,7 +5,7 @@ class Api::TransactionsController < ApplicationController
     usergroups = UserGroup.where(user_id: params[:id])
     transactions = []
     usergroups.each do |group|
-      transactions.push(Transaction.where(group_id: group.group_id).includes(:group, :user).limit(5))
+      transactions.push(Transaction.where(group_id: group.group_id).includes(:group, :user).limit(2))
     end
     render json: transactions.as_json(include: { group: { only: :name }, user: { only: :username }})
   end
