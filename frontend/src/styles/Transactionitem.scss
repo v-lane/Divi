@@ -1,10 +1,6 @@
 
-
 .transaction {
   border-bottom: solid 3px black;
-
-  
-
 
   p {
     display: flex;
@@ -25,6 +21,6 @@
   }
 }
 
-li:hover {
+.transaction:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);;
 }
