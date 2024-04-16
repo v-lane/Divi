@@ -27,7 +27,7 @@ function App() {
     navigate(-1);
   });
 
-  const userId = 31;
+  const userId = 1;
   useEffect(() => {
     axios
     .get(`http://localhost:3001/api/users/${userId}`)

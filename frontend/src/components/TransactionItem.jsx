@@ -12,8 +12,8 @@ console.log(transactions)
     {Array.isArray(transactions) && transactions.map(transaction => (
       <li className='transaction' key={transaction.id}>
         <p>Group Name: {transaction.group.name}</p>
-        <p><span>Transaction Type: {transaction.transaction_type}</span>${transaction.amount}</p>
-        <p><span>Posted On: {format(new Date(transaction.transaction_date), 'MMMM dd, yyyy')}</span><span>Posted By: {transaction.user.username}</span></p>
+        <p><span className={transaction.transaction_type}>Transaction Type: {transaction.transaction_type}</span><span className={transaction.transaction_type} >${transaction.amount}</span></p>
+        <p><span>Date: {format(new Date(transaction.transaction_date), 'MMMM dd, yyyy')}</span>{transaction.transaction_type == 'Payment' ? <span>Sent By: {transaction.user.username}</span> : <span>Posted By: {transaction.user.username}</span>}</p>
       </li>
         ))}
     </ul>

@@ -3,8 +3,28 @@
 .transaction {
   border-bottom: solid 3px black;
 
+  
+
+
   p {
     display: flex;
     justify-content: space-between;
+    padding: 0.2em 1em 0em 1em;
+
+    .Expense {
+      padding: 0.2em 1em;
+      background-color: red;
+      border-radius: 5px;
+    }
+
+    .Payment {
+      padding: 0.2em 1em;
+      background-color: lightgreen;
+      border-radius: 5px;
+    }
   }
+}
+
+li:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);;
 }
