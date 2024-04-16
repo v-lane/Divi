@@ -8,13 +8,15 @@ class Api::GroupsController < ApplicationController
 
   # POST /groups
   def create
-    # @group = Group.new(group_params)
+    pp params
 
-    # if @group.save
-    #   redirect_to @group, notice: "Group was successfully created."
-    # else
-    #   render :new, status: :unprocessable_entity
-    # end
+    @group = Group.new(group_params)
+
+    if @group.save
+      render json: @group, notice: "Group was successfully created."
+    else
+      render json: :new, status: :unprocessable_entity
+    end
   end
 
   # PATCH/PUT /groups/1
@@ -36,6 +38,6 @@ class Api::GroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_params
-      params.require(:group).permit(:name, :type, :is_archived)
+      params.require(:group).permit(:name, :group_type, :user_id, :is_archived)
     end
 end
