@@ -2,8 +2,10 @@ import React from 'react';
 
 import '../styles/ThreeSectionBody.scss';
 import RecentTransaction from '../components/RecentTransaction';
+import Groups from '../components/Groups';
 
 const ThreeSectionBody = (props) => {
+  const { userGroups } = props;
 
   
 
@@ -13,7 +15,9 @@ const ThreeSectionBody = (props) => {
         <article className='top'>top left</article>
         <article className='bottom'><RecentTransaction transactionData={props.transactionData}/></article>
       </div>
-      <article className='right'>right</article>
+      <article className='right'>
+        <Groups userGroups={userGroups}/>
+      </article>
     </section>
   );
 };
