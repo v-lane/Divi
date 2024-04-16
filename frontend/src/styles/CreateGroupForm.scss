@@ -1,0 +1,16 @@
+.new-group-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+
+ .MuiFormControl-root, small, .create-group-button {
+  margin: 1em 0;
+  width: 70%;
+ }
+
+ .create-group-button {
+  padding: 1em;
+ }
+}

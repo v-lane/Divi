@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../styles/UserProfile.scss';
+import '../../styles/UserProfile.scss';
 
 import { Button } from "@mui/material";
 import { format } from 'date-fns'

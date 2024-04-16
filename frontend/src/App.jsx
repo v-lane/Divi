@@ -55,7 +55,8 @@ function App() {
 
   return (
     <div className='App'>
-      <ThemeProvider theme={theme}>
+      <ModalView/>
+      {/* <ThemeProvider theme={theme}>
         <header>
           <TopNavigationBar location={background || location}/>
         </header>
@@ -72,7 +73,7 @@ function App() {
             </Routes>
           )}
         </main>
-      </ThemeProvider>
+      </ThemeProvider> */}
     </div>
   );
 }
