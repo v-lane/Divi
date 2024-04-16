@@ -1,0 +1,67 @@
+.groups-section {
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+
+
+
+  h2 {
+    text-align: center;
+    border: 1px solid var(--text-color-light);
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    padding-bottom: 1em;
+    background-color: var(--primary-color-700);
+    margin: 0;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+
+
+  li {
+    list-style-type: none;
+  }
+
+  .group-member {
+    list-style-type: square;
+    padding-left: 1em;
+    margin-left: 2em;
+  }
+
+  .group-item {
+    background-color: var(--primary-color-200);
+    color: var(--text-color-primary);
+    border-radius: 15px;
+    padding: 0.1em 1.5em 1em;
+    margin: 1em 0;
+    box-shadow: 4px 8px 8px hsl(0deg 0% 1% / .25)
+  }
+
+  footer {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 0;
+    bottom: 1em;
+    margin-bottom: 0.5em;
+    background-color: var(--primary-color-700);
+    position: absolute;
+    width: 23vw;
+
+    .more-button {
+      background-color: var(--primary-color-700);
+
+      .material-icons {
+        font-size: 3rem;
+      }
+    }
+
+
+    .MuiButtonBase-root {}
+  }
+}

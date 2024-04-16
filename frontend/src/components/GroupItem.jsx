@@ -1,10 +1,12 @@
 import React from 'react';
 
-const GroupItem = ({group}) => {
+const GroupItem = ({ group }) => {
 
   return (
-    <li>
+    <li className='group-item'>
       <h3>{group.name}</h3>
+      <p><em>Group Type: </em>
+        {group.group_type}</p>
       <h4>Members</h4>
       <ul>
         {group.users.map(user => (
