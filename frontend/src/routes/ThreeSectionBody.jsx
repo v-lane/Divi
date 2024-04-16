@@ -5,7 +5,7 @@ import RecentTransaction from '../components/RecentTransaction';
 import Groups from '../components/Groups';
 
 const ThreeSectionBody = (props) => {
-  const { userGroups } = props;
+  const { userGroups, openModal } = props;
 
   
 
@@ -16,7 +16,7 @@ const ThreeSectionBody = (props) => {
         <article className='bottom'><RecentTransaction transactionData={props.transactionData}/></article>
       </div>
       <article className='right'>
-        <Groups userGroups={userGroups}/>
+        <Groups userGroups={userGroups} openModal={openModal}/>
       </article>
     </section>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function useModalView() {
-  const [profileView, setProfileView] = useState(true);
+  const [profileView, setProfileView] = useState(false);
   const [newGroupView, setNewGroupView] = useState(false);
 
   const closeModal = () => {
@@ -11,6 +11,7 @@ export default function useModalView() {
 
   const openModal = (urlpath) => {
     if(urlpath === "profile") setProfileView(true)
+    if(urlpath === "new-group") setNewGroupView(true)
   }
 
 

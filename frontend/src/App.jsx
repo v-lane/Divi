@@ -14,6 +14,8 @@ import theme from './styles/createTheme';
 import { ThemeProvider } from '@mui/material/styles';
 
 import useModalView from './hooks/useModalView';
+import UserProfile from './components/modals/UserProfile';
+import CreateGroupForm from './components/modals/CreateGroupForm';
 
 
 function App() {
@@ -22,8 +24,8 @@ function App() {
   const background = location.state && location.state.background;
   const [user, setUser] = useState(null);
   const [group, setGroup] = useState(null);
-  const [transactions, setTransactions] = useState([])
-  const {profileView, newGroupView, setProfileView, setNewGroupView, closeModal, openModal } = useModalView()
+  const [transactions, setTransactions] = useState([]);
+  const { profileView, newGroupView, setProfileView, setNewGroupView, closeModal, openModal } = useModalView();
   // const [profileView, setProfileView] = useState(true);
   // const [newGroupView, setNewGroupView] = useState(false);
 
@@ -38,41 +40,48 @@ function App() {
   // fetch user data
   useEffect(() => {
     axios
-    .get(`/api/users/${userId}`)
-    .then((res) => res.data)
-    .then(setUser);
-  }, [])
+      .get(`/api/users/${userId}`)
+      .then((res) => res.data)
+      .then(setUser);
+  }, []);
 
   // fetch user groups data
   useEffect(() => {
     axios
-    .get(`/api/groups/${userId}`)
-    .then((res) => setGroup(res.data))
-  }, [])
+      .get(`/api/groups/${userId}`)
+      .then((res) => setGroup(res.data));
+  }, []);
 
   useEffect(() => {
     axios
-    .get(`http://localhost:3001/api/transactions/${userId}`)
-    .then((res) => setTransactions(res.data))
-  }, [])
+      .get(`http://localhost:3001/api/transactions/${userId}`)
+      .then((res) => setTransactions(res.data));
+  }, []);
 
 
   return (
     <div className='App'>
       <ThemeProvider theme={theme}>
         <header>
-          <TopNavigationBar location={background || location}/>
+          <TopNavigationBar location={background || location} />
         </header>
         <main>
-          <SideNavigationBar location={background || location} openModal={openModal}/>
+          <SideNavigationBar location={background || location} openModal={openModal} />
           <Routes location={background || location}>
-            <Route path='/' element={<ThreeSectionBody transactionData={transactions} userGroups={group}/>} >
-              <Route path='profile' element={<ModalView />} useModalView={{profileView, newGroupView, setProfileView, setNewGroupView }}/>
+            <Route path='/' element={<ThreeSectionBody transactionData={transactions} userGroups={group} openModal={openModal} />} >
+              <Route element={<ModalView />} >
+                <Route path='profile' element={<UserProfile />} />
+                <Route path='new-group' element={<CreateGroupForm />} />
+              </Route>
             </Route>
           </Routes>
           {background && (
             <Routes>
-              <Route path='profile' element={<ModalView handleClick={handleClick} userProfileData={user} useModalView={{profileView, newGroupView, setProfileView, setNewGroupView }}/>} />
+              <Route element={<ModalView handleClick={handleClick} userProfileData={user} useModalView={{ profileView, newGroupView, setProfileView, setNewGroupView }} />} >
+                <Route path='profile' element={<UserProfile />} />
+                <Route path='new-group' element={<CreateGroupForm />} />
+              </Route>
+
             </Routes>
           )}
         </main>

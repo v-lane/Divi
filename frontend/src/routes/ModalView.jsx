@@ -23,11 +23,11 @@ const ModalView = (props) => {
           <Icon className='close-button' onClick={handleClick}>close</Icon>
           <h2>
             {useModalView.profileView && "Profile"}
-            {/* {newGroupView && "New Group"} */}
+            {useModalView.newGroupView && "New Group"}
           </h2>
         </header>
         {useModalView.profileView && <UserProfile userProfileData={userProfileData} useModalView={useModalView} />}
-        {/* {newGroupView && <CreateGroupForm />} */}
+        {useModalView.newGroupView && <CreateGroupForm />}
       </Box>
     </section>
   );

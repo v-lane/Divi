@@ -12,11 +12,6 @@ import { Link, useLocation } from "react-router-dom";
 const SideNavigationBar = ({openModal}) => {
   const location = useLocation();
 
-  const clickProfile = () => {
-    openModal('profile')
-  }
-
-
   return (
     <aside className="side-nav-bar">
       <header className="accordian-nav">
@@ -148,8 +143,8 @@ const SideNavigationBar = ({openModal}) => {
       </header>
       <footer>
         <ul>
-          <li onClick={clickProfile}>
-            <Link to="profile" state={{ background: location }} >
+          <li >
+            <Link to="profile" state={{ background: location }} onClick={(() => openModal('profile'))}>
               My Profile
             </Link>
           </li>
