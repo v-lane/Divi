@@ -8,11 +8,8 @@
   p {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0.2em 1em 0em 1em;
-    
-    button .transaction-launch {
-      padding-left: 0.1em;
-    }
 
     .Expense {
       padding: 0.2em 1em;
