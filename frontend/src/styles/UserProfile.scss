@@ -3,38 +3,45 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  table {
+    padding: 3em;
+    background-color: var(--text-color-light);
+    border-radius: 15px;
+    border-spacing: 0;
+
+    
+    
+    th {
+      text-align: right;
+      padding: 1em 1em 0 0;
+      font-size: 1.25rem;
+      border: 1px solid var(--primary-color-800);
+      border-top: 0;
+      border-bottom: 0;
+      border-left: 0;
+      width: 40%;
+    }
+    
+    td {
+      text-align: left;
+      padding: 1em 0 0 1em;
+    }
+
+    tr:first-of-type th,  tr:first-of-type td{
+      padding-top: 0;
+    }
+  }
+  footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    justify-self: flex-end;
+  
+    .profile-button {
+      width: 12em;
+      height: 4em;
+    }
+  }
 }
 
-table {
-  padding: 3em;
-  background-color: var(--text-color-light);
-  border-radius: 15px;
-  border-spacing: 0;
-}
-
-th {
-  text-align: left;
-  padding: 1em 2em;
-  font-size: 1.25rem;
-  border: 1px solid var(--primary-color-800);
-  border-top: 0;
-  border-bottom: 0;
-  border-left: 0;
-  width: 40%;
-}
-
-td {
-  padding: 0em 3em;
-}
-
-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  justify-self: flex-end;
-}
-
-.profile-button {
-  width: 12em;
-  height: 4em;
-}
