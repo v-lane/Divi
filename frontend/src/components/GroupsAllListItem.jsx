@@ -11,9 +11,9 @@ const GroupsAllListItem = ({ userGroup }) => {
   return (
     <section className='group'>
       <ul>
-        <li>{userGroup.name}</li>
-        <li>Type: {userGroup.group_type}</li>
-        <li>Created: {format((userGroup.created_at), 'MMMM dd, yyyy')}</li>
+        <li><h3>{userGroup.name}</h3></li>
+        <li className='group-type'><strong>Type:</strong> {userGroup.group_type}</li>
+        <li className='group-created'><strong>Created:</strong> {format((userGroup.created_at), 'MMMM dd, yyyy')}</li>
       </ul>
       <ul>
         {userGroup.users.filter(user => user.id === userGroup.user_id).map(owner => (

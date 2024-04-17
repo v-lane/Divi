@@ -23,6 +23,15 @@
     }
   }
 
+  h3 {
+    margin: 0;
+  }
+
+  .group-type, .group-created {
+    // font-style: italic;
+    font-size: .9em;
+  }
+
   .table-headers li:nth-child(2) {
     border: 1px solid var(--text-color-light);
     border-top: 0;
