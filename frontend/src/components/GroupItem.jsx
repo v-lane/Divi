@@ -10,7 +10,7 @@ const GroupItem = ({ group }) => {
     <li className='group-item'>
       <header>
         <h3>{group.name}</h3>
-        <LaunchButton/>
+        <LaunchButton className='group-launch'/>
       </header>
       <p><em>Group Type: </em>
         {group.group_type}</p>
