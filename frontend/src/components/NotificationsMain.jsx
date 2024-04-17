@@ -3,13 +3,14 @@ import React, { useState } from 'react';
 import '../styles/NotificationsAll.scss';
 // import GroupsAllList from './GroupsAllList';
 
-const NotificationsMain = (props) => {
+const NotificationsMain = ({activeTab}) => {
 
   return (
     <section className='notifications-main'>
       <h2>Notification Type</h2>
       <h3>Group: </h3>
-      <h4>From User:</h4>
+      <p>This is the message from the notification.</p>
+      <small>Date</small>
     </section>
   );
 };

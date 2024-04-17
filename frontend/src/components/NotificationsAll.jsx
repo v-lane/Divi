@@ -6,17 +6,24 @@ import NotificationsAllSidebar from './NotificationsAllSidebar';
 import NotificationsMain from './NotificationsMain';
 import ButtonStandard from './ButtonStandard';
 
+import userNotificationsData from '../mock_data/userNotificationsData'
+
 const NotificationsAll = (props) => {
+  const [activeTab, setActiveTab] = useState(0);
+
+  const handleTabChange = (event, newValue) => {
+    setActiveTab(newValue);
+  };
 
   return (
     <>
       <h1>All Notifications</h1>
       <section className='notifications-body'>
-        <NotificationsAllSidebar />
-        <NotificationsMain />
+        <NotificationsAllSidebar activeTab={activeTab} handleTabChange={handleTabChange} userNotificationsData={userNotificationsData}/>
+        <NotificationsMain activeTab={activeTab} userNotificationsData={userNotificationsData}/>
       </section>
       <footer className='notifications-footer'>
-        <ButtonStandard buttonName={'Archive'} />
+        <ButtonStandard buttonName={'Archive'} userNotificationsData={userNotificationsData}/>
       </footer>
     </>
   );

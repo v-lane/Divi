@@ -3,26 +3,29 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
+  
+  .notifications-sidebar {
+    background-color: var(--primary-color-400);
+    overflow: auto;
+    margin: 1em 1em 0 0;
+    padding: 1em;
+    min-width: 11em;
+    width: 30%;
 
-}
-
-.notifications-sidebar {
-  background-color: var(--primary-color-400);
-  overflow: auto;
-  margin: 1em 1em 0 0;
-  padding: 1em;
-  min-width: 11em;
-  width: 30%;
-}
-
-.notifications-main {
-  background-color: var(--primary-color-400);
-  overflow: auto;
-  margin-top: 1em;
-  padding: 1em;
-  min-width: 11em;
-  width: 70%;
-  max-width: 100vw;
+    .archive {
+      color: var(--primary-color-100);
+    }
+  }
+  
+  .notifications-main {
+    background-color: var(--primary-color-400);
+    overflow: auto;
+    margin-top: 1em;
+    padding: 1em;
+    min-width: 11em;
+    width: 70%;
+    max-width: 100vw;
+  }
 }
 
 .notifications-footer {

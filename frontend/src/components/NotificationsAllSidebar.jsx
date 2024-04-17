@@ -9,20 +9,18 @@ import Tab from '@mui/material/Tab';
 
 
 const NotificationsAllSidebar = (props) => {
-  const [activeTab, setActiveTab] = useState(0);
+  const { activeTab, handleTabChange, userNotificationsData } = props;
 
-  const handleTabChange = (event, newValue) => {
-    setActiveTab(newValue);
-  };
+  const archivedNotifications = userNotificationsData.filter(notification => notification.is_archived)
+  const unArchivedNotifications = userNotificationsData.filter(notification => !notification.is_archived)
 
   return (
     <aside className='notifications-sidebar'>
       <Tabs value={activeTab} onChange={handleTabChange}>
-        <Tab className="tab" label="Inbox"/>
+        <Tab className="tab" label="Inbox" />
         <Tab className="tab" label="Archive" />
       </Tabs>
-      <NotificationsAllSidebarTabPanel value={activeTab} index={0} />
-      <NotificationsAllSidebarTabPanel value={activeTab} index={1} />
+      <NotificationsAllSidebarTabPanel value={activeTab} notificationsData={userNotificationsData} archivedNotifications={archivedNotifications} unArchivedNotifications={unArchivedNotifications} />
     </aside>
   );
 };
