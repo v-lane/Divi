@@ -24,6 +24,18 @@ body {
   main {
     margin-left: 20vw;
   }
+
+  h2 {
+    padding-top: 0em;
+    padding-bottom: 1rem;
+    margin: 0;
+    width: 100%;
+    border: 1px solid var(--text-color-light);
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;    
+    text-align: center;
+  }
 }
 
 // Font: https://fonts.google.com/specimen/Roboto
