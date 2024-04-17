@@ -28,12 +28,23 @@
     padding: 0;
     li {
       padding-left: 1em;
-      padding-bottom: .5em;     
+      padding-bottom: .25em;     
+      padding-top: .25em;     
     }
   }
 
   .active {
     font-weight: 800;
+    background-color: var(--primary-color-200);
+  }
+  
+  a {
+    color: var(--text-color-primary);
+
+  }
+  li:hover {
+    font-weight: 800;
+    background-color: var(--primary-color-200);
   }
   
   #username-header, #groupname-header {
@@ -48,13 +59,6 @@
   //   margin-top:0.5em;
   // }
 
-  a {
-    color: var(--text-color-primary);
-
-  }
-  li:hover {
-    font-weight: 800;
-  }
 
   h2, h3 {
     margin: 0;
