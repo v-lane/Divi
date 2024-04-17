@@ -36,7 +36,7 @@ function App() {
   });
 
   // temp userid (to be replaced by cookies)
-  const userId = 41;
+  const userId = 1;
 
   // fetch user data
   useEffect(() => {
@@ -77,7 +77,7 @@ function App() {
         <main>
           <SideNavigationBar location={background || location} openModal={openModal} />
           <Routes location={background || location}>
-            <Route path='/' element={<ThreeSectionBody transactionData={transactions} userGroups={group} openModal={openModal} />} >
+            <Route path='/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} />} >
               <Route element={<ModalView />} >
                 <Route path='profile' element={<UserProfile />} />
                 <Route path='new-group' element={<CreateGroupForm />} />
