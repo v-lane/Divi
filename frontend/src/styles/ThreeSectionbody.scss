@@ -13,17 +13,22 @@
     width: 70%;
     
     .top {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
       background-color: var(--primary-color-700);
       margin: 1.5em 1.5em 0em 1.5em;
-      padding: 1.5em;
+      padding: .75em .75em 0em .75em;
       height: 50%;
+
     }
     .bottom {
       background-color: var(--primary-color-700);
       margin: 1.5em 1.5em 0em 1.5em;
       padding: 1em 1.5em;
       height: 50%;
-      overflow:auto;
+      overflow: auto;
     }
   }
 

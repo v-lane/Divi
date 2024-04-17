@@ -23,11 +23,12 @@ function App() {
   const location = useLocation();
   const background = location.state && location.state.background;
   const [user, setUser] = useState(null);
-  const [group, setGroup] = useState(null);
+  const [group, setGroup] = useState([]);
   const [transactions, setTransactions] = useState([]);
   const { profileView, newGroupView, setProfileView, setNewGroupView, closeModal, openModal } = useModalView();
   // const [profileView, setProfileView] = useState(true);
   // const [newGroupView, setNewGroupView] = useState(false);
+  const [memberTransactions, setMemberTransactions] = useState([])
 
   const handleClick = (() => {
     navigate(-1);
@@ -35,7 +36,7 @@ function App() {
   });
 
   // temp userid (to be replaced by cookies)
-  const userId = 1;
+  const userId = 41;
 
   // fetch user data
   useEffect(() => {
@@ -52,11 +53,19 @@ function App() {
       .then((res) => setGroup(res.data));
   }, []);
 
+  // fetch transaction data for a specific user
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/api/transactions/${userId}`)
-      .then((res) => setTransactions(res.data));
-  }, []);
+    .get(`/api/transactions/${userId}`)
+    .then((res) => setTransactions(res.data))
+  }, [])
+
+  // fetch member transaction data for a specific user
+  useEffect(() => {
+    axios
+    .get(`/api/member_transactions/${userId}`)
+    .then((res) => setMemberTransactions(res.data))
+  }, [])
 
 
   return (

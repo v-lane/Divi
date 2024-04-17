@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Button } from '@mui/material';
-import LaunchIcon from '@mui/icons-material/Launch';
+import Launch from '@mui/icons-material/Launch';
+import LaunchButton from './LaunchButton';
 
 
 const GroupItem = ({ group }) => {
@@ -10,7 +10,7 @@ const GroupItem = ({ group }) => {
     <li className='group-item'>
       <header>
         <h3>{group.name}</h3>
-        <Button className="launch-button" variant="outlined" color="primary" size="large"><LaunchIcon /></Button>
+        <LaunchButton/>
       </header>
       <p><em>Group Type: </em>
         {group.group_type}</p>

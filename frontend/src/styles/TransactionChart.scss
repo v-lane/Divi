@@ -1,0 +1,81 @@
+.chart-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 5px;
+  height: 90%;
+  width: 95%;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 10px;
+
+  header {
+
+    h2 {
+      padding-top: 0em;
+      padding-bottom: 0.25em;
+      margin: 0;
+      width: 100%;
+      border-bottom: 1px solid white;
+    }
+  }
+
+  .charts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 75%;
+    width: 100%;
+
+    canvas {
+      height: 60%;
+      width: 70%;
+      margin: 10px;
+      padding: 10px;
+      background-color: var(--primary-color-200);
+      border-radius: 10px;
+      box-shadow: 4px 8px 8px hsl(0deg 0% 1% / .25);
+      overflow: scroll;
+    }
+
+    aside {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30%;
+      padding: 10px;
+
+      span {
+        font-size: xx-large;
+        font-weight: 700;
+        background-color: var(--primary-color-200);
+        border-radius: 10px;
+        box-shadow: 4px 8px 8px hsl(0deg 0% 1% / .25);
+        padding: 5px;
+      }
+      .positive {
+        color: green;
+      }
+      
+      .negative {
+        color: red;
+      }
+
+      .largest-balance {
+        font-size: medium;
+        font-weight: 600;
+        background-color: var(--primary-color-700);
+        box-shadow: none;
+        padding: 0;
+        border-radius: 0px;
+        
+      }
+    }
+  }
+
+  footer {
+    font-size: small;
+    font-style: italic;
+  }
+
+}
