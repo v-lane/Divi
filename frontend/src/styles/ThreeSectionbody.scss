@@ -18,6 +18,18 @@
       padding: 1.5em;
       height: 50%;
 
+      .chart-area {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        background-color: var(--primary-color-200);
+        border-radius: 5px;
+        max-width: auto;
+        height: 80%;
+        margin: 1em;
+        overflow-x: auto;
+      }
+
     }
     .bottom {
       background-color: var(--primary-color-700);

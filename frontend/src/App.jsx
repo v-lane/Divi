@@ -50,14 +50,14 @@ function App() {
   // fetch transaction data for a specific user
   useEffect(() => {
     axios
-    .get(`http://localhost:3001/api/transactions/${userId}`)
+    .get(`/api/transactions/${userId}`)
     .then((res) => setTransactions(res.data))
   }, [])
 
   // fetch member transaction data for a specific user
   useEffect(() => {
     axios
-    .get(`http://localhost:3001/api/member_transactions/${userId}`)
+    .get(`/api/member_transactions/${userId}`)
     .then((res) => setMemberTransactions(res.data))
   }, [])
 

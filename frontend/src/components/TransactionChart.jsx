@@ -2,7 +2,6 @@ import React from 'react'
 
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
-import '../styles/TransactionChart.scss'
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
 
@@ -50,16 +49,44 @@ const TransactionChart = (props) => {
   const data = {
     labels: chartLabels,
     datasets: [{
-      label: 'Member Balances', 
+      label: 'Member Standings',
       data: dataSet1,
       backgroundColor: backgroundColours
   }]
   }
 
-  const options = {};
+  const options = {
+    plugins: {
+      legend: {
+        labels: {
+          color: 'white',
+          boxWidth: 0
+        }
+      }
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: 'white'
+        },
+        grid: {
+          color: 'var(--primary-color-200)'
+        }
+      },
+      y: {
+        ticks: {
+          color: 'white'
+        },
+        grid: {
+          color: 'var(--primary-color-200)'
+        }
+      }
+    },
+    maintainAspectRatio: false
+  };
 
   return (
-    <Bar data={data} options={options}>
+    <Bar data={data} options={options} >
       
     </Bar>
   );
