@@ -51,8 +51,13 @@
   .groups-section-footer {
     display: flex; 
     justify-content: space-between;
+    align-items: stretch;
     bottom: 0;
     position: sticky;
+
+    .button-all {
+      height: 100%;
+    }
 
   }
 }

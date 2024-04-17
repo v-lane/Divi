@@ -28,7 +28,9 @@ const GroupsList = (props) => {
         <Link to="new-group" state={{ background: location }} onClick={(() => openModal('new-group'))}>
           <ButtonStandard buttonName={'Create New Group'} />
         </Link>
-        <ButtonAll />
+        <Link to='all_groups'>
+          <ButtonAll />
+        </Link>
       </footer>
     </>
   );
