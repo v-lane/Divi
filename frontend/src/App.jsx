@@ -21,6 +21,7 @@ import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 import useModalView from './hooks/useModalView';
 import UserProfile from './components/modals/UserProfile';
 import CreateGroupForm from './components/modals/CreateGroupForm';
+import GroupsAll from './components/GroupsAll';
 
 
 function App() {
@@ -89,10 +90,12 @@ function App() {
                   <Route path='new-group' element={<CreateGroupForm />} />
                 </Route>
               </Route>
-              <Route path='all_groups' element={<OneSectionBody />}>
-                <Route element={<ModalView />} >
-                  <Route path='profile' element={<UserProfile />} />
-                  <Route path='new-group' element={<CreateGroupForm />} />
+              <Route element={<OneSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal}/>}>
+                <Route path='all_groups' element={<GroupsAll />}>
+                  <Route element={<ModalView />} >
+                    <Route path='profile' element={<UserProfile />} />
+                    <Route path='new-group' element={<CreateGroupForm />} />
+                  </Route>
                 </Route>
               </Route>
             </Routes>

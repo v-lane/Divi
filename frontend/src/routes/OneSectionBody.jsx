@@ -1,6 +1,7 @@
 import React from 'react';
 
 import '../styles/OneSectionBody.scss';
+import GroupsAll from '../components/GroupsAll';
 
 
 const OneSectionBody = (props) => {
@@ -11,8 +12,7 @@ const OneSectionBody = (props) => {
   return (
     <section className='one-section-body'>
       <article className='main-article'>
-      <h1>Hi</h1>
-      <p>Paragraph</p>
+        <GroupsAll userGroups={userGroups} openModal={openModal}/>
 
       </article>
     </section>

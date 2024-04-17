@@ -26,7 +26,7 @@ const SideNavigationBar = ({openModal}) => {
           <AccordionDetails>
             <ul>
               <li className="active">
-                <Link href="#" underline="none">
+                <Link to="/" underline="none">
                   Dashboard
                 </Link>
               </li>
@@ -36,7 +36,7 @@ const SideNavigationBar = ({openModal}) => {
                 </Link>
               </li>
               <li>
-                <Link href="#" underline="none">
+                <Link to="all_groups" underline="none">
                   Groups
                 </Link>
               </li>

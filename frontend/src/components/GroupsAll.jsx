@@ -2,16 +2,17 @@ import React from 'react';
 
 import '../styles/Groups.scss';
 import GroupsList from './GroupsList';
+import GroupsAllList from './GroupsAllList';
 
-const Groups = (props) => {
+const GroupsAll = (props) => {
   const { userGroups, openModal } = props;
 
   return (
     <article className='groups-section'>
-      <h2>Groups</h2>
-      <GroupsList userGroups={userGroups} openModal={openModal} />
+      <h1>Groups</h1>
+      <GroupsAllList userGroups={userGroups} openModal={openModal}/>
     </article>
   );
 };
 
-export default Groups;
+export default GroupsAll;
