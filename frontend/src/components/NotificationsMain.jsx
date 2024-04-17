@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
 
 import '../styles/NotificationsAll.scss';
+import { format } from 'date-fns';
 // import GroupsAllList from './GroupsAllList';
 
-const NotificationsMain = ({activeTab}) => {
+const NotificationsMain = ({ activeTab, fullView }) => {
 
   return (
     <section className='notifications-main'>
-      <h2>Notification Type</h2>
-      <h3>Group: </h3>
-      <p>This is the message from the notification.</p>
-      <small>Date</small>
+      {fullView ?
+        <>
+          <h2>{fullView.notification_type}</h2>
+          <h3>Group: {fullView.group_id}</h3>
+          <p>{fullView.description}</p>
+          <small>{format((fullView.created_at), 'MMMM dd, yyyy')}</small>
+        </>
+        :
+        <p>Click on a notification to see more details!</p>
+      }
     </section>
   );
 };

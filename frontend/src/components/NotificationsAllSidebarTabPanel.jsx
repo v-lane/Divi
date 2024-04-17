@@ -5,7 +5,7 @@ import NotificationsAllSidebarTabPanelItem from './NotificationsAllSidebarTabPan
 // import GroupsAllList from './GroupsAllList';
 
 function NotificationsAllSidebarTabPanel(props) {
-  const { value, notificationsData } = props;
+  const { value, notificationsData, setFullView, fullView } = props;
 
   const archivedNotifications = notificationsData.filter(notification => notification.is_archived);
   const unArchivedNotifications = notificationsData.filter(notification => !notification.is_archived);
@@ -16,10 +16,10 @@ function NotificationsAllSidebarTabPanel(props) {
     >
       {value === 0 ?
         (unArchivedNotifications.map(notification => (
-          <NotificationsAllSidebarTabPanelItem key={notification.id} archive={value} notificationsData={notification} />
+          <NotificationsAllSidebarTabPanelItem key={notification.id} archive={value} notificationsData={notification} setFullView={setFullView} fullView={fullView}/>
         ))) :
         (archivedNotifications.map(notification => (
-          <NotificationsAllSidebarTabPanelItem key={notification.id} archive={value} notificationsData={notification} />
+          <NotificationsAllSidebarTabPanelItem key={notification.id} archive={value} notificationsData={notification} setFullView={setFullView} fullView={fullView}/>
         )))
       }
     </section>

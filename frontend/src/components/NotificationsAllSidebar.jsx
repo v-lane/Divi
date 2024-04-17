@@ -9,7 +9,7 @@ import Tab from '@mui/material/Tab';
 
 
 const NotificationsAllSidebar = (props) => {
-  const { activeTab, handleTabChange, userNotificationsData } = props;
+  const { activeTab, handleTabChange, userNotificationsData, setFullView, fullView } = props;
 
   const archivedNotifications = userNotificationsData.filter(notification => notification.is_archived)
   const unArchivedNotifications = userNotificationsData.filter(notification => !notification.is_archived)
@@ -20,7 +20,7 @@ const NotificationsAllSidebar = (props) => {
         <Tab className="tab" label="Inbox" />
         <Tab className="tab" label="Archive" />
       </Tabs>
-      <NotificationsAllSidebarTabPanel value={activeTab} notificationsData={userNotificationsData} archivedNotifications={archivedNotifications} unArchivedNotifications={unArchivedNotifications} />
+      <NotificationsAllSidebarTabPanel value={activeTab} notificationsData={userNotificationsData} archivedNotifications={archivedNotifications} unArchivedNotifications={unArchivedNotifications} setFullView={setFullView} fullView={fullView}/>
     </aside>
   );
 };

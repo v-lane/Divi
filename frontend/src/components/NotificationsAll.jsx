@@ -10,6 +10,7 @@ import userNotificationsData from '../mock_data/userNotificationsData'
 
 const NotificationsAll = (props) => {
   const [activeTab, setActiveTab] = useState(0);
+  const [fullView, setFullView] = useState(0)
 
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
@@ -19,8 +20,8 @@ const NotificationsAll = (props) => {
     <>
       <h1>All Notifications</h1>
       <section className='notifications-body'>
-        <NotificationsAllSidebar activeTab={activeTab} handleTabChange={handleTabChange} userNotificationsData={userNotificationsData}/>
-        <NotificationsMain activeTab={activeTab} userNotificationsData={userNotificationsData}/>
+        <NotificationsAllSidebar activeTab={activeTab} handleTabChange={handleTabChange} userNotificationsData={userNotificationsData} setFullView={setFullView} fullView={fullView}/>
+        <NotificationsMain activeTab={activeTab} fullView={fullView} userNotificationsData={userNotificationsData}/>
       </section>
       <footer className='notifications-footer'>
         <ButtonStandard buttonName={'Archive'} userNotificationsData={userNotificationsData}/>
