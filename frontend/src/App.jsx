@@ -12,6 +12,8 @@ import TopNavigationBar from './components/TopNavigationBar';
 import SideNavigationBar from './components/SideNavigationBar';
 import ThreeSectionBody from './routes/ThreeSectionBody';
 import ModalView from './routes/ModalView';
+import OneSectionBody from './routes/OneSectionBody';
+
 import theme from './styles/createTheme';
 
 import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
@@ -76,28 +78,34 @@ function App() {
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={theme}>
           <header>
-          <TopNavigationBar location={background || location} />
-        </header>
-        <main>
-          <SideNavigationBar location={background || location} openModal={openModal} />
-          <Routes location={background || location}>
-            <Route path='/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} />} >
-              <Route element={<ModalView />} >
-                <Route path='profile' element={<UserProfile />} />
-                <Route path='new-group' element={<CreateGroupForm />} />
+            <TopNavigationBar location={background || location} />
+          </header>
+          <main>
+            <SideNavigationBar location={background || location} openModal={openModal} />
+            <Routes location={background || location}>
+              <Route path='/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} />} >
+                <Route element={<ModalView />} >
+                  <Route path='profile' element={<UserProfile />} />
+                  <Route path='new-group' element={<CreateGroupForm />} />
+                </Route>
               </Route>
-            </Route>
-          </Routes>
-          {background && (
-            <Routes>
-              <Route element={<ModalView handleClick={handleClick} userProfileData={user} useModalView={{ profileView, newGroupView, closeModal }} />} >
-                <Route path='profile' element={<UserProfile />} />
-                <Route path='new-group' element={<CreateGroupForm />} />
+              <Route path='all_groups' element={<OneSectionBody />}>
+                <Route element={<ModalView />} >
+                  <Route path='profile' element={<UserProfile />} />
+                  <Route path='new-group' element={<CreateGroupForm />} />
+                </Route>
               </Route>
-
             </Routes>
-          )}
-        </main>
+            {background && (
+              <Routes>
+                <Route element={<ModalView handleClick={handleClick} userProfileData={user} useModalView={{ profileView, newGroupView, closeModal }} />} >
+                  <Route path='profile' element={<UserProfile />} />
+                  <Route path='new-group' element={<CreateGroupForm />} />
+                </Route>
+
+              </Routes>
+            )}
+          </main>
         </ThemeProvider>
       </StyledEngineProvider>
     </div>
