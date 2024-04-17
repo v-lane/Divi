@@ -41,7 +41,7 @@ const SideNavigationBar = ({openModal}) => {
                 </Link>
               </li>
               <li>
-                <Link href="#" underline="none">
+                <Link to="all_notifications" underline="none">
                   Notifications
                 </Link>
               </li>
