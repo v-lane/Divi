@@ -1,29 +1,29 @@
 import React from 'react';
 
-import '../styles/Groups.scss';
+import '../styles/GroupsAll.scss';
 import { format } from 'date-fns';
 
 
-const GroupsAllListItem = ({userGroupsExamples}) => {
+const GroupsAllListItem = ({userGroup}) => {
   return (
     <tr>
       <td>
         <ul>
-          <li>{userGroupsExamples.name}</li>
-          <li>Type: {userGroupsExamples.group_type}</li>
-          <li>Created: {format((userGroupsExamples.created_at), 'MMMM dd, yyyy')}</li>
+          <li>{userGroup.name}</li>
+          <li>Type: {userGroup.group_type}</li>
+          <li>Created: {format((userGroup.created_at), 'MMMM dd, yyyy')}</li>
         </ul>
       </td>
       <td >
         <ul>
-          {userGroupsExamples.users.filter(user => user.id === userGroupsExamples.user_id).map(owner => (
+          {userGroup.users.filter(user => user.id === userGroup.user_id).map(owner => (
             <li key={owner.id}>{owner.username}</li>
           ))}
         </ul>
       </td>
       <td>
         <ul>
-          {userGroupsExamples.users.filter(user => user.id !== userGroupsExamples.user_id).map(member => (
+          {userGroup.users.filter(user => user.id !== userGroup.user_id).map(member => (
             <li key={member.id}>{member.username}</li>
           ))}
         </ul>

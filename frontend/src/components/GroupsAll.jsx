@@ -1,7 +1,6 @@
 import React from 'react';
 
-import '../styles/Groups.scss';
-import GroupsList from './GroupsList';
+import '../styles/GroupsAll.scss';
 import GroupsAllList from './GroupsAllList';
 
 const GroupsAll = (props) => {
