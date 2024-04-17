@@ -6,8 +6,7 @@ import Groups from '../components/Groups';
 import TransactionChart from '../components/TransactionChart';
 
 const ThreeSectionBody = (props) => {
-  const { user, userGroups, transactionData, memberTransactions } = props;
-  const { userGroups, openModal } = props;
+  const { user, userGroups, transactionData, memberTransactions, openModal } = props;
 
   
 
