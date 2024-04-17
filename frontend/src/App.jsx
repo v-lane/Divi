@@ -22,6 +22,7 @@ import useModalView from './hooks/useModalView';
 import UserProfile from './components/modals/UserProfile';
 import CreateGroupForm from './components/modals/CreateGroupForm';
 import GroupsAll from './components/GroupsAll';
+import NotificationsAll from './components/NotificationsAll';
 
 
 function App() {
@@ -91,6 +92,7 @@ function App() {
                 <Route path='all_groups' element={<GroupsAll />}>
                   <Route element={<ModalView />} />
                 </Route>
+                <Route path='all_notifications' element={<NotificationsAll />}/>
               </Route>
             </Routes>
             {background && (
