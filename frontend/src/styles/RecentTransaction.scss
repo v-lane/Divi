@@ -8,20 +8,10 @@
 .transactions-footer{
   position: sticky;
   bottom: 0;
-  background-color: var(--primary-color-700);
   display: flex; 
   justify-content: space-between;
   padding: 0.5em;
   bottom: 0;
-  background-color: var(--primary-color-700);
 
-  .transaction-button-expense, .transaction-button-payment {
-    margin: 0.25em;
-    padding: 1em 0.5em;
-
-  }
-
-
-  
 }
 

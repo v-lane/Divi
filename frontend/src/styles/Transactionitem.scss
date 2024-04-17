@@ -2,12 +2,8 @@
 .transaction {
   border: solid 2px var(--text-color-primary);
   border-radius: 5px;
-  margin: 5px;
+  margin: 0.5em;
   box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.2);
-
-  .launch-button {
-    background-color: var(--primary-color-300);
-  }
   
   p {
     display: flex;
@@ -42,8 +38,14 @@
     font-size: 0.9em;
   }
   .sent-posted-heading {
-    font-weight: 300;
-    font-size: 0.9em;
+    // font-weight: 300;
+    // font-size: 0.9em;
+    margin-left: 1em;
+    padding: 0.5em;
+    border: 5px solid var(--primary-color-100);
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
   }
 
 }

@@ -5,13 +5,16 @@ import axios from 'axios';
 
 
 import './App.scss';
+import './styles/Buttons.scss';
+
+
 import TopNavigationBar from './components/TopNavigationBar';
 import SideNavigationBar from './components/SideNavigationBar';
 import ThreeSectionBody from './routes/ThreeSectionBody';
 import ModalView from './routes/ModalView';
 import theme from './styles/createTheme';
 
-import { ThemeProvider } from '@mui/material/styles';
+import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 
 import useModalView from './hooks/useModalView';
 import UserProfile from './components/modals/UserProfile';
@@ -28,7 +31,7 @@ function App() {
   const { profileView, newGroupView, setProfileView, setNewGroupView, closeModal, openModal } = useModalView();
   // const [profileView, setProfileView] = useState(true);
   // const [newGroupView, setNewGroupView] = useState(false);
-  const [memberTransactions, setMemberTransactions] = useState([])
+  const [memberTransactions, setMemberTransactions] = useState([]);
 
   const handleClick = (() => {
     navigate(-1);
@@ -56,22 +59,23 @@ function App() {
   // fetch transaction data for a specific user
   useEffect(() => {
     axios
-    .get(`/api/transactions/${userId}`)
-    .then((res) => setTransactions(res.data))
-  }, [])
+      .get(`/api/transactions/${userId}`)
+      .then((res) => setTransactions(res.data));
+  }, []);
 
   // fetch member transaction data for a specific user
   useEffect(() => {
     axios
-    .get(`/api/member_transactions/${userId}`)
-    .then((res) => setMemberTransactions(res.data))
-  }, [])
+      .get(`/api/member_transactions/${userId}`)
+      .then((res) => setMemberTransactions(res.data));
+  }, []);
 
 
   return (
     <div className='App'>
-      <ThemeProvider theme={theme}>
-        <header>
+      <StyledEngineProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <header>
           <TopNavigationBar location={background || location} />
         </header>
         <main>
@@ -94,7 +98,8 @@ function App() {
             </Routes>
           )}
         </main>
-      </ThemeProvider>
+        </ThemeProvider>
+      </StyledEngineProvider>
     </div>
   );
 }

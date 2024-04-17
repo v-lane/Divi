@@ -1,12 +1,11 @@
 import React from 'react';
+import { Link, useLocation } from "react-router-dom";
 
 import '../styles/Groups.scss';
 import GroupItem from './GroupItem';
+import ButtonStandard from './ButtonStandard';
+import ButtonAll from './ButtonAll';
 
-import { Button } from '@mui/material';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-
-import { Link, useLocation } from "react-router-dom";
 
 
 
@@ -28,9 +27,9 @@ const Groups = (props) => {
       </ul>
       <footer className='groups-section-footer'>
         <Link to="new-group" state={{ background: location }} onClick={(() => openModal('new-group'))}>
-          <Button className="new-group-button" variant="contained" color="info">Create New Group</Button>
+          <ButtonStandard buttonName={'Create New Group'} />
         </Link>
-        <Button className="groups-button" variant="contained" color="info"><ArrowForwardIcon /></Button>
+        <ButtonAll/>
       </footer>
     </article>
   );

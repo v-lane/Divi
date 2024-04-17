@@ -3,8 +3,9 @@ import React from 'react';
 import '../styles/TransactionItem.scss';
 import '../styles/RecentTransaction.scss';
 import { Button } from "@mui/material";
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import TransactionItem from './TransactionItem';
+import ButtonStandard from './ButtonStandard';
+import ButtonAll from './ButtonAll';
 
 const RecentTransaction = (props) => {
 
@@ -16,10 +17,10 @@ const RecentTransaction = (props) => {
       <TransactionItem transactionData={props.transactionData} />
       <footer className='transactions-footer'>
         <div>
-          <Button className="transaction-button-expense" variant="contained" color="error">Add Expense</Button>
-          <Button className="transaction-button-payment" variant="contained" color="success">Add Payment</Button>
+          <ButtonStandard buttonName={'Add Expense'} />
+          <ButtonStandard buttonName={'Add Payment'} />
         </div>
-        <Button className="transaction-button-more" variant="contained" color="info"><ArrowForwardIcon /></Button>
+        <ButtonAll />
       </footer>
     </section>
   );

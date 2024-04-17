@@ -4,10 +4,10 @@ import LaunchIcon from '@mui/icons-material/Launch';
 
 import '../styles/LaunchButton.scss';
 
-const LaunchButton = (props) => {
+const LaunchButton = ({color}) => {
 
   return (
-    <Button className="launch-button" variant="outlined" color="primary" size="medium"><LaunchIcon /></Button>
+    <Button className="launch-button" variant="outlined" color={color ? "launch" : "launch_contrast"} size="medium"><LaunchIcon /></Button>
   );
 };
 
