@@ -13,7 +13,9 @@ const ThreeSectionBody = (props) => {
   return (
     <section className='body-articles'>
       <div className='left'>
-        <article className='top'><section className='chart-area' ><TransactionChart transactionData={transactionData} memberTransactions={memberTransactions} user={user} group={userGroups}/></section></article>
+        <article className='top'>
+            <TransactionChart transactionData={transactionData} memberTransactions={memberTransactions} user={user} group={userGroups}/>
+        </article>
         <article className='bottom'><RecentTransaction transactionData={transactionData} /></article>
       </div>
       <article className='right'>
