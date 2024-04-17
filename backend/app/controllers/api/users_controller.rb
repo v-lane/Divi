@@ -2,7 +2,19 @@ class Api::UsersController < ApplicationController
 
   # GET /users/1
   def show
-    user=User.find(params[:id])
+
+    user = User.find params[:id]
+
+    render json: user
+
+  end
+
+  def show_by_email
+    email = params[:email]
+    email["&"] = "."
+    email["start="] = ""
+    email["end="] = ""
+    user = User.find_by email: email
     render json: user
   end
 
