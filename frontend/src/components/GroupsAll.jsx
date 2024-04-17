@@ -9,7 +9,7 @@ const GroupsAll = (props) => {
 
   return (
     <article className='groups-section'>
-      <h1>Groups</h1>
+      <h1>All Groups</h1>
       <GroupsAllList userGroups={userGroups} openModal={openModal}/>
     </article>
   );

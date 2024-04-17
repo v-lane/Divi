@@ -1,10 +1,9 @@
 import React from 'react';
 
-import Launch from '@mui/icons-material/Launch';
 import LaunchButton from './LaunchButton';
 
 
-const GroupItem = ({ group }) => {
+const GroupListItem = ({ group }) => {
 
   return (
     <li className='group-item'>
@@ -26,4 +25,4 @@ const GroupItem = ({ group }) => {
   );
 };
 
-export default GroupItem;
+export default GroupListItem;

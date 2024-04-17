@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from "react-router-dom";
 
 import '../styles/Groups.scss';
-import GroupItem from './GroupListItem';
+import GroupListItem from './GroupListItem';
 import ButtonStandard from './ButtonStandard';
 import ButtonAll from './ButtonAll';
 
@@ -18,7 +18,7 @@ const GroupsList = (props) => {
     <>
       <ul className='groups-list'>
         {Array.isArray(userGroups) && userGroups.map(group => (
-          <GroupItem
+          <GroupListItem
             key={group.id}
             group={group}
           />

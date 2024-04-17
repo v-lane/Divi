@@ -31,7 +31,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [group, setGroup] = useState([]);
   const [transactions, setTransactions] = useState([]);
-  const { profileView, newGroupView, setProfileView, setNewGroupView, closeModal, openModal } = useModalView();
+  const { profileView, newGroupView, closeModal, openModal } = useModalView();
   // const [profileView, setProfileView] = useState(true);
   // const [newGroupView, setNewGroupView] = useState(false);
   const [memberTransactions, setMemberTransactions] = useState([]);
@@ -85,17 +85,11 @@ function App() {
             <SideNavigationBar location={background || location} openModal={openModal} />
             <Routes location={background || location}>
               <Route path='/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} />} >
-                <Route element={<ModalView />} >
-                  <Route path='profile' element={<UserProfile />} />
-                  <Route path='new-group' element={<CreateGroupForm />} />
-                </Route>
+                <Route element={<ModalView />} />
               </Route>
               <Route element={<OneSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal}/>}>
                 <Route path='all_groups' element={<GroupsAll />}>
-                  <Route element={<ModalView />} >
-                    <Route path='profile' element={<UserProfile />} />
-                    <Route path='new-group' element={<CreateGroupForm />} />
-                  </Route>
+                  <Route element={<ModalView />} />
                 </Route>
               </Route>
             </Routes>
@@ -105,7 +99,6 @@ function App() {
                   <Route path='profile' element={<UserProfile />} />
                   <Route path='new-group' element={<CreateGroupForm />} />
                 </Route>
-
               </Routes>
             )}
           </main>
