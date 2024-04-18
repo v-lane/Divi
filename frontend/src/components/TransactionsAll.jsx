@@ -11,7 +11,7 @@ const TransactionsAll = (props) => {
     <>
       <h1>All Transactions</h1>
       <TransactionItem transactionData={transactionData} slice={false}/>
-      <footer className='transactions-footer'>
+      <footer className='all-transactions-footer'>
         <div>
           <ButtonStandard buttonName={'Add Expense'} />
           <ButtonStandard buttonName={'Add Payment'} />
