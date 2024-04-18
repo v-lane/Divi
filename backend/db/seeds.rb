@@ -106,15 +106,15 @@ puts 'Member Transactions Created'
 puts 'Creating Notifications'
 
 Notification.create!(user_id: users[0].id, group_id: groups[0].id, notification_type: "new_group", is_read: false, is_archived: false)
-Notification.create!(user_id: users[1].id, group_id: groups[1].id, notification_type: "new_group", is_read: false, is_archived: false)
-Notification.create!(user_id: users[2].id, group_id: groups[2].id, notification_type: "new_group", is_read: false, is_archived: false)
 Notification.create!(user_id: users[0].id, group_id: groups[0].id, notification_type: "new_group_member", is_read: false, is_archived: false)
-Notification.create!(user_id: users[1].id, group_id: groups[1].id, notification_type: "new_group_member", is_read: false, is_archived: false)
-Notification.create!(user_id: users[2].id, group_id: groups[2].id, notification_type: "new_group_member", is_read: false, is_archived: false)
-Notification.create!(user_id: users[0].id, group_id: groups[0].id, notification_type: "archived_group", is_read: false, is_archived: false)
-Notification.create!(user_id: users[1].id, group_id: groups[1].id, notification_type: "new_transaction", is_read: false, is_archived: false)
-Notification.create!(user_id: users[2].id, group_id: groups[2].id, notification_type: "updated_transaction", is_read: false, is_archived: false)
+Notification.create!(user_id: users[0].id, group_id: groups[2].id, notification_type: "new_group", is_read: false, is_archived: false)
+Notification.create!(user_id: users[0].id, group_id: groups[1].id, notification_type: "new_group", is_read: false, is_archived: true)
 Notification.create!(user_id: users[0].id, group_id: groups[0].id, notification_type: "deleted_transaction", is_read: false, is_archived: false)
+Notification.create!(user_id: users[0].id, group_id: groups[1].id, notification_type: "new_group_member", is_read: false, is_archived: false)
+Notification.create!(user_id: users[0].id, group_id: groups[1].id, notification_type: "new_transaction", is_read: false, is_archived: false)
+Notification.create!(user_id: users[0].id, group_id: groups[0].id, notification_type: "archived_group", is_read: false, is_archived: true)
+Notification.create!(user_id: users[0].id, group_id: groups[2].id, notification_type: "updated_transaction", is_read: false, is_archived: false)
+Notification.create!(user_id: users[0].id, group_id: groups[2].id, notification_type: "new_group_member", is_read: false, is_archived: true)
 
 puts 'Notifications Created'
 
