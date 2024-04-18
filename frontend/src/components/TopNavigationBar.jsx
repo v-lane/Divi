@@ -4,6 +4,8 @@ import '../styles/TopNavigationBar.scss';
 import Icon from '@mui/material/Icon';
 import { Button } from "@mui/material";
 
+import { Link } from 'react-router-dom';
+
 const TopNavigationBar = (props) => {
 
 
@@ -21,7 +23,9 @@ const TopNavigationBar = (props) => {
           <Button variant="contained" color="primary_nav">Logout</Button>
         </li>
         <li>
-          <Icon>notifications_none</Icon>
+          <Link to="all_notifications" underline="none">
+            <Icon>notifications_none</Icon>
+          </Link>
         </li>
       </ul>
 
