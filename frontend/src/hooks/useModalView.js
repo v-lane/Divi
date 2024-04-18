@@ -5,6 +5,7 @@ export default function useModalView() {
   const [newGroupView, setNewGroupView] = useState(false);
   const [deleteProfileView, setDeleteProfileView] = useState(false);
   const [deleteConfirmation, setDeleteConfirmation] = useState(false);
+  const [editUser, setEditUser] = useState(false);
   // add new state here
 
   const closeModal = () => {
@@ -12,6 +13,7 @@ export default function useModalView() {
     setNewGroupView(false);
     setDeleteProfileView(false);
     setDeleteConfirmation(false);
+    setEditUser(false);
     // add new set false here
   }
 
@@ -20,6 +22,7 @@ export default function useModalView() {
     if(urlpath === "new-group") setNewGroupView(true)
     if(urlpath === "profile-delete") setDeleteProfileView(true)
     if(urlpath === "delete-confirmation") setDeleteConfirmation(true)
+    if(urlpath === "profile-edit") setEditUser(true)
     // add new path here to set true
   }
 
@@ -29,6 +32,7 @@ export default function useModalView() {
     newGroupView,
     deleteProfileView,
     deleteConfirmation,
+    editUser, 
     // add new state view here
     closeModal,
     openModal

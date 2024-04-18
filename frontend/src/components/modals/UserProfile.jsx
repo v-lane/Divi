@@ -8,7 +8,7 @@ import { format } from 'date-fns'
 
 
 const UserProfile = (props) => {
-  const { userProfileData, confirmDelete } = props;
+  const { userProfileData, confirmDelete, handleEdit } = props;
 
   return (
     ( userProfileData && 
@@ -33,7 +33,7 @@ const UserProfile = (props) => {
         </tbody>
       </table>
       <footer>
-        <Button className="profile-button" variant="contained" color="info">Edit</Button>
+        <Button className="profile-button" variant="contained" color="info" onClick={handleEdit}>Edit</Button>
         <Button className="profile-button delete" variant="contained" color="error" onClick={confirmDelete}>Delete</Button>
       </footer>
     </section>
