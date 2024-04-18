@@ -5,7 +5,7 @@ import { Button, MenuItem, TextField } from "@mui/material";
 import '/src/styles/EditUserForm.scss'
 
 const EditUserForm = (props) => {
-  const { userProfileData, useModalView } = props;
+  const { userProfileData, useModalView, setUser } = props;
 
   const [formValue, setFormValue] = useState({
     userName: userProfileData.username,
@@ -29,13 +29,15 @@ const EditUserForm = (props) => {
     axios
       .patch(`/api/users/${userProfileData.id}/`, userData)
       .then(() => {
-        axios
-          .get(`/api/users/${userProfileData.id}`)
-          .then((res) => res.data)
-          .then(useModalView.setUser);
+        return axios.get(`/api/users/${userProfileData.id}`)
       })
-      .then(useModalView.navigateModal("profile"))
-      .then(useModalView.closeModal());
+      .then((res) => {
+        // Set user data using setUser function
+        setUser(res.data);
+        // Navigate and close modal
+        useModalView.navigateModal("profile");
+        useModalView.closeModal();
+      })
 
   };
 
