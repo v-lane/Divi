@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function useModalView() {
+  const navigate = useNavigate();
+
   const [profileView, setProfileView] = useState(false);
   const [newGroupView, setNewGroupView] = useState(false);
   const [deleteProfileView, setDeleteProfileView] = useState(false);
@@ -9,6 +12,7 @@ export default function useModalView() {
   // add new state here
 
   const closeModal = () => {
+    navigate(-1)
     setProfileView(false);
     setNewGroupView(false);
     setDeleteProfileView(false);
@@ -26,6 +30,15 @@ export default function useModalView() {
     // add new path here to set true
   }
 
+  const navigateModal = (path) => {
+    setProfileView(false);
+    setNewGroupView(false);
+    setDeleteProfileView(false);
+    setDeleteConfirmation(false);
+    setEditUser(false);
+    openModal(path)
+  }
+
 
   return {
     profileView,
@@ -35,6 +48,7 @@ export default function useModalView() {
     editUser, 
     // add new state view here
     closeModal,
-    openModal
+    openModal,
+    navigateModal
   };
 }

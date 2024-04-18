@@ -31,43 +31,20 @@ function App() {
   const [user, setUser] = useState(null);
   const [group, setGroup] = useState([]);
   const [transactions, setTransactions] = useState([]);
-  const { profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, closeModal, openModal } = useModalView();
-  // const [profileView, setProfileView] = useState(true);
-  // const [newGroupView, setNewGroupView] = useState(false);
+  const { profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, closeModal, openModal, navigateModal } = useModalView();
   const [memberTransactions, setMemberTransactions] = useState([]);
-
-  const handleClick = (() => {
-    navigate(-1);
-    closeModal();
-  });
-
-  const confirmDelete = (() => {
-    closeModal();
-    openModal("profile-delete");
-  });
-
-  const cancelDelete = (() => {
-    closeModal();
-    openModal("profile");
-  })
-
-  const handleEdit = (() => {
-    closeModal();
-    openModal("profile-edit")
-  })
 
   const deleteUser = (() => {
     axios
       .delete(`/api/users/${userId}`)
       .then((res) => console.log(res.status))
-      .then(closeModal())
-      .then(openModal('delete-confirmation'))
+      .then(navigateModal('delete-confirmation'))
       .then(setUser(null))
       // add redirect to homepage
       .catch((err) => {
-        console.error(err)
-      })
-  })
+        console.error(err);
+      });
+  });
 
   // temp userid (to be replaced by cookies)
   const userId = 1;
@@ -115,24 +92,23 @@ function App() {
               <Route path='/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} />} >
                 <Route element={<ModalView />} />
               </Route>
-              <Route element={<OneSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal}/>}>
+              <Route element={<OneSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} />}>
                 <Route path='all_groups' element={<GroupsAll />}>
-                  <Route element={<ModalView />} />
-                  <Route path='profile-delete' element={<DeleteUserProfile />} />
-                <Route path='delete-confirmation' element={<UserDeleted />} />
-                <Route path='profile-edit' element={<EditUserForm />} />
-              </Route>
+                  <Route element={<ModalView />} >
+                  </Route>
+           
+                </Route>
               </Route>
             </Routes>
             {background && (
               <Routes>
-                <Route element={<ModalView handleClick={handleClick} handleEdit={handleEdit} cancelDelete={cancelDelete} confirmDelete={confirmDelete}  deleteUser={deleteUser} userProfileData={user} useModalView={{ profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, closeModal, openModal, setUser }} />} >
+                <Route element={<ModalView deleteUser={deleteUser} userProfileData={user} setUser={setUser} useModalView={{ profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, closeModal, openModal,  navigateModal }} />} >
                   <Route path='profile' element={<UserProfile />} />
                   <Route path='new-group' element={<CreateGroupForm />} />
                   <Route path='profile-delete' element={<DeleteUserProfile />} />
-                <Route path='delete-confirmation' element={<UserDeleted />} />
-                <Route path='profile-edit' element={<EditUserForm />} />
-              </Route>
+                  <Route path='delete-confirmation' element={<UserDeleted />} />
+                  <Route path='profile-edit' element={<EditUserForm />} />
+                </Route>
               </Routes>
             )}
           </main>

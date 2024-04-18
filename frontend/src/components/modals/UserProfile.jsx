@@ -8,7 +8,7 @@ import { format } from 'date-fns'
 
 
 const UserProfile = (props) => {
-  const { userProfileData, confirmDelete, handleEdit } = props;
+  const { useModalView, userProfileData } = props;
 
   return (
     ( userProfileData && 
@@ -33,8 +33,8 @@ const UserProfile = (props) => {
         </tbody>
       </table>
       <footer>
-        <Button className="profile-button" variant="contained" color="info" onClick={handleEdit}>Edit</Button>
-        <Button className="profile-button delete" variant="contained" color="error" onClick={confirmDelete}>Delete</Button>
+        <Button className="profile-button" variant="contained" color="info" onClick={(() => useModalView.navigateModal('profile-edit'))}>Edit</Button>
+        <Button className="profile-button delete" variant="contained" color="error" onClick={(() => useModalView.navigateModal('profile-delete'))}>Delete</Button>
       </footer>
     </section>
     )

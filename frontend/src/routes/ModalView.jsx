@@ -12,13 +12,13 @@ import Icon from '@mui/material/Icon';
 
 
 const ModalView = (props) => {
-  const { handleClick, confirmDelete, cancelDelete, deleteUser, handleEdit, userProfileData, useModalView } = props;
+  const { cancelDelete, deleteUser, userProfileData, useModalView } = props;
 
   return (
     <section className="overlay">
       <Box className="modal">
         <header>
-          <Icon className='close-button' onClick={handleClick}>close</Icon>
+          <Icon className='close-button' onClick={(() => useModalView.closeModal())}>close</Icon>
           <h2>
             {useModalView.profileView && "Profile"}
             {useModalView.newGroupView && "New Group"}
@@ -27,7 +27,7 @@ const ModalView = (props) => {
             {useModalView.editUser && `Edit ${userProfileData.username}'s User Profile`}
           </h2>
         </header>
-        {useModalView.profileView && <UserProfile confirmDelete={confirmDelete} handleEdit={handleEdit} userProfileData={userProfileData} useModalView={useModalView} />}
+        {useModalView.profileView && <UserProfile userProfileData={userProfileData} useModalView={useModalView} />}
         {useModalView.newGroupView && <CreateGroupForm useModalView={useModalView}/>}
         {useModalView.deleteProfileView && <DeleteUserProfile cancelDelete={cancelDelete} deleteUser={deleteUser} userProfileData={userProfileData} useModalView={useModalView}/>}
         {useModalView.deleteConfirmation && <UserDeleted userProfileData={userProfileData} useModalView={useModalView} />}

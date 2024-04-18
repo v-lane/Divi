@@ -5,7 +5,7 @@ import ButtonStandard from '../ButtonStandard';
 
 const DeleteUserProfile = (props) => {
 
-  const {userProfileData, cancelDelete, deleteUser} = props;
+  const {userProfileData, deleteUser, useModalView} = props;
 
   return (
       <section className='confirmation-page'>
@@ -18,7 +18,7 @@ const DeleteUserProfile = (props) => {
         </article>
         <p>*LOGO GOES HERE*</p>
       <div className='buttons'>
-        <Button className="profile-button delete" variant="contained" color="info" onClick={cancelDelete}>Cancel</Button>
+        <Button className="profile-button delete" variant="contained" color="info" onClick={(()=> useModalView.navigateModal('profile'))}>Cancel</Button>
         <Button className="profile-button delete" variant="contained" color="error" onClick={deleteUser}>Confirm</Button>
       </div>
       </section>
