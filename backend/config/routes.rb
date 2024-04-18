@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   end
 
   get 'api/users_email/:email', to: 'api/users#show_by_email', as: 'user_by_email'
+  delete '/api/users/:id', to: 'users#destroy'
 end

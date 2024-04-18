@@ -49,8 +49,6 @@ const TransactionChart = (props) => {
       return accu;
     }, 0);
     const amountIndex = dataSet1.indexOf(highestAmountOwed);
-    console.log(amountIndex)
-    console.log(chartLabels)
     largestUserBalance = chartLabels[amountIndex === -1 ? chartLabels.length - 1 : amountIndex][1]
   } else if (sumBalances && sumBalances <= 0) {
     const highestAmountOwing = dataSet1.reduce((accu, curr) => {

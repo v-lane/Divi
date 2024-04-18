@@ -5,7 +5,7 @@ import ButtonStandard from '../ButtonStandard';
 
 const DeleteUserProfile = (props) => {
 
-  const {userProfileData} = props;
+  const {userProfileData, cancelDelete, deleteUser} = props;
 
   return (
       <section className='confirmation-page'>
@@ -18,8 +18,9 @@ const DeleteUserProfile = (props) => {
         </article>
         <p>*LOGO GOES HERE*</p>
       <div className='buttons'>
-        <ButtonStandard buttonName={'Cancel'}/>
-        <Button className="profile-button delete" variant="contained" color="error">Confirm</Button>
+        {/* <ButtonStandard buttonName={'Cancel'} onClick={(() => cancelDelete())}/> */}
+        <Button className="profile-button delete" variant="contained" color="info" onClick={cancelDelete}>Cancel</Button>
+        <Button className="profile-button delete" variant="contained" color="error" onClick={deleteUser}>Confirm</Button>
       </div>
       </section>
   )

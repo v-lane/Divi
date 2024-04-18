@@ -5,7 +5,6 @@
   text-align: center;
   background-color: var(--text-color-light);
   border-radius: 10px;
-  margin-top: 2em;
   height: 90%;
   left: auto;
   right: auto;
@@ -29,5 +28,10 @@
   .buttons {
     display: flex;
     justify-content: space-around;
+
+    .delete {
+      width: 160px;
+      height: 60px;
+    }
   }
 }

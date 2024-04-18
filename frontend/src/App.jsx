@@ -18,6 +18,7 @@ import useModalView from './hooks/useModalView';
 import UserProfile from './components/modals/UserProfile';
 import CreateGroupForm from './components/modals/CreateGroupForm';
 import DeleteUserProfile from './components/modals/DeleteUserProfile';
+import UserDeleted from './components/modals/UserDeleted';
 
 function App() {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [group, setGroup] = useState([]);
   const [transactions, setTransactions] = useState([]);
-  const { profileView, newGroupView, deleteProfileView, setProfileView, setNewGroupView, setDeleteProfileView, closeModal, openModal } = useModalView();
+  const { profileView, newGroupView, deleteProfileView, deleteConfirmation, setDeleteConfirmation, setProfileView, setNewGroupView, setDeleteProfileView, closeModal, openModal } = useModalView();
   // const [profileView, setProfileView] = useState(true);
   // const [newGroupView, setNewGroupView] = useState(false);
   const [memberTransactions, setMemberTransactions] = useState([]);
@@ -37,11 +38,28 @@ function App() {
   });
 
   const confirmDelete = (() => {
+    closeModal();
     openModal("profile-delete");
+  });
+
+  const cancelDelete = (() => {
+    closeModal();
+    openModal("profile");
+  })
+
+  const deleteUser = (() => {
+    axios
+      .delete(`/api/users/${userId}`)
+      .then((res) => console.log(res.status))
+      .then(closeModal())
+      .then(openModal('delete-confirmation'))
+      .catch((err) => {
+        console.error(err)
+      })
   })
 
   // temp userid (to be replaced by cookies)
-  const userId = 3;
+  const userId = 5;
 
   // fetch user data
   useEffect(() => {
@@ -88,15 +106,17 @@ function App() {
                 <Route path='profile' element={<UserProfile />} />
                 <Route path='new-group' element={<CreateGroupForm />} />
                 <Route path='profile-delete' element={<DeleteUserProfile />} />
+                <Route path='delete-confirmation' element={<UserDeleted />} />
               </Route>
             </Route>
           </Routes>
           {background && (
             <Routes>
-              <Route element={<ModalView handleClick={handleClick} confirmDelete={confirmDelete} userProfileData={user} useModalView={{ profileView, newGroupView, deleteProfileView, closeModal, openModal }} />} >
+              <Route element={<ModalView handleClick={handleClick} cancelDelete={cancelDelete} confirmDelete={confirmDelete}  deleteUser={deleteUser} userProfileData={user} useModalView={{ profileView, newGroupView, deleteProfileView, deleteConfirmation, closeModal, openModal }} />} >
                 <Route path='profile' element={<UserProfile />} />
                 <Route path='new-group' element={<CreateGroupForm />} />
                 <Route path='profile-delete' element={<DeleteUserProfile />} />
+                <Route path='delete-confirmation' element={<UserDeleted />} />
               </Route>
 
             </Routes>
