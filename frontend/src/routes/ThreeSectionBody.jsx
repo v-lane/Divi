@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../styles/ThreeSectionBody.scss';
 import RecentTransaction from '../components/RecentTransaction';
-import Groups from '../components/Groups';
+import Groups from '../components/Groups/Groups';
 import TransactionChart from '../components/TransactionChart';
 
 import { useLocation } from 'react-router-dom';

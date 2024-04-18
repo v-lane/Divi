@@ -19,8 +19,8 @@ import { StyledEngineProvider, ThemeProvider } from '@mui/material/styles';
 import useModalView from './hooks/useModalView';
 import UserProfile from './components/modals/UserProfile';
 import CreateGroupForm from './components/modals/CreateGroupForm';
-import GroupsAll from './components/GroupsAll';
-import NotificationsAll from './components/NotificationsAll';
+import GroupsAll from './components/Groups/GroupsAll';
+import NotificationsAll from './components/Notifications/NotificationsAll';
 
 import DeleteUserProfile from './components/modals/DeleteUserProfile';
 import UserDeleted from './components/modals/UserDeleted';

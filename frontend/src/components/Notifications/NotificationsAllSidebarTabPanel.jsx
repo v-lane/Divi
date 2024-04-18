@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import '../styles/NotificationsAll.scss';
+import '../../styles/NotificationsAll.scss';
 import NotificationsAllSidebarTabPanelItem from './NotificationsAllSidebarTabPanelItem';
 // import GroupsAllList from './GroupsAllList';
 

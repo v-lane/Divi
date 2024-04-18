@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LaunchButton from './LaunchButton';
+import LaunchButton from '../LaunchButton';
 
 
 const GroupListItem = ({ group }) => {
