@@ -6,6 +6,7 @@ import NotificationsAllSidebarTabPanel from './NotificationsAllSidebarTabPanel';
 
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import styled from '@emotion/styled';
 
 
 const NotificationsAllSidebar = (props) => {
@@ -16,7 +17,9 @@ const NotificationsAllSidebar = (props) => {
 
   return (
     <aside className='notifications-sidebar'>
-      <Tabs value={activeTab} onChange={handleTabChange}>
+      <Tabs value={activeTab} onChange={handleTabChange} 
+      textColor='inherit'
+      >
         <Tab className="tab" label="Inbox" />
         <Tab className="tab" label="Archive" />
       </Tabs>
