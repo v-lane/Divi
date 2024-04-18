@@ -45,18 +45,20 @@ const TransactionChart = (props) => {
 
   if ( sumBalances && sumBalances >= 0) {
     const highestAmountOwed = dataSet1.reduce((accu, curr) => {
-      curr > accu ? accu = curr : accu = accu;
-      return accu;
-    }, 0);
-    const amountIndex = dataSet1.indexOf(highestAmountOwed);
-    largestUserBalance = chartLabels[amountIndex][1]
-  } else if (sumBalances && sumBalances <= 0) {
-    const highestAmountOwing = dataSet1.reduce((accu, curr) => {
       curr < accu ? accu = curr : accu = accu;
       return accu;
     }, 0);
+    const amountIndex = dataSet1.indexOf(highestAmountOwed);
+    largestUserBalance = chartLabels[amountIndex === -1 ? chartLabels.length - 1 : amountIndex][1]
+  } else if (sumBalances && sumBalances <= 0) {
+    const highestAmountOwing = dataSet1.reduce((accu, curr) => {
+      curr > accu ? accu = curr : accu = accu;
+      return accu;
+    }, 0);
     const amountIndex = dataSet1.indexOf(highestAmountOwing);
-    largestUserBalance = chartLabels[amountIndex][1]
+    if (amountIndex) {
+      largestUserBalance = chartLabels[amountIndex][1]
+    }
   }
 
   dataSet1.forEach((value) => {

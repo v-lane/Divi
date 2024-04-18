@@ -1,0 +1,12 @@
+.confirm-user-deleted {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: var(--text-color-light);
+  box-shadow: 4px 8px 8px hsl(0deg 0% 1% / .25);
+  border-radius: 10px;
+
+  .brand {
+    font-weight: 600;
+  }
+}

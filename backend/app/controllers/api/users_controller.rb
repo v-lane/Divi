@@ -31,22 +31,21 @@ class Api::UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
-    # if @user.update(user_params)
-    #   redirect_to @user, notice: "User was successfully updated.", status: :see_other
-    # else
-    #   render :edit, status: :unprocessable_entity
-    # end
+    user = User.find params[:id]
+    user.username = params[:user][:username]
+    user.email = params[:user][:email]
+    user.save!
   end
 
   # DELETE /users/1
   def destroy
-    # @user.destroy
-    # redirect_to users_url, notice: "User was successfully destroyed.", status: :see_other
+    user = User.find params[:id]
+    user.destroy!
   end
 
   private
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :email, :password)
+      params.require(:user).permit(:username, :email, :password, :userData)
     end
 end
