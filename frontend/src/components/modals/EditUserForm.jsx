@@ -1,10 +1,12 @@
 import React, {useState} from "react";
+import {useNavigate} from "react-router-dom"
 import axios from 'axios'
 import { Button } from "@mui/material";
 import '/src/styles/EditUserForm.scss'
 
 const EditUserForm = (props) => {
   const {userProfileData, cancelDelete, useModalView } = props;
+  const navigate = useNavigate();
 
   const [formValue, setFormValue] = useState({
     userName: userProfileData.username,
@@ -27,7 +29,12 @@ const EditUserForm = (props) => {
     };
     axios
       .patch(`/api/users/${userProfileData.id}/`, userData)
-      .then((res) => console.log(res.data))
+      .then(() => {
+        axios
+        .get(`/api/users/${userProfileData.id}`)
+        .then((res) => res.data)
+        .then(useModalView.setUser)})
+      .then(navigate(-1))
       .then(useModalView.closeModal())
 
   };
