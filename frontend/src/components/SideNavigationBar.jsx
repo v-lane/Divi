@@ -25,26 +25,26 @@ const SideNavigationBar = ({openModal}) => {
           </AccordionSummary>
           <AccordionDetails>
             <ul>
-              <li className="active">
                 <Link to="/" underline="none">
+              <li className="active">
                   Dashboard
-                </Link>
               </li>
-              <li>
+                </Link>
                 <Link href="#" underline="none">
+              <li>
                   Transactions
-                </Link>
               </li>
-              <li>
+                </Link>
                 <Link to="all_groups" underline="none">
-                  Groups
-                </Link>
-              </li>
               <li>
-                <Link to="all_notifications" underline="none">
-                  Notifications
-                </Link>
+                  Groups
               </li>
+                </Link>
+                <Link to="all_notifications" underline="none">
+              <li>
+                  Notifications
+              </li>
+                </Link>
             </ul>
             <Accordion >
               <AccordionSummary
@@ -56,16 +56,16 @@ const SideNavigationBar = ({openModal}) => {
               </AccordionSummary>
               <AccordionDetails>
                 <ul>
-                  <li>
                     <Link href="#" underline="none">
+                  <li>
                       Add Expense
-                    </Link>
                   </li>
-                  <li>
+                    </Link>
                     <Link href="#" underline="none">
+                  <li>
                       Add Payment
-                    </Link>
                   </li>
+                    </Link>
                 </ul>
               </AccordionDetails>
             </Accordion>
@@ -79,11 +79,11 @@ const SideNavigationBar = ({openModal}) => {
               </AccordionSummary>
               <AccordionDetails>
                 <ul>
+                    <Link to="new-group" state={{ background: location }} onClick={(() => openModal('new-group'))}>
                   <li>
-                    <Link href="#" underline="none">
                       Create New Group
-                    </Link>
                   </li>
+                    </Link>
                 </ul>
               </AccordionDetails>
             </Accordion>
@@ -101,16 +101,16 @@ const SideNavigationBar = ({openModal}) => {
           </AccordionSummary>
           <AccordionDetails>
             <ul>
-              <li>
                 <Link href="#" underline="none">
+              <li>
                   Transactions
-                </Link>
               </li>
-              <li>
+                </Link>
                 <Link href="#" underline="none">
+              <li>
                   Members
-                </Link>
               </li>
+                </Link>
             </ul>
 
             <Accordion >
@@ -123,16 +123,16 @@ const SideNavigationBar = ({openModal}) => {
               </AccordionSummary>
               <AccordionDetails>
                 <ul>
-                  <li>
                     <Link href="#" underline="none">
+                  <li>
                       Add Expense
-                    </Link>
                   </li>
-                  <li>
+                    </Link>
                     <Link href="#" underline="none">
+                  <li>
                       Add Payment
-                    </Link>
                   </li>
+                    </Link>
                 </ul>
               </AccordionDetails>
             </Accordion>
@@ -143,11 +143,11 @@ const SideNavigationBar = ({openModal}) => {
       </header>
       <footer>
         <ul>
-          <li >
             <Link to="profile" state={{ background: location }} onClick={(() => openModal('profile'))}>
+          <li >
               My Profile
-            </Link>
           </li>
+            </Link>
           {/* <li>Admin</li> */}
         </ul>
       </footer>
