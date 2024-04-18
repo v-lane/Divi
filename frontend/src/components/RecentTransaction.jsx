@@ -14,7 +14,7 @@ const RecentTransaction = (props) => {
   return (
     <section className='recent-transactions'>
       <h2 id='body-title' className='title'>Recent Transactions</h2>
-      <TransactionItem transactionData={props.transactionData} />
+      <TransactionItem transactionData={props.transactionData} slice={true}/>
       <footer className='transactions-footer'>
         <div>
           <ButtonStandard buttonName={'Add Expense'} />

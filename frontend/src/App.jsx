@@ -25,6 +25,7 @@ import NotificationsAll from './components/NotificationsAll';
 import DeleteUserProfile from './components/modals/DeleteUserProfile';
 import UserDeleted from './components/modals/UserDeleted';
 import EditUserForm from './components/modals/EditUserForm';
+import TransactionsAll from './components/TransactionsAll';
 
 function App() {
   const navigate = useNavigate();
@@ -108,6 +109,7 @@ function App() {
               </Route>
               <Route element={<OneSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} notifications={notifications} />}>
                 <Route path='all_groups' element={<GroupsAll />} />
+                <Route path='all_transactions' element={<TransactionsAll />} />
                 <Route path='all_notifications' element={<NotificationsAll />} />
               </Route>
 
