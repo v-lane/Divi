@@ -25,6 +25,7 @@ import NotificationsAll from './components/NotificationsAll';
 import DeleteUserProfile from './components/modals/DeleteUserProfile';
 import UserDeleted from './components/modals/UserDeleted';
 import EditUserForm from './components/modals/EditUserForm';
+import TransactionsAll from './components/TransactionsAll';
 
 function App() {
   const navigate = useNavigate();
@@ -88,7 +89,7 @@ function App() {
   useEffect(() => {
     axios
       .get(`/api/notifications/${userId}`)
-      .then((res) => setNotifications(res.data))
+      .then((res) => setNotifications(res.data));
   }, []);
 
 
@@ -105,8 +106,9 @@ function App() {
               <Route path='/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} />} >
                 <Route element={<ModalView />} />
               </Route>
-              <Route element={<OneSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} notifications={notifications}/>}>
+              <Route element={<OneSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} notifications={notifications} />}>
                 <Route path='all_groups' element={<GroupsAll />} />
+                <Route path='all_transactions' element={<TransactionsAll />} />
                 <Route path='all_notifications' element={<NotificationsAll />} />
 
               </Route>

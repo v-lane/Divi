@@ -3,8 +3,12 @@ import { format } from 'date-fns';
 import LaunchButton from './LaunchButton';
 
 const TransactionItem = (props) => {
+  let slice = true;
+  slice = props.slice;
 
-  const transactions = props.transactionData.flat().slice(0, 5);
+  let transactions = []
+
+  slice ? transactions = props.transactionData.flat().slice(0, 5) : transactions = props.transactionData.flat();
 
 
   return (
