@@ -1,0 +1,50 @@
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  margin-top: 0;
+  
+  .input-canvas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 60%;
+    background-color: var(--text-color-light);
+    box-shadow: 4px 8px 8px hsl(0deg 0% 1% / .25);
+    border-radius: 10px;
+  }
+  
+  .inputs {
+    width: 35%;
+    padding-top: 2em;
+    
+    .input {
+      display: flex;
+      justify-content: space-between;
+      margin: 2em;
+
+      label {
+        font-size: large;
+        font-weight: 500;
+      }
+    }
+  }
+
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin-top: 5.2em;
+  
+  .button {
+    margin-left: 12em;
+    margin-right: 12em;
+    padding: 1.1em 3.9em;
+  }
+}
