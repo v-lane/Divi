@@ -21,11 +21,12 @@ import UserProfile from './components/modals/UserProfile';
 import CreateGroupForm from './components/modals/CreateGroupForm';
 import GroupsAll from './components/GroupsAll';
 import NotificationsAll from './components/NotificationsAll';
-
 import DeleteUserProfile from './components/modals/DeleteUserProfile';
 import UserDeleted from './components/modals/UserDeleted';
 import EditUserForm from './components/modals/EditUserForm';
 import TransactionsAll from './components/TransactionsAll';
+import AddExpenseForm from './components/modals/AddExpenseForm';
+import AddPaymentForm from './components/modals/AddPaymentForm';
 
 function App() {
   const navigate = useNavigate();
@@ -39,7 +40,17 @@ function App() {
   const [memberTransactions, setMemberTransactions] = useState([]);
   const [notifications, setNotifications] = useState([]);
 
-  const { profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, closeModal, openModal, navigateModal } = useModalView();
+  const { 
+    profileView, 
+    newGroupView, 
+    deleteProfileView, 
+    deleteConfirmation, 
+    editUser,
+    addExpense,
+    addPayment,
+    closeModal, 
+    openModal, 
+    navigateModal } = useModalView();
 
   const deleteUser = (() => {
     axios
@@ -116,12 +127,14 @@ function App() {
             </Routes>
             {background && (
               <Routes>
-                <Route element={<ModalView deleteUser={deleteUser} userProfileData={user} setUser={setUser} useModalView={{ profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, closeModal, openModal, navigateModal }} />} >
+                <Route element={<ModalView deleteUser={deleteUser} userProfileData={user} setUser={setUser} useModalView={{ profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, addExpense, addPayment,closeModal, openModal, navigateModal }} />} >
                   <Route path='profile' element={<UserProfile />} />
                   <Route path='new-group' element={<CreateGroupForm />} />
                   <Route path='profile-delete' element={<DeleteUserProfile />} />
                   <Route path='delete-confirmation' element={<UserDeleted />} />
                   <Route path='profile-edit' element={<EditUserForm />} />
+                  <Route path='add-expense' element={<AddExpenseForm />} />
+                  <Route path='add-payment' element={<AddPaymentForm />} />
                 </Route>
               </Routes>
             )}
