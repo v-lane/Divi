@@ -34,9 +34,9 @@ function NotificationsAllSidebarTabPanelItem({ archive, notificationsData, setFu
   return (
     <>
       {notificationsData && (
-        <div onClick={() => setFullView(notificationsData)} className={notificationsData.id === fullView.id ? 'active' : 'inactive'}>
-          <h3>{notificationsData.notification_type}</h3>
-          <small>{format((notificationsData.created_at), 'MMMM dd, yyyy')}</small>
+        <div onClick={() => setFullView(notificationsData)} className={notificationsData.id === fullView.id ? 'active' : 'inactive'} >
+          <h3 className={archive ? "archive" : ''}>{notificationsData.notification_type}</h3>
+          <small className={archive ? "archive" : ''}>{format((notificationsData.created_at), 'MMMM dd, yyyy')}</small>
         </div>
       )}
     </>

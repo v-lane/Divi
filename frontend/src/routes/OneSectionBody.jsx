@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 
 
 const OneSectionBody = (props) => {
-  const { user, userGroups, transactionData, memberTransactions, openModal } = props;
+  const { user, userGroups, transactionData, memberTransactions, openModal, notifications } = props;
 
   const location = useLocation();
 
@@ -17,7 +17,7 @@ const OneSectionBody = (props) => {
     <section className='one-section-body'>
       <article className='main-article'>
         {location.pathname === '/all_groups' && <GroupsAll userGroups={userGroups} openModal={openModal}/>}
-        {location.pathname === '/all_notifications' && <NotificationsAll />}
+        {location.pathname === '/all_notifications' && <NotificationsAll notifications={notifications}/>}
 
       </article>
     </section>

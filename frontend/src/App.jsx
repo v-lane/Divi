@@ -30,11 +30,15 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const background = location.state && location.state.background;
+
+  // app data, should be moved to custom hook(useApplicationData)
   const [user, setUser] = useState(null);
   const [group, setGroup] = useState([]);
   const [transactions, setTransactions] = useState([]);
-  const { profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, closeModal, openModal, navigateModal } = useModalView();
   const [memberTransactions, setMemberTransactions] = useState([]);
+  const [notifications, setNotifications] = useState([]);
+
+  const { profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, closeModal, openModal, navigateModal } = useModalView();
 
   const deleteUser = (() => {
     axios
@@ -80,6 +84,13 @@ function App() {
       .then((res) => setMemberTransactions(res.data));
   }, []);
 
+  // fetch user notifications data
+  useEffect(() => {
+    axios
+      .get(`/api/notifications/${userId}`)
+      .then((res) => setNotifications(res.data))
+  }, []);
+
 
   return (
     <div className='App'>
@@ -94,18 +105,15 @@ function App() {
               <Route path='/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} />} >
                 <Route element={<ModalView />} />
               </Route>
-              <Route element={<OneSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} />}>
-                <Route path='all_groups' element={<GroupsAll />}>
-                  <Route element={<ModalView />} >
-                  </Route>
-           
-                </Route>
-                <Route path='all_notifications' element={<NotificationsAll />}/>
+              <Route element={<OneSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} notifications={notifications}/>}>
+                <Route path='all_groups' element={<GroupsAll />} />
+                <Route path='all_notifications' element={<NotificationsAll />} />
+
               </Route>
             </Routes>
             {background && (
               <Routes>
-                <Route element={<ModalView deleteUser={deleteUser} userProfileData={user} setUser={setUser} useModalView={{ profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, closeModal, openModal,  navigateModal }} />} >
+                <Route element={<ModalView deleteUser={deleteUser} userProfileData={user} setUser={setUser} useModalView={{ profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, closeModal, openModal, navigateModal }} />} >
                   <Route path='profile' element={<UserProfile />} />
                   <Route path='new-group' element={<CreateGroupForm />} />
                   <Route path='profile-delete' element={<DeleteUserProfile />} />

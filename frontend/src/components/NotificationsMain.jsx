@@ -11,7 +11,7 @@ const NotificationsMain = ({ activeTab, fullView }) => {
       {fullView ?
         <div className='notifications-message-body'>
           <h2>{fullView.notification_type}</h2>
-          <h3>Group: {fullView.group_id}</h3>
+          <h3>{fullView.group.name}</h3>
           <p>{fullView.description}</p>
           <small>{format((fullView.created_at), 'MMMM dd, yyyy')}</small>
         </div>

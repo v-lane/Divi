@@ -2,6 +2,10 @@ class Api::NotificationsController < ApplicationController
 
   # GET /notifications/1
   def show
+    notifications = Notification.all().where(user_id: params[:id])
+
+    render json: notifications, include: [:group]
+
   end
 
   # POST /notifications
