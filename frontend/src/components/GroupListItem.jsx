@@ -9,7 +9,7 @@ const GroupListItem = ({ group }) => {
     <li className='group-item'>
       <header>
         <h3>{group.name}</h3>
-        <LaunchButton color={1}/>
+        <LaunchButton color={1} goTo={`group/${group.id}/dashboard`} />
       </header>
       <p><em>Group Type: </em>
         {group.group_type}</p>

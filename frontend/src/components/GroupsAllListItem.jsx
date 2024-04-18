@@ -2,6 +2,7 @@ import React from 'react';
 
 import '../styles/GroupsAll.scss';
 import { format } from 'date-fns';
+import { Link } from 'react-router-dom';
 
 import LaunchButton from './LaunchButton';
 
@@ -26,8 +27,7 @@ const GroupsAllListItem = ({ userGroup }) => {
         )) || <small><li>No members yet :(</li><li>Add some from the group dashboard</li></small>}
       </ul>
       <ul>
-      <LaunchButton color={1}/>
-
+        <LaunchButton color={1} goTo={`group/${userGroup.id}/dashboard`} />
       </ul>
     </section>
   );

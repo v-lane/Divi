@@ -88,7 +88,7 @@ function App() {
   useEffect(() => {
     axios
       .get(`/api/notifications/${userId}`)
-      .then((res) => setNotifications(res.data))
+      .then((res) => setNotifications(res.data));
   }, []);
 
 
@@ -103,13 +103,14 @@ function App() {
             <SideNavigationBar location={background || location} openModal={openModal} />
             <Routes location={background || location}>
               <Route path='/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} />} >
-                <Route element={<ModalView />} />
+                <Route path='group/:id/dashboard' element={<ThreeSectionBody />}>
+                </Route>
               </Route>
-              <Route element={<OneSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} notifications={notifications}/>}>
+              <Route element={<OneSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} notifications={notifications} />}>
                 <Route path='all_groups' element={<GroupsAll />} />
                 <Route path='all_notifications' element={<NotificationsAll />} />
-
               </Route>
+
             </Routes>
             {background && (
               <Routes>
