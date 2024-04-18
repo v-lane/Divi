@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from "react-router-dom";
 
 import '../../styles/Groups.scss';
-import GroupListItem from './GroupListItem';
+import GroupListItem from './GroupsListItem';
 import ButtonStandard from '../ButtonStandard';
 import ButtonAll from '../ButtonAll';
 
