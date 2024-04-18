@@ -36,7 +36,6 @@ const EditUserForm = (props) => {
         setUser(res.data);
         // Navigate and close modal
         useModalView.navigateModal("profile");
-        useModalView.closeModal();
       })
 
   };
