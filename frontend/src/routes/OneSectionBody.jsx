@@ -14,6 +14,8 @@ const OneSectionBody = (props) => {
   const { user, userGroups, transactionData, memberTransactions, openModal, notifications, activeGroup, activeGroupDetails } = props;
   // user={user} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails}
   const location = useLocation();
+  const activeGroupTransactions = (Object.keys(activeGroupDetails).length > 0 && activeGroupDetails.transactions)
+  const usersForGroupTransactions = (Object.keys(activeGroupDetails).length > 0 && activeGroupDetails.users)
 
   return (
     <section className='one-section-body'>
@@ -21,7 +23,7 @@ const OneSectionBody = (props) => {
         {location.pathname === '/all_groups' && <GroupsAll userGroups={userGroups} openModal={openModal}/>}
         {location.pathname === '/all_transactions' && <TransactionsAll transactionData={transactionData} openModal={openModal}/>}
         {location.pathname === '/all_notifications' && <NotificationsAll notifications={notifications}/>}
-        {location.pathname.slice(-26) === 'dashboard/all_transactions' && <TransactionsAll activeGroupDetails={activeGroupDetails} transactionData={notifications} openModal={openModal}/>}
+        {location.pathname.slice(-26) === 'dashboard/all_transactions' && <TransactionsAll activeGroupDetails={activeGroupDetails} transactionData={activeGroupTransactions} openModal={openModal} users={usersForGroupTransactions}/>}
 
       </article>
     </section>

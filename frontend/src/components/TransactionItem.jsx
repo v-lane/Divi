@@ -13,7 +13,10 @@ const TransactionItem = (props) => {
 
   return (
     <li className='transaction'>
-     { group && <p className='transaction-group'>Group: {group.name} <LaunchButton color={0} /></p> }
+     { group ? 
+     <p className='transaction-group'>Group: {group.name} <LaunchButton color={0} /></p> : 
+     <p className='transaction-user'>Group Member: {users[transaction.user_id].username} </p>
+     }
       <p>
         {transaction.transaction_type == 'Payment' ?
           <span className='sent-posted-heading'>Sent By: { user ? user.username : users[transaction.user_id].username} </span> :
