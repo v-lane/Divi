@@ -10,87 +10,8 @@ import RemoveIcon from '@mui/icons-material/Remove';
 
 
 
-const AddMemberForm = ({ useModalView }) => {
-  const navigate = useNavigate();
-  // const [formValue, setFormValue] = useState({
-  //   groupName: '',
-  //   groupType: '',
-  //   memberEmail: ''
-  // });
-
-  ///////////////////
-  // TEMPORARY - to be replaced by session cookies
-  const userId = 1;
-  /////////////////
-
-
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const groupData = {
-  //     name: formValue.groupName,
-  //     group_type: formValue.groupType,
-  //     user_id: userId
-  //   };
-  //    // save group
-  //    axios
-  //    .post(`/api/groups/`, groupData)
-  //    .then((response) => {
-  //      const groupId = response.data.id;
-  //      const userGroupDataOwner = {
-  //        user_id: userId,
-  //        group_id: groupId,
-  //        is_owner: true
-  //      };
-
-  //      //check if member email exists
-  //      if (formValue.memberEmail) {
-  //       const emailArr = formValue.memberEmail.split('.')
-  //       const urlString = `start=${emailArr[0]}&end=${emailArr[1]}`
-  //       console.log('urlString',urlString);
-
-  //        axios
-  //          .get(`/api/users_email/${urlString}`)
-  //          .then(response => {
-  //           console.log('response.data', response);
-  //            if (response.data) {
-  //              const userGroupDataMember = {
-  //                user_id: response.data.id,
-  //                group_id: groupId,
-  //                is_owner: false
-  //              };
-  //              // save group member to UserGroups
-  //              axios
-  //                .post(`/api/user_groups`, userGroupDataMember)
-  //                .then(response => {
-  //                  console.log('User Member record created. Notification record needs to be created');
-  //                  ///////////////////////
-  //                  //ADD LOGIC HERE TO CREATE NOTIFICATION FOR GROUP MEMBER
-  //                  ///////////////////////
-  //                })
-  //            } else {
-  //              console.log('User does not exist. Notification email needs to be created');
-  //              //////////////////
-  //              //ADD LOGIC HERE TO CREATE NOTIFICATION (EMAIL)
-  //              //////////////////
-  //            }
-  //          });
-  //      };
-
-  //      // save owner to UserGroups
-  //      axios
-  //        .post(`/api/user_groups`, userGroupDataOwner)
-  //        .then((response) => {
-  //          console.log('post created:', response.data);
-  //          navigate('/');
-  //          useModalView.closeModal();
-  //        });
-  //    })
-  //    .catch((error) => {
-  //      console.error("Error creating post:", error);
-  //    });
-  // };
-
+const AddMemberForm = ({activeGroup}) => {
+  const [newMembers, setNewMembers] = useState(1)
   const [formData, setFormData] = useState([
     {
       id: 0,
@@ -99,35 +20,42 @@ const AddMemberForm = ({ useModalView }) => {
   ]);
 
   const onClickRemove = () => {
-    if (formData.length > 1) {
-      const newFormData = [...formData]
-      console.log('newformdata beforeRemove', newFormData);
-      newFormData.pop()
-      console.log('newformdata afterRemove', newFormData);
-      setFormData(newFormData)
+    if (newMembers > 1) {
+      setNewMembers(prev => prev - 1)
+      const newFormData = [...formData];
+      newFormData.pop();
+      setFormData(newFormData);
     }
   };
 
   const onClickAdd = () => {
-    const newFormData = [...formData]
+    setNewMembers(prev => prev + 1)
+    const newFormData = [...formData];
     newFormData.push({
       id: formData.length,
       email: ''
-    })
-    setFormData(newFormData)
+    });
+    setFormData(newFormData);
   };
 
   const handleChange = (e) => {
-    const newFormData = [...formData]
-    newFormData[e.target.id].email = e.target.value
-    setFormData(newFormData)
+    const newFormData = [...formData];
+    newFormData[e.target.id].email = e.target.value;
+    setFormData(newFormData);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const newFormData = [...formData];
+    newFormData.push({group_id: activeGroup});
+    setFormData(newFormData);
+  }
 
   return (
     <form className='add-member-form' autoComplete="off"
-      onSubmit={(e) => e.preventDefault()}
+      onSubmit={handleSubmit}
     >
-      {formData.map((x, i) => (
+      {Array.from({length: newMembers}).map((x, i) => (
         <TextField
           key={i}
           id={`${i}`}

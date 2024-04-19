@@ -8,7 +8,7 @@ import MembersListItem from './MembersListItem';
 
 
 const MembersList = (props) => {
-  const { openModal, groupMembersData, groupMembers, activeGroupDetails } = props;
+  const { openModal, activeGroupDetails } = props;
   const location = useLocation()
 
   return (

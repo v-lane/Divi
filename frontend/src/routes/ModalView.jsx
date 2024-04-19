@@ -15,7 +15,7 @@ import Icon from '@mui/material/Icon';
 
 
 const ModalView = (props) => {
-  const { cancelDelete, deleteUser, userProfileData, useModalView, setUser, group, setTransactions } = props;
+  const { activeGroup, cancelDelete, deleteUser, userProfileData, useModalView, setUser, group, setTransactions } = props;
 
   return (
     <section className="overlay">
@@ -40,7 +40,7 @@ const ModalView = (props) => {
         {useModalView.editUser && <EditUserForm userProfileData={userProfileData} cancelDelete={cancelDelete} useModalView={useModalView} setUser={setUser} />}
         {useModalView.addExpense && <AddExpenseForm userProfileData={userProfileData} useModalView={useModalView} group={group} setTransactions={setTransactions}/>}
         {useModalView.addPayment && <AddPaymentForm userProfileData={userProfileData} useModalView={useModalView} group={group} setTransactions={setTransactions}/>}
-        {useModalView.addGroupMemberView && <AddMemberForm />}
+        {useModalView.addGroupMemberView && <AddMemberForm activeGroup={activeGroup}/>}
       </Box>
     </section>
   );
