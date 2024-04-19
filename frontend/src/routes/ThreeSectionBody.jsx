@@ -4,6 +4,7 @@ import '../styles/ThreeSectionBody.scss';
 import RecentTransaction from '../components/RecentTransaction';
 import Groups from '../components/Groups/Groups';
 import TransactionChart from '../components/TransactionChart';
+import GroupTransactionChart from '../components/GroupTransactionChart'
 import Members from '../components/Members/Members';
 
 import { useLocation } from 'react-router-dom';
@@ -23,6 +24,7 @@ const ThreeSectionBody = (props) => {
       <div className='left'>
         <article className='top'>
           {location.pathname === '/' && <TransactionChart transactionData={transactionData} memberTransactions={memberTransactions} user={user} group={userGroups} />}
+          {activeGroup > 0 && <GroupTransactionChart transactionData={transactionData} memberTransactions={memberTransactions} user={user} group={userGroups} activeGroup={activeGroup} activeGroupDetails={activeGroupDetails}/>}
         </article>
         <article className='bottom'>
           {location.pathname === '/' && <RecentTransaction recentTransactionData={recentTransactionData} openModal={openModal} setActiveTransaction={setActiveTransaction}/>}
