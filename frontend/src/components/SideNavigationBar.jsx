@@ -56,12 +56,12 @@ const SideNavigationBar = ({openModal}) => {
               </AccordionSummary>
               <AccordionDetails>
                 <ul>
-                    <Link href="#" underline="none">
+                    <Link to="add-expense" underline="none" state={{ background: location }} onClick={(() => openModal('add-expense'))}>
                   <li>
                       Add Expense
                   </li>
                     </Link>
-                    <Link href="#" underline="none">
+                    <Link to="add-payment" underline="none" state={{ background: location }} onClick={(() => openModal('add-payment'))} >
                   <li>
                       Add Payment
                   </li>
@@ -79,7 +79,7 @@ const SideNavigationBar = ({openModal}) => {
               </AccordionSummary>
               <AccordionDetails>
                 <ul>
-                    <Link to="new-group" state={{ background: location }} onClick={(() => openModal('new-group'))}>
+                    <Link to="new-group" state={{ background: location }} onClick={(() => openModal('add-expesn'))}>
                   <li>
                       Create New Group
                   </li>

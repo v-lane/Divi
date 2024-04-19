@@ -40,16 +40,16 @@ function App() {
   const [memberTransactions, setMemberTransactions] = useState([]);
   const [notifications, setNotifications] = useState([]);
 
-  const { 
-    profileView, 
-    newGroupView, 
-    deleteProfileView, 
-    deleteConfirmation, 
+  const {
+    profileView,
+    newGroupView,
+    deleteProfileView,
+    deleteConfirmation,
     editUser,
     addExpense,
     addPayment,
-    closeModal, 
-    openModal, 
+    closeModal,
+    openModal,
     navigateModal } = useModalView();
 
   const deleteUser = (() => {
@@ -127,7 +127,7 @@ function App() {
             </Routes>
             {background && (
               <Routes>
-                <Route element={<ModalView deleteUser={deleteUser} userProfileData={user} setUser={setUser} group={group} setTransactions={setTransactions} useModalView={{ profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, addExpense, addPayment,closeModal, openModal, navigateModal }} />} >
+                <Route element={<ModalView deleteUser={deleteUser} userProfileData={user} setUser={setUser} group={group} setTransactions={setTransactions} useModalView={{ profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, addExpense, addPayment, closeModal, openModal, navigateModal }} />} >
                   <Route path='profile' element={<UserProfile />} />
                   <Route path='new-group' element={<CreateGroupForm />} />
                   <Route path='profile-delete' element={<DeleteUserProfile />} />

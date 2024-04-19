@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: auto;
+  
 
  .MuiFormControl-root, small, .create-payment-button {
   margin: 1em 0;
@@ -17,5 +17,9 @@
 
  .create-payment-button {
   padding: 1em;
+ }
+
+ .buttons {
+  margin-top: 1em;
  }
 }

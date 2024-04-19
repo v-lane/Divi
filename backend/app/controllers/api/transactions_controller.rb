@@ -3,10 +3,7 @@ class Api::TransactionsController < ApplicationController
   # GET /transactions/1
   def show
     usergroups = UserGroup.where(user_id: params[:id])
-    transactions = []
-    usergroups.each do |group|
-      transactions.push(Transaction.where(group_id: group.group_id).includes(:group, :user).order(transaction_date: :desc))
-    end
+    transactions = Transaction.where(group_id: usergroups.pluck(:group_id)).includes(:group, :user).order(transaction_date: :desc)
     render json: transactions.as_json(include: { group: { only: :name }, user: { only: :username }})
   end
 
