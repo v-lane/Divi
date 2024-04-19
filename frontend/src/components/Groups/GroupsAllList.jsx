@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, useLocation } from "react-router-dom";
 
-import '../styles/GroupsAll.scss';
+import '../../styles/GroupsAll.scss';
 import GroupsAllListItem from './GroupsAllListItem';
-import ButtonStandard from './ButtonStandard';
+import ButtonStandard from '../ButtonStandard';
 
 
 const GroupsAllList = (props) => {

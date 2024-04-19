@@ -1,10 +1,9 @@
 import React from 'react';
 
-import '../styles/GroupsAll.scss';
+import '../../styles/GroupsAll.scss';
 import { format } from 'date-fns';
-import { Link } from 'react-router-dom';
 
-import LaunchButton from './LaunchButton';
+import LaunchButton from '../LaunchButton';
 
 
 

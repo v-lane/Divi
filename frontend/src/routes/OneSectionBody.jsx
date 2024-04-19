@@ -1,10 +1,10 @@
 import React from 'react';
 
 import '../styles/OneSectionBody.scss';
-import GroupsAll from '../components/GroupsAll';
+import GroupsAll from '../components/Groups/GroupsAll';
 // import NotificationsAll from '../components/NotificationsAll';
 import TransactionsAll from '../components/TransactionsAll';
-import NotificationsAll from '../components/NotificationsAll';
+import NotificationsAll from '../components/Notifications/NotificationsAll';
 
 import { useLocation } from 'react-router-dom';
 

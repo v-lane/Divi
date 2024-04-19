@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 
-import '../styles/NotificationsAll.scss';
+import '../../styles/NotificationsAll.scss';
 // import GroupsAllList from './GroupsAllList';
 import NotificationsAllSidebar from './NotificationsAllSidebar';
 import NotificationsMain from './NotificationsMain';
-import ButtonStandard from './ButtonStandard';
-
-import userNotificationsData from '../mock_data/userNotificationsData'
+import ButtonStandard from '../ButtonStandard';
 
 const NotificationsAll = ({notifications}) => {
   const [activeTab, setActiveTab] = useState(0);
