@@ -9,7 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link, useLocation } from "react-router-dom";
 
 
-const SideNavigationBar = ({ openModal, activeGroup }) => {
+const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails }) => {
   const location = useLocation();
 
   return (
@@ -21,7 +21,7 @@ const SideNavigationBar = ({ openModal, activeGroup }) => {
             aria-controls="panel1-content"
             id="username-header"
           >
-            <h2>Username</h2>
+            <h2>{user.username}</h2>
           </AccordionSummary>
           <AccordionDetails>
             <ul>
@@ -99,7 +99,7 @@ const SideNavigationBar = ({ openModal, activeGroup }) => {
               aria-controls="panel4-content"
               id="groupname-header"
             >
-              <h2>Group Name</h2>
+              <h2>Group: {activeGroupDetails.name}</h2>
             </AccordionSummary>
             <AccordionDetails>
               <ul>

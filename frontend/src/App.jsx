@@ -125,7 +125,7 @@ function App() {
             <TopNavigationBar location={background || location} />
           </header>
           <main>
-            <SideNavigationBar location={background || location} openModal={openModal} activeGroup={activeGroup} />
+            <SideNavigationBar location={background || location} openModal={openModal} activeGroup={activeGroup} user={user} activeGroupDetails={activeGroupDetails}/>
             <Routes location={background || location}>
               <Route path='/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} />} >
                 <Route path='group/:id/dashboard' element={<ThreeSectionBody />}>
