@@ -11,12 +11,22 @@ const RecentTransaction = (props) => {
   const { openModal, transactionData } = props;
   const location = useLocation();
 
-
+  const recentTransactionData = (transactionData && transactionData.flat().slice(0, 5))
 
   return (
     <section className='recent-transactions'>
       <h2 id='body-title' className='title'>Recent Transactions</h2>
-      <TransactionItem transactionData={transactionData} slice={true}/>
+      <ul style={{ listStyleType: 'none', padding: 0 }}>
+      {recentTransactionData && recentTransactionData.map(transaction => (
+        <TransactionItem transactionData={transactionData} slice={true} 
+        key={transaction.id}
+        transaction={transaction}
+        group={transaction.group}
+        user={transaction.user}
+        amount={transaction.amount}
+        />
+      ))}
+      </ul>
       <footer className='transactions-footer'>
         <div>
           <Link to='add-expense' state={{ background: location }} onClick={(() => openModal('add-expense'))} >
