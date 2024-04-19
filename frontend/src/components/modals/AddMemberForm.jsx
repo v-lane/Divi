@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import '../../styles/CreateGroupForm.scss';
+import '../../styles/AddMemberForm.scss';
 
-import { Button, FormControl, Input, Select, InputLabel, MenuItem, TextField } from "@mui/material";
+import { Button, TextField, Fab } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 
 
@@ -21,12 +23,7 @@ const AddMemberForm = ({ useModalView }) => {
   const userId = 1;
   /////////////////
 
-  // const handleChange = (event) => {
-  //   setFormValue({
-  //     ...formValue,
-  //     [event.target.name]: event.target.value
-  //   });
-  // };
+
 
   // const handleSubmit = (event) => {
   //   event.preventDefault();
@@ -94,35 +91,73 @@ const AddMemberForm = ({ useModalView }) => {
   //    });
   // };
 
+  const [formData, setFormData] = useState([
+    {
+      id: 0,
+      email: ''
+    }
+  ]);
 
+  const onClickRemove = () => {
+    if (formData.length > 1) {
+      const newFormData = [...formData]
+      console.log('newformdata beforeRemove', newFormData);
+      newFormData.pop()
+      console.log('newformdata afterRemove', newFormData);
+      setFormData(newFormData)
+    }
+  };
+
+  const onClickAdd = () => {
+    const newFormData = [...formData]
+    newFormData.push({
+      id: formData.length,
+      email: ''
+    })
+    setFormData(newFormData)
+  };
+
+  const handleChange = (e) => {
+    const newFormData = [...formData]
+    newFormData[e.target.id].email = e.target.value
+    setFormData(newFormData)
+  };
 
   return (
-    <form className='add-member-form' autoComplete="off" 
-    // onSubmit={()=> }
+    <form className='add-member-form' autoComplete="off"
+      onSubmit={(e) => e.preventDefault()}
     >
-      <TextField
-        id='0-member-email'
-        required
-        type="email"
-        name="memberEmail"
-        label="Member Email"
-        // value={formValue.groupName}
-        // onChange={handleChange}
-      />
+      {formData.map((x, i) => (
+        <TextField
+          key={i}
+          id={`${i}`}
+          required
+          type="email"
+          name="memberEmail"
+          label="New Member Email"
+          value={formData[i].email}
+          onChange={handleChange}
+        />
+      ))}
 
-      <TextField
-        id="1-member-email"
-        type="email"
-        name="memberEmail"
-        label="Optional New Member Email"
-        // value={formValue.memberEmail}
-        // onChange={handleChange}
-      />
-
-      <small>+ Additional members can be added after group is created from the group dashboard.</small>
-      <Button type="submit" className="add-member-button" variant="contained" color="info">Add Group Member(s)</Button>
+      <footer>
+        <div className='update-new-members'>
+          <div className='add-member'>
+            <Fab color="primary" aria-label="add" onClick={onClickAdd}>
+              <AddIcon />
+            </Fab>
+            <p>Add Additional Group Member</p>
+          </div>
+          <div className='remove-member'>
+            <Fab color="primary" aria-label="remove" onClick={onClickRemove}>
+              <RemoveIcon />
+            </Fab>
+            <p>Remove Additional Group Member</p>
+          </div>
+        </div>
+        <Button type="submit" className="add-member-button" variant="contained" color="info">Add Group Member(s)</Button>
+      </footer>
     </form>
-
   );
 };
 

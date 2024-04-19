@@ -1,0 +1,60 @@
+
+
+
+.add-member-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+
+  footer {
+    width: 100%;
+    position:sticky;
+    bottom:0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-color-100);
+    z-index: 1;
+
+    .update-new-members {
+      display: flex;
+    }
+
+
+
+    .add-member, .remove-member {
+      display: flex;
+      flex-direction: row;
+
+      width:100%;
+      padding-top: 1em;
+
+      p {
+        margin-left: 1em;
+      }
+    }
+    .add-member-button {
+      min-width: 10em;
+      width: 40%;
+      max-width: 30em;
+      margin: 1em 0;
+    }
+    
+  }
+
+
+  .MuiFormControl-root,
+  .create-group-button {
+    margin: 1em 0;
+    width: 70%;
+  }
+
+  .MuiFormControl-root {
+    background-color: var(--text-color-light);
+    border-radius: 5px;
+  }
+
+  .add-member-button {
+    padding: 1em;
+  }
+}
