@@ -11,10 +11,9 @@ import { useLocation } from 'react-router-dom';
 
 
 const OneSectionBody = (props) => {
-  const { user, userGroups, transactionData, memberTransactions, openModal, notifications } = props;
-
+  const { user, userGroups, transactionData, memberTransactions, openModal, notifications, activeGroup, activeGroupDetails } = props;
+  // user={user} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails}
   const location = useLocation();
-
 
   return (
     <section className='one-section-body'>
@@ -22,6 +21,7 @@ const OneSectionBody = (props) => {
         {location.pathname === '/all_groups' && <GroupsAll userGroups={userGroups} openModal={openModal}/>}
         {location.pathname === '/all_transactions' && <TransactionsAll transactionData={transactionData} openModal={openModal}/>}
         {location.pathname === '/all_notifications' && <NotificationsAll notifications={notifications}/>}
+        {location.pathname.slice(-26) === 'dashboard/all_transactions' && <TransactionsAll activeGroupDetails={activeGroupDetails} transactionData={notifications} openModal={openModal}/>}
 
       </article>
     </section>
