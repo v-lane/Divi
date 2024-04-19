@@ -20,6 +20,7 @@ class Api::TransactionsController < ApplicationController
       user: { only: :username },
       member_transactions: {}
     })
+  end
     
   def show_by_group
     transactions=Transaction.where(group_id: params[:id])

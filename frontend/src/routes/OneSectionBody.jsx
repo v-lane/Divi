@@ -13,7 +13,7 @@ import { useLocation } from 'react-router-dom';
 const OneSectionBody = (props) => {
   const { user, userGroups, transactionData, memberTransactions, setActiveTransaction, openModal, notifications, activeGroup, activeGroupDetails, activeGroupTransactions } = props;
   const location = useLocation();
-  const usersForGroupTransactions = (Object.keys(activeGroupDetails).length > 0 && activeGroupDetails.users)
+  const usersForGroupTransactions = (activeGroupDetails && Object.keys(activeGroupDetails).length > 0 && activeGroupDetails.users)
 
   return (
     <section className='one-section-body'>
