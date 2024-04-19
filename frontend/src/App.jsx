@@ -127,7 +127,7 @@ function App() {
             </Routes>
             {background && (
               <Routes>
-                <Route element={<ModalView deleteUser={deleteUser} userProfileData={user} setUser={setUser} useModalView={{ profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, addExpense, addPayment,closeModal, openModal, navigateModal }} />} >
+                <Route element={<ModalView deleteUser={deleteUser} userProfileData={user} setUser={setUser} group={group} useModalView={{ profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, addExpense, addPayment,closeModal, openModal, navigateModal }} />} >
                   <Route path='profile' element={<UserProfile />} />
                   <Route path='new-group' element={<CreateGroupForm />} />
                   <Route path='profile-delete' element={<DeleteUserProfile />} />
