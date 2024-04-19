@@ -1,9 +1,13 @@
 
 .transaction {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   border: solid 2px var(--text-color-primary);
   border-radius: 5px;
   margin: 0.5em;
   box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.2);
+  height: 90%;
   
   p {
     display: flex;
@@ -12,7 +16,6 @@
     padding: 0.2em 1em 0em 1em;
 
     .Expense, .Payment {
-      padding: 0.2em 1em;
       border-radius: 5px;
       border: 0.5px solid var(--primary-color-100);
       
@@ -48,10 +51,4 @@
     border-bottom: 0;
   }
 
-}
-
-.transaction:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    background-color: var(--primary-color-800);
-    // color: var(--text-color-primary);
 }

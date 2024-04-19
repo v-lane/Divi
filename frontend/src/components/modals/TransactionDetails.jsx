@@ -1,21 +1,21 @@
 import React from 'react';
 import { format } from 'date-fns';
-import LaunchButton from './LaunchButton';
+import LaunchButton from '../LaunchButton';
 import '/src/styles/TransactionDetails.scss'
 
 const TransactionDetails = (props) => {
-  let slice = true;
-  slice = props.slice;
+   const { transactions, activeTransactionDetails, group, isLoading } = props; 
 
-  let transactions = []
+  const transaction = activeTransactionDetails;
 
-  slice ? transactions = props.transactionData.flat().slice(0, 5) : transactions = props.transactionData.flat();
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
 
 
   return (
     <ul style={{ listStyleType: 'none', padding: 0 }}>
-      {Array.isArray(transactions) && transactions.map(transaction => (
-        <li className='transaction' key={transaction.id}>
+         <li className='transaction' key={transaction.id}>
           <p className='transaction-group'>Group: {transaction.group.name} <LaunchButton color={0} /></p>
           <p>
             {transaction.transaction_type == 'Payment' ?
@@ -24,8 +24,7 @@ const TransactionDetails = (props) => {
             <span className={transaction.transaction_type} >${transaction.amount}</span>
           </p>
           <p className='transaction-date'><span>Transaction Date: {format(new Date(transaction.transaction_date), 'MMMM dd, yyyy')}</span><span className={transaction.transaction_type}>{transaction.transaction_type}</span></p>
-        </li>
-      ))}
+        </li> 
     </ul>
   );
 };

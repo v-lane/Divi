@@ -11,7 +11,6 @@ import { Link, useLocation } from "react-router-dom";
 
 const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails }) => {
   const location = useLocation();
-  console.log(user)
 
   return (
     <aside className="side-nav-bar">

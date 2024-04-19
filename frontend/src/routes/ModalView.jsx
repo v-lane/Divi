@@ -8,13 +8,14 @@ import UserDeleted from '../components/modals/UserDeleted';
 import EditUserForm from '../components/modals/EditUserForm';
 import AddExpenseForm from '../components/modals/AddExpenseForm';
 import AddPaymentForm from '../components/modals/AddPaymentForm';
+import TransactionDetails from '../components/modals/TransactionDetails';
 
 import Box from '@mui/material/Box';
 import Icon from '@mui/material/Icon';
 
 
 const ModalView = (props) => {
-  const { cancelDelete, deleteUser, userProfileData, useModalView, setUser, group, setTransactions } = props;
+  const { isLoading, cancelDelete, deleteUser, userProfileData, useModalView, setUser, group, transactions, setTransactions, activeTransactionDetails, setActiveTransaction } = props;
 
   return (
     <section className="overlay">
@@ -29,6 +30,7 @@ const ModalView = (props) => {
             {useModalView.editUser && `Edit ${userProfileData.username}'s User Profile`}
             {useModalView.addExpense && `Add Expense`}
             {useModalView.addPayment && `Add Payment`}
+            {useModalView.transactionDetails && `Transaction Details`}
           </h2>
         </header>
         {useModalView.profileView && <UserProfile userProfileData={userProfileData} useModalView={useModalView} />}
@@ -38,6 +40,7 @@ const ModalView = (props) => {
         {useModalView.editUser && <EditUserForm userProfileData={userProfileData} cancelDelete={cancelDelete} useModalView={useModalView} setUser={setUser} />}
         {useModalView.addExpense && <AddExpenseForm userProfileData={userProfileData} useModalView={useModalView} group={group} setTransactions={setTransactions}/>}
         {useModalView.addPayment && <AddPaymentForm userProfileData={userProfileData} useModalView={useModalView} group={group} setTransactions={setTransactions}/>}
+        {useModalView.transactionDetails && <TransactionDetails isLoading={isLoading} transactions={transactions} activeTransactionDetails={activeTransactionDetails} userProfileData={userProfileData} useModalView={useModalView} group={group} setTransactions={setTransactions}/>}
       </Box>
     </section>
   );

@@ -8,7 +8,7 @@ import ButtonStandard from './ButtonStandard';
 import ButtonAll from './ButtonAll';
 
 const RecentTransaction = (props) => {
-  const { openModal, transactionData } = props;
+  const { openModal, transactionData, setActiveTransaction } = props;
   const location = useLocation();
 
 
@@ -16,7 +16,7 @@ const RecentTransaction = (props) => {
   return (
     <section className='recent-transactions'>
       <h2 id='body-title' className='title'>Recent Transactions</h2>
-      <TransactionItem transactionData={transactionData} slice={true}/>
+      <TransactionItem transactionData={transactionData} openModal={openModal} slice={true} setActiveTransaction={setActiveTransaction}/>
       <footer className='transactions-footer'>
         <div>
           <Link to='add-expense' state={{ background: location }} onClick={(() => openModal('add-expense'))} >
