@@ -21,7 +21,7 @@ const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails })
             aria-controls="panel1-content"
             id="username-header"
           >
-            <h2>{user.username}</h2>
+            <h2>{user && user.username}</h2>
           </AccordionSummary>
           <AccordionDetails>
             <ul>
@@ -99,7 +99,7 @@ const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails })
               aria-controls="panel4-content"
               id="groupname-header"
             >
-              <h2>Group: {activeGroupDetails.name}</h2>
+              <h2>Group: {activeGroupDetails && activeGroupDetails.name}</h2>
             </AccordionSummary>
             <AccordionDetails>
               <ul>
