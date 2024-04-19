@@ -3,6 +3,7 @@ import { format } from 'date-fns';
 import { Link, useLocation } from "react-router-dom";
 import { Button } from '@mui/material';
 import LaunchIcon from '@mui/icons-material/Launch';
+import LaunchButton from './LaunchButton';
 
 
 const TransactionItem = (props) => {
@@ -18,7 +19,6 @@ const TransactionItem = (props) => {
 
   const launchTransaction = (transactionId) => {
     setActiveTransaction(transactionId);
-    openModal('transaction-details');
   };
 
 
@@ -26,11 +26,7 @@ const TransactionItem = (props) => {
     <ul style={{ listStyleType: 'none', padding: 0 }}>
       {Array.isArray(transactions) && transactions.map(transaction => (
         <li className='transaction' key={transaction.id}>
-          <p className='transaction-group'>Group: {transaction.group.name} 
-            <Link to={`transaction-details/${transaction.id}`} state={{ background: location }} onClick={(() => launchTransaction(transaction.id))}>
-            <Button className="launch-button" variant="outlined" color={"launch_contrast"} size="medium"><LaunchIcon /></Button>
-            </Link>
-          </p>
+          <p className='transaction-group' onClick={(() => launchTransaction(transaction.id))} >Group: {transaction.group.name} <LaunchButton goTo={`transaction-details/${transaction.id}`} color={0} openModal={openModal}/></p>
           <p>
             {transaction.transaction_type == 'Payment' ?
               <span className='sent-posted-heading'>Sent By: {transaction.user.username} </span> :

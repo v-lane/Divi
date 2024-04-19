@@ -41,7 +41,8 @@ export default function useModalView() {
     if (urlpath === "profile-edit") setEditUser(true);
     if (urlpath === "add-expense") setAddExpense(true);
     if (urlpath === "add-payment") setAddPayment(true);
-    if (urlpath === "transaction-details") setTransactionDetails(true);
+    const startOfUrl = urlpath.slice(0, 19)
+    if (startOfUrl === "transaction-details") setTransactionDetails(true);
     const endOfUrl = urlpath.slice(-16)
     if (endOfUrl === "add_group_member") setAddGroupMemberView(true);
     // add new path here to set true
