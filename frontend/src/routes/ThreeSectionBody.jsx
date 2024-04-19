@@ -10,13 +10,12 @@ import { useLocation } from 'react-router-dom';
 
 
 const ThreeSectionBody = (props) => {
-  const { user, userGroups, transactionData, memberTransactions, openModal, activeGroup, activeGroupDetails } = props;
+  const { user, userGroups, transactionData, memberTransactions, openModal, activeGroup, activeGroupDetails, activeGroupTransactions } = props;
 
   const location = useLocation();
 
   const recentTransactionData = (transactionData && transactionData.flat().slice(0, 5))
-  const recentGroupTransactions = (Object.keys(activeGroupDetails).length > 0 && activeGroupDetails.transactions.slice(-5))
-  const usersForGroupTransactions = (Object.keys(activeGroupDetails).length > 0 && activeGroupDetails.users)
+  const recentGroupTransactions = (activeGroupTransactions && activeGroupTransactions.slice(-5))
 
 
   return (
@@ -27,7 +26,7 @@ const ThreeSectionBody = (props) => {
         </article>
         <article className='bottom'>
           {location.pathname === '/' && <RecentTransaction recentTransactionData={recentTransactionData} openModal={openModal}/>}
-          {activeGroup > 0 && <RecentTransaction openModal={openModal} recentTransactionData={recentGroupTransactions} users={usersForGroupTransactions}/>}        
+          {activeGroup > 0 && <RecentTransaction openModal={openModal} recentTransactionData={recentGroupTransactions} />}        
         </article>
       </div>
       <article className='right'>

@@ -7,6 +7,12 @@ class Api::TransactionsController < ApplicationController
     render json: transactions.as_json(include: { group: { only: :name }, user: { only: :username }})
   end
 
+  def show_by_group
+    transactions=Transaction.where(group_id: params[:id])
+    render json: transactions, include: [:group, :user]
+
+  end
+
   # POST /transactions
   def create
     group = Group.find_by(name: params[:group_name])

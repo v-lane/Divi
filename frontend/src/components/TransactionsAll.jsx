@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 import '../styles/TransactionAll.scss';
 
 const TransactionsAll = (props) => {
-  const { transactionData, openModal, users } = props;
+  const { transactionData, openModal, users, activeGroupTransactions } = props;
   const location = useLocation();
 
   return (
@@ -21,6 +21,16 @@ const TransactionsAll = (props) => {
             user={transaction.user}
             amount={transaction.amount}
             users={users}
+          />
+        ))}
+
+        {activeGroupTransactions && activeGroupTransactions.map(transaction => (
+          <TransactionItem
+            key={transaction.id}
+            transaction={transaction}
+            group={transaction.group}
+            user={transaction.user}
+            amount={transaction.amount}
           />
         ))}
       </ul>

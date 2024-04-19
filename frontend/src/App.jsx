@@ -43,6 +43,7 @@ function App() {
   const [notifications, setNotifications] = useState([]);
   const [activeGroup, setActiveGroup] = useState(0);
   const [activeGroupDetails, setActiveGroupDetails] = useState([]);
+  const [activeGroupTransactions, setActiveGroupTransaction] = useState([]);
 
   const {
     profileView,
@@ -98,6 +99,17 @@ function App() {
     }
   }, [activeGroup]);
 
+  // fetch transactions data for active group
+  useEffect(() => {
+    if (activeGroup > 0) {
+      axios
+        .get(`/api/transactions_by_group/${activeGroup}`)
+        .then((res) => {
+          setActiveGroupTransaction(res.data);
+        });
+    }
+  }, [activeGroup]);
+
   // fetch transaction data for a specific user
   useEffect(() => {
     axios
@@ -149,9 +161,9 @@ function App() {
                 <Route path='all_notifications' element={<NotificationsAll />} />
               </Route>
 
-              <Route path='group/:id/dashboard/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} />} />
-              
-              <Route element={<OneSectionBody user={user} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} />}>
+              <Route path='group/:id/dashboard/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} activeGroupTransactions={activeGroupTransactions}/>} />
+
+              <Route element={<OneSectionBody user={user} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} activeGroupTransactions={activeGroupTransactions}/>}>
                 <Route path='group/:id/dashboard/all_transactions' element={<TransactionsAll />} />
               </Route>
 
