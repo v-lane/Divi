@@ -40,7 +40,7 @@ const ModalView = (props) => {
         {useModalView.editUser && <EditUserForm userProfileData={userProfileData} cancelDelete={cancelDelete} useModalView={useModalView} setUser={setUser} />}
         {useModalView.addExpense && <AddExpenseForm userProfileData={userProfileData} useModalView={useModalView} group={group} setTransactions={setTransactions}/>}
         {useModalView.addPayment && <AddPaymentForm userProfileData={userProfileData} useModalView={useModalView} group={group} setTransactions={setTransactions}/>}
-        {useModalView.addGroupMemberView && <AddMemberForm activeGroup={activeGroup} activeGroupDetails={activeGroupDetails}/>}
+        {useModalView.addGroupMemberView && <AddMemberForm activeGroup={activeGroup} activeGroupDetails={activeGroupDetails} useModalView={useModalView}/>}
       </Box>
     </section>
   );

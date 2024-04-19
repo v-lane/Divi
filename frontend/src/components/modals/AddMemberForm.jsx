@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 import axios from 'axios';
 
 import '../../styles/AddMemberForm.scss';
@@ -8,15 +9,12 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 
 
-const AddMemberForm = ({ activeGroup, activeGroupDetails }) => {
+const AddMemberForm = ({ activeGroup, activeGroupDetails, useModalView }) => {
   const [newMembers, setNewMembers] = useState(1);
   const [formError, setFormError] = useState(null);
-  const [formData, setFormData] = useState([
-    {
-      id: 0,
-      email: ''
-    }
-  ]);
+  const [formData, setFormData] = useState([{ id: 0, email: '' }]);
+
+  const navigate = useNavigate()
 
   const handleClose = () => {
     console.log('click close');
@@ -81,18 +79,17 @@ const AddMemberForm = ({ activeGroup, activeGroupDetails }) => {
                 .post(`/api/user_groups`, userGroupDataMember)
                 .then(response => {
                   console.log('User Member record created. Notification record needs to be created');
+                  useModalView.closeModal()
+                  
                   ///////////////////////
                   //ADD LOGIC HERE TO CREATE NOTIFICATION FOR GROUP MEMBER
-                  ///////////////////////
+                  ///////////////////////          
                 });
             }
           } else {
             console.log('User does not exist. Notification email needs to be created');
-            //////////////////
-            //ADD LOGIC HERE TO CREATE NOTIFICATION (EMAIL)
-            //////////////////
+            setFormError(`${newMember.email} does not have a Divi account. They have been sent an invite to create an account to join your group. When they do, you will receive a notification and they will show in the group members list. Feel free to send invites to other emails or close this form.`);
           }
-
         })
 
         .catch((error) => {
