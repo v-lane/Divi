@@ -8,22 +8,22 @@ import ButtonStandard from './ButtonStandard';
 import ButtonAll from './ButtonAll';
 
 const RecentTransaction = (props) => {
-  const { openModal, transactionData } = props;
+  const { openModal, recentTransactionData, users } = props;
   const location = useLocation();
 
-  const recentTransactionData = (transactionData && transactionData.flat().slice(0, 5))
 
   return (
     <section className='recent-transactions'>
       <h2 id='body-title' className='title'>Recent Transactions</h2>
       <ul style={{ listStyleType: 'none', padding: 0 }}>
       {recentTransactionData && recentTransactionData.map(transaction => (
-        <TransactionItem transactionData={transactionData} slice={true} 
+        <TransactionItem
         key={transaction.id}
         transaction={transaction}
         group={transaction.group}
         user={transaction.user}
         amount={transaction.amount}
+        users={users}
         />
       ))}
       </ul>

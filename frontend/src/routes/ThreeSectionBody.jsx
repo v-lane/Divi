@@ -14,6 +14,11 @@ const ThreeSectionBody = (props) => {
 
   const location = useLocation();
 
+  const recentTransactionData = (transactionData && transactionData.flat().slice(0, 5))
+  const recentGroupTransactions = (Object.keys(activeGroupDetails).length > 0 && activeGroupDetails.transactions.slice(-5))
+  const usersForGroupTransactions = (Object.keys(activeGroupDetails).length > 0 && activeGroupDetails.users)
+
+
   return (
     <section className='body-articles'>
       <div className='left'>
@@ -21,8 +26,8 @@ const ThreeSectionBody = (props) => {
           {location.pathname === '/' && <TransactionChart transactionData={transactionData} memberTransactions={memberTransactions} user={user} group={userGroups} />}
         </article>
         <article className='bottom'>
-          {location.pathname === '/' && <RecentTransaction transactionData={transactionData} openModal={openModal}/>}
-          {/* {activeGroup > 0 && <RecentTransaction openModal={openModal} activeGroupDetails={activeGroupDetails} />}         */}
+          {location.pathname === '/' && <RecentTransaction recentTransactionData={recentTransactionData} openModal={openModal}/>}
+          {activeGroup > 0 && <RecentTransaction openModal={openModal} recentTransactionData={recentGroupTransactions} users={usersForGroupTransactions}/>}        
         </article>
       </div>
       <article className='right'>
