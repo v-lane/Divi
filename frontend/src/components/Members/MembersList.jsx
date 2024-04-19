@@ -14,7 +14,7 @@ const MembersList = (props) => {
   return (
     <>
       <ul className='members-list'>
-        {activeGroupDetails && activeGroupDetails.users.map(member => (
+        {Object.keys(activeGroupDetails).length > 0 && activeGroupDetails.users.map(member => (
           <MembersListItem
             key={member.id}
             username={member.username}
