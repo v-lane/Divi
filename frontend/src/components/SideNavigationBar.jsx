@@ -11,6 +11,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails }) => {
   const location = useLocation();
+  console.log(user)
 
   return (
     <aside className="side-nav-bar">
@@ -21,7 +22,7 @@ const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails })
             aria-controls="panel1-content"
             id="username-header"
           >
-            <h2>{user.username}</h2>
+            <h2>username goes here</h2>
           </AccordionSummary>
           <AccordionDetails>
             <ul>
