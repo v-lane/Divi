@@ -148,12 +148,10 @@ function App() {
     const checkIfTransactionDetails = location.pathname.slice(0, 20);
     if (checkIfTransactionDetails === '/transaction-details') {
       setActiveTransaction(location.pathname.slice(21, 22));
-      console.log(location.pathname.slice(0, 20), location.pathname.slice(21, 22));
     } else {
       setActiveTransaction(0);
     }
   }, []);
-
 
   return (
     <div className='App'>
@@ -169,7 +167,7 @@ function App() {
                 <Route path='group/:id/dashboard' element={<ThreeSectionBody />}>
                 </Route>
               </Route>
-              <Route element={<OneSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} notifications={notifications} />}>
+              <Route element={<OneSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} setActiveTransaction={setActiveTransaction} userGroups={group} openModal={openModal} notifications={notifications} />}>
                 <Route path='all_groups' element={<GroupsAll />} />
                 <Route path='all_transactions' element={<TransactionsAll />} />
                 <Route path='all_notifications' element={<NotificationsAll />} />
