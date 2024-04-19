@@ -39,11 +39,14 @@ export default function useModalView() {
     if (urlpath === "profile-delete") setDeleteProfileView(true);
     if (urlpath === "delete-confirmation") setDeleteConfirmation(true);
     if (urlpath === "profile-edit") setEditUser(true);
-    if (urlpath === "add-expense") setAddExpense(true);
-    if (urlpath === "add-payment") setAddPayment(true);
-    const startOfUrl = urlpath.slice(0, 19)
+    
+    let endOfUrl = urlpath.slice(-12);
+    if (endOfUrl === "add-expense") setAddExpense(true);
+    endOfUrl = urlpath.slice(-11);
+    if (endOfUrl === "add-payment") setAddPayment(true);
+    const startOfUrl = urlpath.slice(0, 19);
     if (startOfUrl === "transaction-details") setTransactionDetails(true);
-    const endOfUrl = urlpath.slice(-16)
+    endOfUrl = urlpath.slice(-16);
     if (endOfUrl === "add_group_member") setAddGroupMemberView(true);
     // add new path here to set true
   };
