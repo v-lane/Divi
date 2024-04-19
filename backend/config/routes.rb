@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :member_transactions, only: [:show]
     resources :transactions, only: [:show, :destroy, :create, :update]
     resources :users, only: [:show, :create, :update, :destroy]
-    resources :user_groups, only: [:show, :create]
+    resources :user_groups, only: [:index, :show, :create]
   end
 
   get 'api/users_email/:email', to: 'api/users#show_by_email', as: 'user_by_email'

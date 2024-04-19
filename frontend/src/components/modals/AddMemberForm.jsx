@@ -10,8 +10,8 @@ import RemoveIcon from '@mui/icons-material/Remove';
 
 
 
-const AddMemberForm = ({activeGroup}) => {
-  const [newMembers, setNewMembers] = useState(1)
+const AddMemberForm = ({ activeGroup }) => {
+  const [newMembers, setNewMembers] = useState(1);
   const [formData, setFormData] = useState([
     {
       id: 0,
@@ -21,7 +21,7 @@ const AddMemberForm = ({activeGroup}) => {
 
   const onClickRemove = () => {
     if (newMembers > 1) {
-      setNewMembers(prev => prev - 1)
+      setNewMembers(prev => prev - 1);
       const newFormData = [...formData];
       newFormData.pop();
       setFormData(newFormData);
@@ -29,7 +29,7 @@ const AddMemberForm = ({activeGroup}) => {
   };
 
   const onClickAdd = () => {
-    setNewMembers(prev => prev + 1)
+    setNewMembers(prev => prev + 1);
     const newFormData = [...formData];
     newFormData.push({
       id: formData.length,
@@ -45,17 +45,68 @@ const AddMemberForm = ({activeGroup}) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const newFormData = [...formData];
-    newFormData.push({group_id: activeGroup});
-    setFormData(newFormData);
-  }
+    // newFormData.push({group_id: activeGroup});
+    // setFormData(newFormData);
+
+    newFormData.forEach((newMember => {
+      // check if member email exists
+      const emailArr = newMember.email.split('.');
+      const urlString = `start=${emailArr[0]}&end=${emailArr[1]}`;
+      axios
+        .get(`/api/users_email/${urlString}`)
+        .then(response => {
+          console.log('response.data', response);
+          if (response.data) {
+            const userGroupDataMember = {
+              user_id: response.data.id,
+              group_id: activeGroup,
+              is_owner: false
+            };
+
+            // check if member is ALREADY in group
+            if (!exists) {
+              // continue
+            } else {
+              console.log('User is already in group.');
+            }
+
+            // save group member to UserGroups
+            axios
+              .post(`/api/user_groups`, userGroupDataMember)
+              .then(response => {
+                console.log('User Member record created. Notification record needs to be created');
+                ///////////////////////
+                //ADD LOGIC HERE TO CREATE NOTIFICATION FOR GROUP MEMBER
+                ///////////////////////
+              });
+          } else {
+            console.log('User does not exist. Notification email needs to be created');
+            //////////////////
+            //ADD LOGIC HERE TO CREATE NOTIFICATION (EMAIL)
+            //////////////////
+          }
+        })
+
+        // delete newMember.id;
+        // newMember.group_id = activeGroup;
+
+
+        // axios
+        //   .post('/api/')
+        .catch((error) => {
+          console.error("Error creating post:", error);
+        });
+    })
+    );
+  };
 
   return (
     <form className='add-member-form' autoComplete="off"
       onSubmit={handleSubmit}
     >
-      {Array.from({length: newMembers}).map((x, i) => (
+      {Array.from({ length: newMembers }).map((x, i) => (
         <TextField
           key={i}
           id={`${i}`}

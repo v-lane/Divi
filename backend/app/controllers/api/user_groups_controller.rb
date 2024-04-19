@@ -1,5 +1,8 @@
 class Api::UserGroupsController < ApplicationController
 
+  def index
+    render json: UserGroup.all
+  end
   # GET /user_groups/1
   def show
 
