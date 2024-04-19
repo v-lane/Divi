@@ -28,6 +28,7 @@ import EditUserForm from './components/modals/EditUserForm';
 import TransactionsAll from './components/TransactionsAll';
 import AddExpenseForm from './components/modals/AddExpenseForm';
 import AddPaymentForm from './components/modals/AddPaymentForm';
+import TransactionDetails from './components/modals/TransactionDetails';
 import AddMemberForm from './components/modals/AddMemberForm';
 
 function App() {
@@ -43,6 +44,9 @@ function App() {
   const [notifications, setNotifications] = useState([]);
   const [activeGroup, setActiveGroup] = useState(0);
   const [activeGroupDetails, setActiveGroupDetails] = useState([]);
+  const [activeTransaction, setActiveTransaction] = useState(0);
+  const [activeTransactionDetails, setActiveTransactionDetails] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   const {
     profileView,
@@ -52,6 +56,7 @@ function App() {
     editUser,
     addExpense,
     addPayment,
+    transactionDetails,
     addGroupMemberView,
     closeModal,
     openModal,
@@ -98,6 +103,17 @@ function App() {
     }
   }, [activeGroup]);
 
+  useEffect(() => {
+    if (activeTransaction > 0) {
+      axios
+        .get(`/api/transaction_by_id/${activeTransaction}`)
+        .then((res) => {
+          setActiveTransactionDetails(res.data);
+          setIsLoading(false);
+        });
+    };
+  }, [activeTransaction]);
+
   // fetch transaction data for a specific user
   useEffect(() => {
     axios
@@ -129,6 +145,14 @@ function App() {
     }
   }, [location]);
 
+  useEffect(() => {
+    const checkIfTransactionDetails = location.pathname.slice(0, 20);
+    if (checkIfTransactionDetails === '/transaction-details') {
+      setActiveTransaction(location.pathname.slice(21, 22));
+    } else {
+      setActiveTransaction(0);
+    }
+  }, []);
 
   return (
     <div className='App'>
@@ -155,7 +179,7 @@ function App() {
             </Routes>
             {background && (
               <Routes>
-                <Route element={<ModalView deleteUser={deleteUser} userProfileData={user} setUser={setUser} group={group} setTransactions={setTransactions} activeGroup={activeGroup} activeGroupDetails={activeGroupDetails} useModalView={{ profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, addExpense, addPayment, addGroupMemberView, closeModal, openModal, navigateModal }} />} >
+                <Route element={<ModalView isLoading={isLoading} deleteUser={deleteUser} userProfileData={user} setUser={setUser} group={group} transactions={transactions} setTransactions={setTransactions} activeTransactionDetails={activeTransactionDetails} activeGroup={activeGroup} activeGroupDetails={activeGroupDetails} useModalView={{ profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, addExpense, addPayment, transactionDetails, addGroupMemberView, closeModal, openModal, navigateModal }} />} >
                   <Route path='profile' element={<UserProfile />} />
                   <Route path='new-group' element={<CreateGroupForm />} />
                   <Route path='profile-delete' element={<DeleteUserProfile />} />
@@ -163,6 +187,7 @@ function App() {
                   <Route path='profile-edit' element={<EditUserForm />} />
                   <Route path='add-expense' element={<AddExpenseForm />} />
                   <Route path='add-payment' element={<AddPaymentForm />} />
+                  <Route path='transaction-details/:id' element={<TransactionDetails />} />
                   <Route path='group/:id/dashboard/add_group_member' element={<AddMemberForm />} />
 
                 </Route>

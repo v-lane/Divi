@@ -6,13 +6,13 @@ import { Link, useLocation } from 'react-router-dom'
 import '../styles/TransactionAll.scss'
 
 const TransactionsAll = (props) => {
-  const { transactionData, openModal } = props
+  const { transactionData, openModal, setActiveTransaction } = props
   const location = useLocation();
 
   return (
     <>
       <h1>All Transactions</h1>
-      <TransactionItem transactionData={transactionData} slice={false}/>
+      <TransactionItem transactionData={transactionData} openModal={openModal} slice={false} setActiveTransaction={setActiveTransaction}/>
       <footer className='all-transactions-footer'>
         <div>
           <Link to="add-expense" state={{ background: location }} onClick={(() => openModal('add-expense'))} >

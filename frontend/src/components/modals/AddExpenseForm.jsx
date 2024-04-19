@@ -30,9 +30,9 @@ const AddExpenseForm = (props) => {
       amount: parseFloat(formValue.amount),
       is_deleted: false
     };
-     axios
-     .post('/api/transactions/', transactionData)
-     .then((response) => {
+    axios
+    .post('/api/transactions/', transactionData)
+    .then((response) => {
       axios.get(`/api/transactions/${userProfileData.id}`)
       .then((res) => setTransactions(res.data))
       .then(useModalView.closeModal())
@@ -41,8 +41,6 @@ const AddExpenseForm = (props) => {
        console.error("Error creating post:", error);
      });
   };
-
-
 
   return (
     <form className='new-expense-form' autoComplete="off" onSubmit={handleSubmit}>

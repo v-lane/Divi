@@ -10,7 +10,7 @@ import { useLocation } from 'react-router-dom';
 
 
 const ThreeSectionBody = (props) => {
-  const { user, userGroups, transactionData, memberTransactions, openModal, activeGroup, activeGroupDetails } = props;
+  const { user, userGroups, transactionData, memberTransactions, openModal, activeGroup, activeGroupDetails, setActiveTransaction } = props;
 
   const location = useLocation();
 
@@ -21,7 +21,7 @@ const ThreeSectionBody = (props) => {
           {location.pathname === '/' && <TransactionChart transactionData={transactionData} memberTransactions={memberTransactions} user={user} group={userGroups} />}
         </article>
         <article className='bottom'>
-          {location.pathname === '/' && <RecentTransaction transactionData={transactionData} openModal={openModal}/>}
+          {location.pathname === '/' && <RecentTransaction transactionData={transactionData} openModal={openModal} setActiveTransaction={setActiveTransaction}/>}
         </article>
       </div>
       <article className='right'>
