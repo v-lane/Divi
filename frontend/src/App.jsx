@@ -38,6 +38,8 @@ function App() {
   const [transactions, setTransactions] = useState([]);
   const [memberTransactions, setMemberTransactions] = useState([]);
   const [notifications, setNotifications] = useState([]);
+  const [activeGroup, setActiveGroup] = useState(0);
+  const [activeGroupDetails, setActiveGroupDetails] = useState([]);
 
   const { profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, closeModal, openModal, navigateModal } = useModalView();
 
@@ -71,6 +73,18 @@ function App() {
       .then((res) => setGroup(res.data));
   }, []);
 
+  // fetch data for a specific group
+  useEffect(() => {
+    if (activeGroup > 0) {
+      axios
+        .get(`/api/users_by_group/${activeGroup}`)
+        .then((res) => {
+          setActiveGroupDetails(res.data)
+          console.log(activeGroupDetails);
+        });
+    }
+  }, [activeGroup]);
+
   // fetch transaction data for a specific user
   useEffect(() => {
     axios
@@ -92,6 +106,16 @@ function App() {
       .then((res) => setNotifications(res.data));
   }, []);
 
+  // set group id for group dashboard view
+  useEffect(() => {
+    const checkIfGroup = location.pathname.slice(0, 6);
+    if (checkIfGroup === '/group') {
+      setActiveGroup(location.pathname.slice(7, 8));
+    } else {
+      setActiveGroup(0);
+    }
+  }, [location]);
+
 
   return (
     <div className='App'>
@@ -103,7 +127,7 @@ function App() {
           <main>
             <SideNavigationBar location={background || location} openModal={openModal} />
             <Routes location={background || location}>
-              <Route path='/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} />} >
+              <Route path='/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} />} >
                 <Route path='group/:id/dashboard' element={<ThreeSectionBody />}>
                 </Route>
               </Route>

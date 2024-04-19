@@ -9,23 +9,17 @@ import MembersListItem from './MembersListItem';
 
 
 const MembersList = (props) => {
-  const { openModal } = props;
-  const location = useLocation();
-
+  const { openModal, groupMembersData, groupMembers, activeGroupDetails } = props;
 
   return (
     <>
       <ul className='members-list'>
-      <MembersListItem />
-      <MembersListItem />
-      <MembersListItem />
-      
-        {/* {Array.isArray(userGroups) && userGroups.map(group => (
-          <GroupListItem
-            key={group.id}
-            group={group}
+        {activeGroupDetails && activeGroupDetails.users.map(member => (
+          <MembersListItem
+            key={member.id}
+            username={member.username}
           />
-        ))} */}
+        ))}
       </ul>
       <footer className='members-section-footer'>
         {/* <Link to="new-member" state={{ background: location }}  */}
@@ -34,7 +28,7 @@ const MembersList = (props) => {
           <ButtonStandard buttonName={'Create New Member'} />
         {/* </Link> */}
         {/* <Link to='all_members'> */}
-          <ButtonAll />
+          {/* <ButtonAll /> */}
         {/* </Link> */}
       </footer>
     </>

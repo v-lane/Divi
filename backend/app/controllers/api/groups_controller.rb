@@ -6,6 +6,12 @@ class Api::GroupsController < ApplicationController
     render json: group, include: [:users]
   end
 
+  def show_by_group
+    group=Group.find(params[:id])
+    render json: group, include: [:users]
+
+  end
+
   # POST /groups
   def create
     pp params
