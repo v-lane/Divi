@@ -9,7 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link, useLocation } from "react-router-dom";
 
 
-const SideNavigationBar = ({openModal}) => {
+const SideNavigationBar = ({ openModal, activeGroup }) => {
   const location = useLocation();
 
   return (
@@ -25,26 +25,26 @@ const SideNavigationBar = ({openModal}) => {
           </AccordionSummary>
           <AccordionDetails>
             <ul>
-                <Link to="/" underline="none">
-              <li className="active">
+              <Link to="/" underline="none">
+                <li className="active">
                   Dashboard
-              </li>
-                </Link>
-                <Link to="all_transactions" underline="none">
-              <li>
+                </li>
+              </Link>
+              <Link to="all_transactions" underline="none">
+                <li>
                   Transactions
-              </li>
-                </Link>
-                <Link to="all_groups" underline="none">
-              <li>
+                </li>
+              </Link>
+              <Link to="all_groups" underline="none">
+                <li>
                   Groups
-              </li>
-                </Link>
-                <Link to="all_notifications" underline="none">
-              <li>
+                </li>
+              </Link>
+              <Link to="all_notifications" underline="none">
+                <li>
                   Notifications
-              </li>
-                </Link>
+                </li>
+              </Link>
             </ul>
             <Accordion >
               <AccordionSummary
@@ -56,16 +56,16 @@ const SideNavigationBar = ({openModal}) => {
               </AccordionSummary>
               <AccordionDetails>
                 <ul>
-                    <Link href="#" underline="none">
-                  <li>
+                  <Link href="#" underline="none">
+                    <li>
                       Add Expense
-                  </li>
-                    </Link>
-                    <Link href="#" underline="none">
-                  <li>
+                    </li>
+                  </Link>
+                  <Link href="#" underline="none">
+                    <li>
                       Add Payment
-                  </li>
-                    </Link>
+                    </li>
+                  </Link>
                 </ul>
               </AccordionDetails>
             </Accordion>
@@ -79,11 +79,11 @@ const SideNavigationBar = ({openModal}) => {
               </AccordionSummary>
               <AccordionDetails>
                 <ul>
-                    <Link to="new-group" state={{ background: location }} onClick={(() => openModal('new-group'))}>
-                  <li>
+                  <Link to="new-group" state={{ background: location }} onClick={(() => openModal('new-group'))}>
+                    <li>
                       Create New Group
-                  </li>
-                    </Link>
+                    </li>
+                  </Link>
                 </ul>
               </AccordionDetails>
             </Accordion>
@@ -91,63 +91,66 @@ const SideNavigationBar = ({openModal}) => {
 
           </AccordionDetails>
         </Accordion>
-        <Accordion defaultExpanded>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel4-content"
-            id="groupname-header"
-          >
-            <h2>Group Name</h2>
-          </AccordionSummary>
-          <AccordionDetails>
-            <ul>
+        {
+          activeGroup > 0 &&
+          <Accordion defaultExpanded>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel4-content"
+              id="groupname-header"
+            >
+              <h2>Group Name</h2>
+            </AccordionSummary>
+            <AccordionDetails>
+              <ul>
                 <Link href="#" underline="none">
-              <li>
-                  Transactions
-              </li>
+                  <li>
+                    Transactions
+                  </li>
                 </Link>
                 <Link href="#" underline="none">
-              <li>
-                  Members
-              </li>
+                  <li>
+                    Members
+                  </li>
                 </Link>
-            </ul>
+              </ul>
 
-            <Accordion >
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel5-content"
-                id="group-transactions-header"
-              >
-                <h3>Group's Transactions</h3>
-              </AccordionSummary>
-              <AccordionDetails>
-                <ul>
+              <Accordion >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel5-content"
+                  id="group-transactions-header"
+                >
+                  <h3>Group's Transactions</h3>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <ul>
                     <Link href="#" underline="none">
-                  <li>
-                      Add Expense
-                  </li>
+                      <li>
+                        Add Expense
+                      </li>
                     </Link>
                     <Link href="#" underline="none">
-                  <li>
-                      Add Payment
-                  </li>
+                      <li>
+                        Add Payment
+                      </li>
                     </Link>
-                </ul>
-              </AccordionDetails>
-            </Accordion>
+                  </ul>
+                </AccordionDetails>
+              </Accordion>
 
 
-          </AccordionDetails>
-        </Accordion>
+            </AccordionDetails>
+          </Accordion>
+        }
       </header>
       <footer>
         <ul>
-            <Link to="profile" state={{ background: location }} onClick={(() => openModal('profile'))}>
-          <li >
+          <Link to="profile" state={{ background: location }} onClick={(() => openModal('profile'))}>
+            <li >
               My Profile
-          </li>
-            </Link>
+            </li>
+          </Link>
           {/* <li>Admin</li> */}
         </ul>
       </footer>
