@@ -1,0 +1,21 @@
+.new-payment-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+
+ .MuiFormControl-root, small, .create-payment-button {
+  margin: 1em 0;
+  width: 70%;
+ }
+
+ .MuiFormControl-root {
+  background-color: var(--text-color-light);
+  border-radius: 5px;
+ }
+
+ .create-payment-button {
+  padding: 1em;
+ }
+}

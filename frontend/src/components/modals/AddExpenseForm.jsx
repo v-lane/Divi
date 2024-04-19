@@ -5,7 +5,7 @@ import { Button, MenuItem, TextField } from "@mui/material";
 import axios from 'axios';
 
 const AddExpenseForm = (props) => {
-  const { userProfileData, useModalView, group } = props;
+  const { userProfileData, useModalView, group, setTransactions } = props;
   const groupNames = group.map((item) => item.name);
 
   // const navigate = useNavigate();
@@ -33,7 +33,9 @@ const AddExpenseForm = (props) => {
      axios
      .post('/api/transactions/', transactionData)
      .then((response) => {
-       useModalView.closeModal()
+      axios.get(`/api/transactions/${userProfileData.id}`)
+      .then((res) => setTransactions(res.data))
+      .then(useModalView.closeModal())
      })
      .catch((error) => {
        console.error("Error creating post:", error);

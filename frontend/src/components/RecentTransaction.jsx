@@ -26,7 +26,9 @@ const RecentTransaction = (props) => {
             <ButtonStandard buttonName={'Add Payment'} />
           </Link>
         </div>
-        <ButtonAll />
+        <Link to='all_transactions'>
+          <ButtonAll />
+        </Link>
       </footer>
     </section>
   );
