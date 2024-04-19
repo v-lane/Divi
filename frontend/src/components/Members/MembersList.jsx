@@ -3,13 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 
 import '../../styles/Members.scss';
 import ButtonStandard from '../ButtonStandard';
-import ButtonAll from '../ButtonAll';
 import MembersListItem from './MembersListItem';
 
 
 
 const MembersList = (props) => {
   const { openModal, groupMembersData, groupMembers, activeGroupDetails } = props;
+  const location = useLocation()
 
   return (
     <>
@@ -22,14 +22,11 @@ const MembersList = (props) => {
         ))}
       </ul>
       <footer className='members-section-footer'>
-        {/* <Link to="new-member" state={{ background: location }}  */}
-        {/* onClick={(() => openModal('new-group'))} */}
-        {/* > */}
-          <ButtonStandard buttonName={'Create New Member'} />
-        {/* </Link> */}
-        {/* <Link to='all_members'> */}
-          {/* <ButtonAll /> */}
-        {/* </Link> */}
+        <Link to="add_group_member" state={{ background: location }}
+          onClick={(() => openModal('add_group_member'))}
+        >
+          <ButtonStandard buttonName={'Add New Member'} />
+        </Link>
       </footer>
     </>
   );

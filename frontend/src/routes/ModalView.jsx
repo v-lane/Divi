@@ -8,6 +8,7 @@ import UserDeleted from '../components/modals/UserDeleted';
 import EditUserForm from '../components/modals/EditUserForm';
 import AddExpenseForm from '../components/modals/AddExpenseForm';
 import AddPaymentForm from '../components/modals/AddPaymentForm';
+import AddMemberForm from '../components/modals/AddMemberForm';
 
 import Box from '@mui/material/Box';
 import Icon from '@mui/material/Icon';
@@ -29,6 +30,7 @@ const ModalView = (props) => {
             {useModalView.editUser && `Edit ${userProfileData.username}'s User Profile`}
             {useModalView.addExpense && `Add Expense`}
             {useModalView.addPayment && `Add Payment`}
+            {useModalView.addGroupMemberView && `Add Group Member`}
           </h2>
         </header>
         {useModalView.profileView && <UserProfile userProfileData={userProfileData} useModalView={useModalView} />}
@@ -38,6 +40,7 @@ const ModalView = (props) => {
         {useModalView.editUser && <EditUserForm userProfileData={userProfileData} cancelDelete={cancelDelete} useModalView={useModalView} setUser={setUser} />}
         {useModalView.addExpense && <AddExpenseForm userProfileData={userProfileData} useModalView={useModalView} group={group} setTransactions={setTransactions}/>}
         {useModalView.addPayment && <AddPaymentForm userProfileData={userProfileData} useModalView={useModalView} group={group} setTransactions={setTransactions}/>}
+        {useModalView.addGroupMemberView && <AddMemberForm />}
       </Box>
     </section>
   );
