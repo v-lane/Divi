@@ -13,11 +13,11 @@
   
   .transaction-details-group {
     display: flex;
-    justify-content: space-between;
-    margin-left: 1em;
-    font-size: 35px;
+    margin-left: 1.1em;
+    font-size: 30px;
     width: 50%;
-    padding: 0.41em;
+    padding-left: 0.42em;
+    margin-top: 0.2em;
     border-left: 5px solid var(--primary-color-100);
 
     .group {
@@ -34,6 +34,7 @@
 
 
     .Expense, .Payment {
+      padding: 0.5em;
       border-radius: 5px;
       border: 0.5px solid var(--primary-color-100);
       
@@ -47,7 +48,27 @@
       background-color: rgb(39, 116, 18);
     }
 
+    .member-name {
+      font-style: italic;
+      font-weight: 500;
+    }
+
   }
+
+  .member-balances {
+    margin-left: 2em;
+    padding-left: 0.5em;
+    border-left: 5px solid var(--primary-color-100);
+
+    .balance {
+      justify-content: start;
+
+      .Expense, .Payment {
+        padding: 0.2em;
+      }
+    }
+  }
+
   .transaction-group {
     font-size: 1.2em;
     font-weight: 500;
