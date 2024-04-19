@@ -9,15 +9,19 @@ export default function useModalView() {
   const [deleteProfileView, setDeleteProfileView] = useState(false);
   const [deleteConfirmation, setDeleteConfirmation] = useState(false);
   const [editUser, setEditUser] = useState(false);
+  const [addExpense, setAddExpense] = useState(false);
+  const [addPayment, setAddPayment] = useState(false);
   // add new state here
 
   const closeModal = () => {
-    navigate(-1)
+    navigate(-1);
     setProfileView(false);
     setNewGroupView(false);
     setDeleteProfileView(false);
     setDeleteConfirmation(false);
     setEditUser(false);
+    setAddExpense(false);
+    setAddPayment(false);
     // add new set false here
   }
 
@@ -27,6 +31,8 @@ export default function useModalView() {
     if(urlpath === "profile-delete") setDeleteProfileView(true)
     if(urlpath === "delete-confirmation") setDeleteConfirmation(true)
     if(urlpath === "profile-edit") setEditUser(true)
+    if(urlpath === "add-expense") setAddExpense(true)
+    if(urlpath === "add-payment") setAddPayment(true)
     // add new path here to set true
   }
 
@@ -36,6 +42,8 @@ export default function useModalView() {
     setDeleteProfileView(false);
     setDeleteConfirmation(false);
     setEditUser(false);
+    setAddExpense(false);
+    setAddPayment(false);
     openModal(path)
   }
 
@@ -45,7 +53,9 @@ export default function useModalView() {
     newGroupView,
     deleteProfileView,
     deleteConfirmation,
-    editUser, 
+    editUser,
+    addExpense,
+    addPayment,
     // add new state view here
     closeModal,
     openModal,

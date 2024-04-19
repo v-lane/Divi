@@ -21,7 +21,7 @@ const ThreeSectionBody = (props) => {
           {location.pathname === '/' && <TransactionChart transactionData={transactionData} memberTransactions={memberTransactions} user={user} group={userGroups} />}
         </article>
         <article className='bottom'>
-          {location.pathname === '/' && <RecentTransaction transactionData={transactionData} />}
+          {location.pathname === '/' && <RecentTransaction transactionData={transactionData} openModal={openModal}/>}
         </article>
       </div>
       <article className='right'>

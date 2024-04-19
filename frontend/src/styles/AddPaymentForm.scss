@@ -1,11 +1,11 @@
-.new-expense-form {
+.new-payment-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: auto;
+  
 
- .MuiFormControl-root, small, .create-expense-button {
+ .MuiFormControl-root, small, .create-payment-button {
   margin: 1em 0;
   width: 70%;
  }
@@ -15,7 +15,11 @@
   border-radius: 5px;
  }
 
- .create-expense-button {
+ .create-payment-button {
   padding: 1em;
+ }
+
+ .buttons {
+  margin-top: 1em;
  }
 }
