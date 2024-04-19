@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import '../../styles/AddMemberForm.scss';
 
-import { Button, TextField, Fab } from "@mui/material";
+import { Button, TextField, Fab, Alert } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 
 
-
-const AddMemberForm = ({ activeGroup }) => {
+const AddMemberForm = ({ activeGroup, activeGroupDetails }) => {
   const [newMembers, setNewMembers] = useState(1);
+  const [formError, setFormError] = useState(null);
   const [formData, setFormData] = useState([
     {
       id: 0,
       email: ''
     }
   ]);
+
+  const handleClose = () => {
+    console.log('click close');
+    setFormError(null);
+  };
 
   const onClickRemove = () => {
     if (newMembers > 1) {
@@ -66,35 +70,31 @@ const AddMemberForm = ({ activeGroup }) => {
             };
 
             // check if member is ALREADY in group
-            if (!exists) {
-              // continue
-            } else {
-              console.log('User is already in group.');
-            }
+            if (activeGroupDetails.users.map(object => object.id).includes(userGroupDataMember.user_id)) {
+              setFormError(`${newMember.email} is already a member of the group and cannot be added again.`);
 
-            // save group member to UserGroups
-            axios
-              .post(`/api/user_groups`, userGroupDataMember)
-              .then(response => {
-                console.log('User Member record created. Notification record needs to be created');
-                ///////////////////////
-                //ADD LOGIC HERE TO CREATE NOTIFICATION FOR GROUP MEMBER
-                ///////////////////////
-              });
+            } else {
+              console.log('User is NOT in group, continue');
+
+              // save group member to UserGroups
+              axios
+                .post(`/api/user_groups`, userGroupDataMember)
+                .then(response => {
+                  console.log('User Member record created. Notification record needs to be created');
+                  ///////////////////////
+                  //ADD LOGIC HERE TO CREATE NOTIFICATION FOR GROUP MEMBER
+                  ///////////////////////
+                });
+            }
           } else {
             console.log('User does not exist. Notification email needs to be created');
             //////////////////
             //ADD LOGIC HERE TO CREATE NOTIFICATION (EMAIL)
             //////////////////
           }
+
         })
 
-        // delete newMember.id;
-        // newMember.group_id = activeGroup;
-
-
-        // axios
-        //   .post('/api/')
         .catch((error) => {
           console.error("Error creating post:", error);
         });
@@ -106,6 +106,10 @@ const AddMemberForm = ({ activeGroup }) => {
     <form className='add-member-form' autoComplete="off"
       onSubmit={handleSubmit}
     >
+      {formError && <Alert severity="error" onClose={handleClose}>
+        {formError}
+      </Alert>}
+
       {Array.from({ length: newMembers }).map((x, i) => (
         <TextField
           key={i}
