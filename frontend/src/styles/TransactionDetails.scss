@@ -1,0 +1,57 @@
+
+.transaction {
+  border: solid 2px var(--text-color-primary);
+  border-radius: 5px;
+  margin: 0.5em;
+  box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.2);
+  
+  p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2em 1em 0em 1em;
+
+    .Expense, .Payment {
+      padding: 0.2em 1em;
+      border-radius: 5px;
+      border: 0.5px solid var(--primary-color-100);
+      
+    }
+
+    .Expense {
+      background-color: rgba(255, 0, 0, 0.7);
+    }
+    
+    .Payment {
+      background-color: rgb(39, 116, 18);
+    }
+
+  }
+  .transaction-group {
+    font-size: 1.2em;
+    font-weight: 500;
+  }
+
+  .transaction-date {
+    font-style: italic;
+    font-weight: 300;
+    font-size: 0.9em;
+  }
+  .sent-posted-heading {
+    // font-weight: 300;
+    // font-size: 0.9em;
+    margin-left: 1em;
+    padding: 0.5em;
+    border: 5px solid var(--primary-color-100);
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+}
+
+.transaction:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: var(--primary-color-800);
+    // color: var(--text-color-primary);
+}
