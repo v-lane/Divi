@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   delete '/api/users/:id', to: 'users#destroy'
   get 'api/users_by_group/:id', to: 'api/groups#show_by_group', as: 'users_by_group'
   get 'api/transaction_by_id/:id', to: 'api/transactions#show_by_id', as: 'transaction_by_id'
+  get 'api/transactions_by_group/:id', to: 'api/transactions#show_by_group', as: 'transactions_by_group'
 end

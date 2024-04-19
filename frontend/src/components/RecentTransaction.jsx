@@ -8,15 +8,27 @@ import ButtonStandard from './ButtonStandard';
 import ButtonAll from './ButtonAll';
 
 const RecentTransaction = (props) => {
-  const { openModal, transactionData, setActiveTransaction } = props;
+  const { openModal, recentTransactionData, users, setActiveTransaction } = props;
   const location = useLocation();
-
 
 
   return (
     <section className='recent-transactions'>
       <h2 id='body-title' className='title'>Recent Transactions</h2>
-      <TransactionItem transactionData={transactionData} openModal={openModal} slice={true} setActiveTransaction={setActiveTransaction}/>
+      <ul style={{ listStyleType: 'none', padding: 0 }}>
+      {recentTransactionData && recentTransactionData.map(transaction => (
+        <TransactionItem
+        key={transaction.id}
+        transaction={transaction}
+        group={transaction.group}
+        user={transaction.user}
+        amount={transaction.amount}
+        users={users}
+        openModal={openModal}
+        setActiveTransaction={setActiveTransaction}
+        />
+      ))}
+      </ul>
       <footer className='transactions-footer'>
         <div>
           <Link to='add-expense' state={{ background: location }} onClick={(() => openModal('add-expense'))} >

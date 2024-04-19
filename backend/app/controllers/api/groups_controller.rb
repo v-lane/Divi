@@ -8,7 +8,7 @@ class Api::GroupsController < ApplicationController
 
   def show_by_group
     group=Group.find(params[:id])
-    render json: group, include: [:users]
+    render json: group, include: [:users, :transactions]
 
   end
 

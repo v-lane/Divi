@@ -44,6 +44,7 @@ function App() {
   const [notifications, setNotifications] = useState([]);
   const [activeGroup, setActiveGroup] = useState(0);
   const [activeGroupDetails, setActiveGroupDetails] = useState([]);
+  const [activeGroupTransactions, setActiveGroupTransaction] = useState([]);
   const [activeTransaction, setActiveTransaction] = useState(0);
   const [activeTransactionDetails, setActiveTransactionDetails] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -99,6 +100,17 @@ function App() {
         .get(`/api/users_by_group/${activeGroup}`)
         .then((res) => {
           setActiveGroupDetails(res.data);
+        });
+    }
+  }, [activeGroup]);
+
+  // fetch transactions data for active group
+  useEffect(() => {
+    if (activeGroup > 0) {
+      axios
+        .get(`/api/transactions_by_group/${activeGroup}`)
+        .then((res) => {
+          setActiveGroupTransaction(res.data);
         });
     }
   }, [activeGroup]);
@@ -164,17 +176,20 @@ function App() {
           <main>
             <SideNavigationBar location={background || location} openModal={openModal} activeGroup={activeGroup} user={user} activeGroupDetails={activeGroupDetails} />
             <Routes location={background || location}>
-              
+
               <Route path='/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} setActiveTransaction={setActiveTransaction} userGroups={group} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} />} />
-              
+
               <Route element={<OneSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} notifications={notifications} />}>
                 <Route path='all_groups' element={<GroupsAll />} />
                 <Route path='all_transactions' element={<TransactionsAll />} />
                 <Route path='all_notifications' element={<NotificationsAll />} />
               </Route>
-              
-              <Route path='group/:id/dashboard/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} setActiveTransaction={setActiveTransaction} transactionData={transactions} userGroups={group} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} />} />
 
+              <Route path='group/:id/dashboard/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} setActiveTransaction={setActiveTransaction} transactionData={transactions} userGroups={group} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} activeGroupTransactions={activeGroupTransactions}/>} />
+
+              <Route element={<OneSectionBody user={user} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} activeGroupTransactions={activeGroupTransactions}/>}>
+                <Route path='group/:id/dashboard/all_transactions' element={<TransactionsAll />} />
+              </Route>
 
             </Routes>
             {background && (
@@ -186,7 +201,9 @@ function App() {
                   <Route path='delete-confirmation' element={<UserDeleted />} />
                   <Route path='profile-edit' element={<EditUserForm />} />
                   <Route path='add-expense' element={<AddExpenseForm />} />
+                  {/* <Route path='group/:id/dashboard/add-expense' element={<AddExpenseForm />} /> */}
                   <Route path='add-payment' element={<AddPaymentForm />} />
+                  {/* <Route path='group/:id/dashboard/add-payment' element={<AddPaymentForm />} /> */}
                   <Route path='transaction-details/:id' element={<TransactionDetails />} />
                   <Route path='group/:id/dashboard/add_group_member' element={<AddMemberForm />} />
 

@@ -20,6 +20,11 @@ class Api::TransactionsController < ApplicationController
       user: { only: :username },
       member_transactions: {}
     })
+    
+  def show_by_group
+    transactions=Transaction.where(group_id: params[:id])
+    render json: transactions, include: [:group, :user]
+
   end
 
   # POST /transactions
