@@ -171,7 +171,7 @@ function App() {
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={theme}>
           <header>
-            <TopNavigationBar location={background || location} />
+            <TopNavigationBar location={background || location} user={user} activeGroup={activeGroup} activeGroupDetails={activeGroupDetails}/>
           </header>
           <main>
             <SideNavigationBar location={background || location} openModal={openModal} activeGroup={activeGroup} user={user} activeGroupDetails={activeGroupDetails} />

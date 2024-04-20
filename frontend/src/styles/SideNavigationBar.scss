@@ -1,8 +1,9 @@
 .side-nav-bar {
   position: fixed;
   left: 0;
+  bottom:0;
   width: 15vw;
-  height: 100%;
+  height: 92%;
   display: flex;
   flex-direction: column;
   // justify-content: space-between;
@@ -12,7 +13,7 @@
   border: 1px solid var(--primary-color-800);
   border-left: 0px;
   border-bottom: 0px;
-  max-height: calc(100vh - 4rem);
+  // max-height: calc(100vh - 4rem);
   
   header {
     overflow-y: auto;

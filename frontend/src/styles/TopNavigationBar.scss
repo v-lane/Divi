@@ -12,6 +12,8 @@
   border-top: 0px;
   border-left: 0px;
   border-right: 0px;
+  height: 8%;
+  z-index: 5;
 
 
   .logo {
@@ -32,15 +34,32 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: 0;
+
+    .username {
+      padding: 1em;
+      font-weight: 500;
+    }
 
     Button {
       margin: .25em;
     }
 
-    .material-icons {
+    .MuiSvgIcon-root {
+      // margin: 0 1em;
+      font-size: 1em;
+      color: var(--primary-color-800);
+    }
+
+    .MuiBadge-root {
       margin: 0 1em;
       font-size: 2em;
       color: var(--primary-color-800);
+    }
+
+    .MuiSvgIcon-root:hover {
+      color: var(--primary-color-500);
+
     }
 
   }
