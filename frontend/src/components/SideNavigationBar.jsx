@@ -103,6 +103,11 @@ const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails })
             </AccordionSummary>
             <AccordionDetails>
               <ul>
+              <Link to={`group/${activeGroup}/dashboard/`} underline="none">
+                  <li>
+                    Dashboard
+                  </li>
+                </Link>
                 <Link href="#" underline="none">
                   <li>
                     Transactions

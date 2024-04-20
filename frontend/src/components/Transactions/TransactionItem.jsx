@@ -32,7 +32,7 @@ const TransactionItem = (props) => {
           <span className='sent-posted-heading'>Posted By: {user && user.username}</span>}
         <span className={transaction.transaction_type} >${amount}</span>
       </p>
-      <p className='transaction-date'><span>Transaction Date: {format(new Date(transaction.transaction_date), 'MMMM dd, yyyy')} &nbsp; |  </span><span className={transaction.transaction_type}>{transaction.transaction_type}</span></p>
+      <p className='transaction-date'><span>Transaction Date: {format(new Date(transaction.transaction_date), 'MMMM dd, yyyy')} </span><span className={transaction.transaction_type}>{transaction.transaction_type}</span></p>
     </li>
   );
 };
