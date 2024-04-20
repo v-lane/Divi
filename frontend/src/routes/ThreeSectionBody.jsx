@@ -28,7 +28,7 @@ const ThreeSectionBody = (props) => {
         </article>
         <article className='bottom'>
           {location.pathname === '/' && <RecentTransaction recentTransactionData={recentTransactionData} openModal={openModal} setActiveTransaction={setActiveTransaction}/>}
-          {activeGroup > 0 && <RecentTransaction openModal={openModal} recentTransactionData={recentGroupTransactions} />}        
+          {activeGroup > 0 && <RecentTransaction openModal={openModal} recentTransactionData={recentGroupTransactions} setActiveTransaction={setActiveTransaction}/>}        
         </article>
       </div>
       <article className='right'>

@@ -33,6 +33,8 @@ const TransactionsAll = (props) => {
             group={transaction.group}
             user={transaction.user}
             amount={transaction.amount}
+            setActiveTransaction={setActiveTransaction}
+
           />
         ))}
       </ul>

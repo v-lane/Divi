@@ -200,6 +200,7 @@ function App() {
                   <Route path='profile-delete' element={<DeleteUserProfile />} />
                   <Route path='delete-confirmation' element={<UserDeleted />} />
                   <Route path='profile-edit' element={<EditUserForm />} />
+                  
                   <Route path='add-expense' element={<AddExpenseForm />} />
                   <Route path='group/:id/dashboard/add-expense' element={<AddExpenseForm />} />
                   <Route path='group/:id/dashboard/all_transactions/add-expense' element={<AddExpenseForm />} />
@@ -207,7 +208,10 @@ function App() {
                   <Route path='add-payment' element={<AddPaymentForm />} />
                   <Route path='group/:id/dashboard/add-payment' element={<AddPaymentForm />} />
                   <Route path='group/:id/dashboard/all_transactions/add-payment' element={<AddPaymentForm />} />
+                  
                   <Route path='transaction-details/:id' element={<TransactionDetails />} />
+                  <Route path='group/:id/dashboard/transaction-details/:id' element={<TransactionDetails />} />
+                  
                   <Route path='group/:id/dashboard/add_group_member' element={<AddMemberForm />} />
 
                 </Route>
