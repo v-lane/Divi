@@ -16,7 +16,7 @@ const DeleteUserProfile = (props) => {
           <p>If you would like to proceed and delete your profile, please click <span className='bold'>Confirm</span> below. To cancel this action and return to your profile, please click <span className='bold'>Cancel</span></p>
         </div>
         </article>
-        <p>*LOGO GOES HERE*</p>
+        <p className='logo' ><span>DIVI</span></p>
       <div className='buttons'>
         <Button className="profile-button delete" variant="contained" color="info" onClick={(()=> useModalView.navigateModal('profile'))}>Cancel</Button>
         <Button className="profile-button delete" variant="contained" color="error" onClick={deleteUser}>Confirm</Button>

@@ -15,8 +15,16 @@
 
 
   .logo {
-    padding-left: 1em;
+    margin-left: 1em;
+    padding: 0em 1em;
     color: var(--primary-color-800);
+    background-color: var(--text-color-light);
+    border-radius: 5px;
+    border: 2px solid var(--text-color-primary);
+    font-family: "Play", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 40px;
   }
 
   ul {

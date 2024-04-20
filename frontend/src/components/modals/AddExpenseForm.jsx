@@ -68,7 +68,7 @@ const AddExpenseForm = (props) => {
         onChange={handleChange}
       />
       <div>
-        <p>*LOGO GOES HERE*</p>
+        <p className="logo"> DIVI</p>
       </div>
       <div className="buttons">
         <Button type="submit" className="create-expense-button" variant="contained" color="info">Post Expense</Button>

@@ -2,11 +2,28 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  align-items: center;
   background-color: var(--text-color-light);
   box-shadow: 4px 8px 8px hsl(0deg 0% 1% / .25);
   border-radius: 10px;
+  height: 90%;
+  padding-top: 3em;
 
   .brand {
     font-weight: 600;
   }
+
+  .logo {
+    background-color: var(--text-color-light);
+    border-radius: 5px;
+    border: 4px solid var(--text-color-primary);
+    font-family: "Play", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 40px;
+    padding: 0.5em 2em;
+    margin: 0;
+    margin-top: 2em;
+    width: 10%;
+    }
 }

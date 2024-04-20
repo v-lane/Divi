@@ -8,7 +8,7 @@ const UserDeleted = (props) => {
       <h3>Your Profile has been deleted successfully.</h3>
       <p>Thank you for using <span className="brand">DIVI</span></p>
       <p>Please create a new account to continue sharing expenses.</p>
-      <p>*LOGO GOES HERE*</p>
+      <p className="logo">DIVI</p>
     </article>
   )
 };

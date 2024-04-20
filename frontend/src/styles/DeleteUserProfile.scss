@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
+  align-items: center;
   background-color: var(--text-color-light);
   border-radius: 10px;
   height: 90%;
@@ -28,10 +29,25 @@
   .buttons {
     display: flex;
     justify-content: space-around;
+    margin-top: 0;
 
     .delete {
       width: 160px;
       height: 60px;
     }
   }
+  .logo {
+    display: flex;
+    background-color: var(--text-color-light);
+    border-radius: 5px;
+    border: 4px solid var(--text-color-primary);
+    font-family: "Play", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 40px;
+    padding: 0.5em 2em;
+    margin: 0;
+    max-width: 100px;
+    align-items: center;
+    }
 }
