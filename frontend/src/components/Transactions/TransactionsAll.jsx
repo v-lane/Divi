@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 import '../../styles/TransactionAll.scss';
 
 const TransactionsAll = (props) => {
-  const { transactionData, openModal, users, activeGroupTransactions, setActiveTransaction } = props;
+  const { transactionData, openModal, users, activeGroupTransactions, setActiveTransaction, activeGroup } = props;
   const location = useLocation();
 
   return (
@@ -37,14 +37,28 @@ const TransactionsAll = (props) => {
         ))}
       </ul>
       <footer className='all-transactions-footer'>
-        <div>
-          <Link to="add-expense" state={{ background: location }} onClick={(() => openModal('add-expense'))} >
-            <ButtonStandard buttonName={'Add Expense'} />
-          </Link>
-          <Link to="add-payment" state={{ background: location }} onClick={(() => openModal('add-payment'))}>
-            <ButtonStandard buttonName={'Add Payment'} />
-          </Link>
-        </div>
+
+        {activeGroup ?
+          <div>
+            <Link to={`group/${activeGroup}/dashboard/all_transactions/add-expense`} state={{ background: location }} onClick={(() => openModal('add-expense'))} >
+              <ButtonStandard buttonName={'Add Expense'} />
+            </Link>
+            <Link to={`group/${activeGroup}/dashboard/all_transactions/add-payment`} state={{ background: location }} onClick={(() => openModal('add-payment'))}>
+              <ButtonStandard buttonName={'Add Payment'} />
+            </Link>
+          </div>
+          :
+          <div>
+            <Link to='add-expense' state={{ background: location }} onClick={(() => openModal('add-expense'))} >
+              <ButtonStandard buttonName={'Add Expense'} />
+            </Link>
+            <Link to='add-payment' state={{ background: location }} onClick={(() => openModal('add-payment'))}>
+              <ButtonStandard buttonName={'Add Payment'} />
+            </Link>
+          </div>
+        }
+
+
       </footer>
     </>
   );

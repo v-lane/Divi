@@ -21,7 +21,7 @@ const OneSectionBody = (props) => {
         {location.pathname === '/all_groups' && <GroupsAll userGroups={userGroups} openModal={openModal}/>}
         {location.pathname === '/all_transactions' && <TransactionsAll transactionData={transactionData} setActiveTransaction={setActiveTransaction} openModal={openModal}/>}
         {location.pathname === '/all_notifications' && <NotificationsAll notifications={notifications}/>}
-        {location.pathname.slice(-26) === 'dashboard/all_transactions' && <TransactionsAll activeGroupDetails={activeGroupDetails} transactionData={activeGroupTransactions} openModal={openModal} users={usersForGroupTransactions}/>}
+        {location.pathname.slice(-26) === 'dashboard/all_transactions' && <TransactionsAll activeGroupDetails={activeGroupDetails} transactionData={activeGroupTransactions} openModal={openModal} users={usersForGroupTransactions} activeGroup={activeGroup}/>}
 
       </article>
     </section>

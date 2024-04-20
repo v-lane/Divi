@@ -187,7 +187,7 @@ function App() {
 
               <Route path='group/:id/dashboard/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} setActiveTransaction={setActiveTransaction} transactionData={transactions} userGroups={group} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} activeGroupTransactions={activeGroupTransactions}/>} />
 
-              <Route element={<OneSectionBody user={user} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} activeGroupTransactions={activeGroupTransactions}/>}>
+              <Route element={<OneSectionBody user={user} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} activeGroupTransactions={activeGroupTransactions} />}>
                 <Route path='group/:id/dashboard/all_transactions' element={<TransactionsAll />} />
               </Route>
 
@@ -202,8 +202,11 @@ function App() {
                   <Route path='profile-edit' element={<EditUserForm />} />
                   <Route path='add-expense' element={<AddExpenseForm />} />
                   <Route path='group/:id/dashboard/add-expense' element={<AddExpenseForm />} />
+                  <Route path='group/:id/dashboard/all_transactions/add-expense' element={<AddExpenseForm />} />
+
                   <Route path='add-payment' element={<AddPaymentForm />} />
                   <Route path='group/:id/dashboard/add-payment' element={<AddPaymentForm />} />
+                  <Route path='group/:id/dashboard/all_transactions/add-payment' element={<AddPaymentForm />} />
                   <Route path='transaction-details/:id' element={<TransactionDetails />} />
                   <Route path='group/:id/dashboard/add_group_member' element={<AddMemberForm />} />
 
