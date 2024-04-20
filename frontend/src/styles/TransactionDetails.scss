@@ -2,36 +2,27 @@
 .transaction-details {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  text-align: center;
+  // text-align: center;
   background-color: var(--primary-color-700);
   margin: 0;
   border-radius: 5px;
-  box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.2);
   height: 90%;
   color: white;
+  padding: 1em 3em;
   
-  .transaction-details-group {
-    display: flex;
-    margin-left: 1.1em;
-    font-size: 30px;
-    width: 50%;
-    padding-left: 0.42em;
-    margin-top: 0.2em;
-    border-left: 5px solid var(--primary-color-100);
 
-    .group {
-      font-weight: 600;
-    }
-
+  h3 {
+    text-align: center;
+    margin: 0 5em;
+    padding-bottom: 0.5em;
+    font-size: 1.5em;
+    border-bottom: 1px solid white;
   }
 
-  p {
+  .trans-line {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.2em 1em 0em 1em;
-
 
     .Expense, .Payment {
       padding: 0.5em;
@@ -58,7 +49,13 @@
   .member-balances {
     margin-left: 2em;
     padding-left: 0.5em;
-    border-left: 5px solid var(--primary-color-100);
+
+    h4 {
+      border-left: 5px solid var(--primary-color-100);
+      padding: 0.5em 1em;
+      font-weight: 500;
+
+    }
 
     .balance {
       justify-content: start;
@@ -69,25 +66,17 @@
     }
   }
 
-  .transaction-group {
-    font-size: 1.2em;
-    font-weight: 500;
-  }
-
   .transaction-date {
     font-style: italic;
     font-weight: 300;
     font-size: 0.9em;
-    margin-left: 2.2em;
     padding: 0.5em;
-    border-left: 5px solid var(--primary-color-100);
   }
   .sent-posted-heading {
     // font-weight: 300;
     // font-size: 0.9em;
     margin-left: 1em;
     padding: 0.5em;
-    border-left: 5px solid var(--primary-color-100);
    
   }
 
