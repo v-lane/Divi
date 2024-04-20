@@ -38,6 +38,25 @@
     li span{
       font-style: italic;
     }
+
+    .member-balance-line {
+      margin-left: 1em;
+      margin-top: 0.2em;
+      padding-left: 0.3em;
+      border-left: 3px solid var(--primary-color-300);
+
+      .owes, .owed, neutral {
+        padding: 0.1em 0.3em;
+        font-weight: 900;
+      }
+
+      .owes {
+        color: rgba(255, 0, 0, 0.7);
+      }
+      .owed {
+        color: rgb(39, 116, 18);
+      }
+    }
   }
 
  .member-item:hover {

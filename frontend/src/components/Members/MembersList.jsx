@@ -8,7 +8,7 @@ import MembersListItem from './MembersListItem';
 
 
 const MembersList = (props) => {
-  const { openModal, activeGroupDetails } = props;
+  const { openModal, activeGroupDetails, memberTransactions } = props;
   const location = useLocation()
 
   return (
@@ -17,7 +17,9 @@ const MembersList = (props) => {
         {Object.keys(activeGroupDetails).length > 0 && activeGroupDetails.users.map(member => (
           <MembersListItem
             key={member.id}
-            username={member.username}
+            member={member}
+            activeGroupDetails={activeGroupDetails}
+            memberTransactions={memberTransactions}
           />
         ))}
       </ul>

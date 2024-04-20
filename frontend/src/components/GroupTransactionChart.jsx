@@ -8,7 +8,7 @@ ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const TransactionChart = (props) => {
 
-  const { memberTransactions, group, user, activeGroup, activeGroupDetails } = props;
+  const { memberTransactions, group, user, activeGroupDetails } = props;
   let currentUser = '';
   user ? currentUser = user : '';
 

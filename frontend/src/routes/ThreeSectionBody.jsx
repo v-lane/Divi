@@ -33,7 +33,7 @@ const ThreeSectionBody = (props) => {
       </div>
       <article className='right'>
         {location.pathname === '/' && <Groups userGroups={userGroups} openModal={openModal} />}
-        {activeGroup > 0 && <Members openModal={openModal} activeGroupDetails={activeGroupDetails} />}        
+        {activeGroup > 0 && <Members openModal={openModal} activeGroupDetails={activeGroupDetails} memberTransactions={memberTransactions} user={user} />}        
       </article>
     </section>
   );
