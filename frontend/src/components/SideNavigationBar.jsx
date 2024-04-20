@@ -56,13 +56,13 @@ const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails })
               </AccordionSummary>
               <AccordionDetails>
                 <ul>
-                    <Link to="add-expense" underline="none" state={{ background: location }} onClick={(() => openModal('add-expense'))}>
-                  <li>
+                  <Link to="add-expense" underline="none" state={{ background: location }} onClick={(() => openModal('add-expense'))}>
+                    <li>
                       Add Expense
-                  </li>
-                    </Link>
-                    <Link to="add-payment" underline="none" state={{ background: location }} onClick={(() => openModal('add-payment'))} >
-                  <li>
+                    </li>
+                  </Link>
+                  <Link to="add-payment" underline="none" state={{ background: location }} onClick={(() => openModal('add-payment'))} >
+                    <li>
                       Add Payment
                     </li>
                   </Link>
@@ -103,19 +103,14 @@ const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails })
             </AccordionSummary>
             <AccordionDetails>
               <ul>
-              <Link to={`group/${activeGroup}/dashboard/`} underline="none">
+                <Link to={`group/${activeGroup}/dashboard/`} underline="none">
                   <li>
                     Dashboard
                   </li>
                 </Link>
-                <Link href="#" underline="none">
+                <Link to={`group/${activeGroup}/dashboard/all_transactions`} underline="none">
                   <li>
                     Transactions
-                  </li>
-                </Link>
-                <Link href="#" underline="none">
-                  <li>
-                    Members
                   </li>
                 </Link>
               </ul>
@@ -130,12 +125,12 @@ const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails })
                 </AccordionSummary>
                 <AccordionDetails>
                   <ul>
-                    <Link href="#" underline="none">
+                  <Link to={`group/${activeGroup}/dashboard/add-expense`} underline="none" state={{ background: location }} onClick={(() => openModal('add-expense'))}>
                       <li>
                         Add Expense
                       </li>
                     </Link>
-                    <Link href="#" underline="none">
+                    <Link to={`group/${activeGroup}/dashboard/add-payment`} underline="none" state={{ background: location }} onClick={(() => openModal('add-expense'))}>
                       <li>
                         Add Payment
                       </li>
