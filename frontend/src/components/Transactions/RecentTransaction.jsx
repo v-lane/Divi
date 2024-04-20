@@ -1,11 +1,11 @@
 import React from 'react';
 
-import '../styles/TransactionItem.scss';
-import '../styles/RecentTransaction.scss';
+
+import '../../styles/RecentTransaction.scss';
 import { Link, useLocation } from "react-router-dom";
 import TransactionItem from './TransactionItem';
-import ButtonStandard from './ButtonStandard';
-import ButtonAll from './ButtonAll';
+import ButtonStandard from '../ButtonStandard';
+import ButtonAll from '../ButtonAll';
 
 const RecentTransaction = (props) => {
   const { openModal, recentTransactionData, users, setActiveTransaction } = props;

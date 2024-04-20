@@ -25,7 +25,7 @@ import NotificationsAll from './components/Notifications/NotificationsAll';
 import DeleteUserProfile from './components/modals/DeleteUserProfile';
 import UserDeleted from './components/modals/UserDeleted';
 import EditUserForm from './components/modals/EditUserForm';
-import TransactionsAll from './components/TransactionsAll';
+import TransactionsAll from './components/Transactions/TransactionsAll';
 import AddExpenseForm from './components/modals/AddExpenseForm';
 import AddPaymentForm from './components/modals/AddPaymentForm';
 import TransactionDetails from './components/modals/TransactionDetails';

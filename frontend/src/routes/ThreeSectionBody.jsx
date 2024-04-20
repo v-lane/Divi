@@ -1,10 +1,10 @@
 import React from 'react';
 
 import '../styles/ThreeSectionBody.scss';
-import RecentTransaction from '../components/RecentTransaction';
+import RecentTransaction from '../components/Transactions/RecentTransaction';
 import Groups from '../components/Groups/Groups';
-import TransactionChart from '../components/TransactionChart';
-import GroupTransactionChart from '../components/GroupTransactionChart'
+import TransactionChart from '../components/charts/TransactionChart';
+import GroupTransactionChart from '../components/charts/GroupTransactionChart'
 import Members from '../components/Members/Members';
 
 import { useLocation } from 'react-router-dom';

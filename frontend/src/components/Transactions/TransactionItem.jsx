@@ -3,7 +3,8 @@ import { format } from 'date-fns';
 import { Link, useLocation } from "react-router-dom";
 import { Button } from '@mui/material';
 import LaunchIcon from '@mui/icons-material/Launch';
-import LaunchButton from './LaunchButton';
+import LaunchButton from '../LaunchButton';
+import '../../styles/TransactionItem.scss';
 
 
 const TransactionItem = (props) => {

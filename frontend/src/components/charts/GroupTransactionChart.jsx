@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
-import '../styles/TransactionChart.scss';
+import '../../styles/TransactionChart.scss';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
