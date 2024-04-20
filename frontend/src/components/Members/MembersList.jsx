@@ -8,7 +8,7 @@ import MembersListItem from './MembersListItem';
 
 
 const MembersList = (props) => {
-  const { openModal, activeGroupDetails, memberTransactions } = props;
+  const { openModal, activeGroupDetails, memberTransactions, allMemberTransactions } = props;
   const location = useLocation()
 
   return (
@@ -20,6 +20,7 @@ const MembersList = (props) => {
             member={member}
             activeGroupDetails={activeGroupDetails}
             memberTransactions={memberTransactions}
+            allMemberTransactions={allMemberTransactions}
           />
         ))}
       </ul>

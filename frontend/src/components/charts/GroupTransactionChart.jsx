@@ -8,7 +8,7 @@ ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 const TransactionChart = (props) => {
 
-  const { memberTransactions, group, user, activeGroupDetails } = props;
+  const { memberTransactions, allMemberTransactions, group, user, activeGroupDetails } = props;
   let currentUser = '';
   user ? currentUser = user : '';
 
@@ -27,16 +27,16 @@ const TransactionChart = (props) => {
         chartLabels.push(user.username);
         memberIds.push(user.id);
       }
-      const groupTransactions = memberTransactions.filter((transaction) => {
+      const groupTransactions = allMemberTransactions.filter((transaction) => {
         return transaction.group_id === singleGroup.id;
       });
+      console.log(groupTransactions)
       for (let i = 0; i < chartLabels.length; i++) {
         let member = memberIds[i];
         const memberBalance = groupTransactions.reduce((accu, curr) => {
           if (curr.owner_id === member) {
             accu += curr.amount
-          }
-          if (curr.recipient_id === member) {
+          } else if (curr.recipient_id === member) {
             accu -= curr.amount
           }
           return accu
@@ -47,6 +47,7 @@ const TransactionChart = (props) => {
         }
       }
     }
+    console.log(allMemberTransactions)
   };
 
   if (dataSet1.length > 0) {

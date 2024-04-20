@@ -2,7 +2,8 @@ class Api::MemberTransactionsController < ApplicationController
 
   # GET /member_transactions
   def index
-    @member_transactions = MemberTransaction.all
+    member_transactions = MemberTransaction.all
+    render json: member_transactions.as_json
   end
 
   # GET /member_transactions/1

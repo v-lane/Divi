@@ -11,7 +11,7 @@ import { useLocation } from 'react-router-dom';
 
 
 const ThreeSectionBody = (props) => {
-  const { user, userGroups, transactionData, memberTransactions, openModal, activeGroup, activeGroupDetails, activeGroupTransactions, setActiveTransaction } = props;
+  const { user, userGroups, transactionData, memberTransactions, openModal, activeGroup, activeGroupDetails, activeGroupTransactions, setActiveTransaction, allMemberTransactions } = props;
 
   const location = useLocation();
 
@@ -23,8 +23,8 @@ const ThreeSectionBody = (props) => {
     <section className='body-articles'>
       <div className='left'>
         <article className='top'>
-          {location.pathname === '/' && <TransactionChart transactionData={transactionData} memberTransactions={memberTransactions} user={user} group={userGroups} />}
-          {activeGroup > 0 && <GroupTransactionChart transactionData={transactionData} memberTransactions={memberTransactions} user={user} group={userGroups} activeGroup={activeGroup} activeGroupDetails={activeGroupDetails}/>}
+          {location.pathname === '/' && <TransactionChart transactionData={transactionData} memberTransactions={memberTransactions} allMemberTransactions={allMemberTransactions} user={user} group={userGroups} />}
+          {activeGroup > 0 && <GroupTransactionChart transactionData={transactionData} memberTransactions={memberTransactions} allMemberTransactions={allMemberTransactions} user={user} group={userGroups} activeGroup={activeGroup} activeGroupDetails={activeGroupDetails}/>}
         </article>
         <article className='bottom'>
           {location.pathname === '/' && <RecentTransaction recentTransactionData={recentTransactionData} openModal={openModal} setActiveTransaction={setActiveTransaction}/>}
@@ -33,7 +33,7 @@ const ThreeSectionBody = (props) => {
       </div>
       <article className='right'>
         {location.pathname === '/' && <Groups userGroups={userGroups} openModal={openModal} />}
-        {activeGroup > 0 && <Members openModal={openModal} activeGroupDetails={activeGroupDetails} memberTransactions={memberTransactions} user={user} />}        
+        {activeGroup > 0 && <Members openModal={openModal} activeGroupDetails={activeGroupDetails} memberTransactions={memberTransactions} allMemberTransactions={allMemberTransactions} user={user} />}        
       </article>
     </section>
   );

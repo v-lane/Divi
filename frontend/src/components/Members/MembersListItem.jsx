@@ -1,7 +1,7 @@
 import React from 'react';
 import MembersListItemBullet from './MembersListItemBullet';
 
-const MembersListItem = ({ member, activeGroupDetails, memberTransactions }) => {
+const MembersListItem = ({ member, activeGroupDetails, memberTransactions, allMemberTransactions }) => {
 
   const otherMembers = activeGroupDetails.users.filter((user) => user.id !== member.id);
   const membersAndTotals = [];
@@ -9,12 +9,14 @@ const MembersListItem = ({ member, activeGroupDetails, memberTransactions }) => 
   for (const user of otherMembers) {
 
     let balance = 0;
-    memberTransactions.filter((transaction) => {
-      if (transaction.owner_id === member.id && transaction.recipient_id === user.id) {
-        balance += transaction.amount;
-      }
-      if (transaction.owner_id === user.id && transaction.recipient_id === member.id) {
-        balance -= transaction.amount;
+    allMemberTransactions.filter((transaction) => {
+      if (transaction.group_id === activeGroupDetails.id) {
+        if (transaction.owner_id === member.id && transaction.recipient_id === user.id) {
+          balance += transaction.amount;
+        }
+        if (transaction.owner_id === user.id && transaction.recipient_id === member.id) {
+          balance -= transaction.amount;
+        }
       }
     });
 
