@@ -43,7 +43,33 @@ class Api::TransactionsController < ApplicationController
     }
 
     @transaction = Transaction.new(transaction_params)
-    @transaction.save
+    if @transaction.save
+      members = UserGroup.where(group_id: @transaction.group_id).where.not(user_id: @transaction.user_id).pluck(:user_id)
+  
+      case @transaction.transaction_type
+      when 'Expense'
+        amount_per_member = @transaction.amount / (members.length + 1)
+        members.each do |member|
+          MemberTransaction.create!(
+            member_transaction_type: @transaction.transaction_type,
+            amount: amount_per_member,
+            owner_id: @transaction.user_id,
+            recipient_id: member,
+            group_id: @transaction.group_id,
+            transaction_id: @transaction.id
+          )
+        end
+      when 'Payment'
+        MemberTransaction.create!(
+          member_transaction_type: @transaction.transaction_type,
+          amount: @transaction.amount,
+          owner_id: @transaction.user_id,
+          recipient_id: @transaction.recipient_id,
+          group_id: @transaction.group_id,
+          transaction_id: @transaction.id
+        )
+      end
+    end
   end
 
   # PATCH/PUT /transactions/1
