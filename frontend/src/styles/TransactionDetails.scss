@@ -39,10 +39,10 @@
       background-color: rgb(39, 116, 18);
     }
 
-    .member-name {
-      font-style: italic;
-      font-weight: 500;
-    }
+    // .member-name {
+    //   font-style: italic;
+    //   font-weight: 500;
+    // }
 
   }
 
@@ -59,6 +59,8 @@
 
     .balance {
       justify-content: start;
+      margin-left: 3em;
+
 
       .Expense, .Payment {
         padding: 0.2em;

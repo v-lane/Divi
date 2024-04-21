@@ -19,13 +19,19 @@ const TransactionDetails = (props) => {
         </p>
         <div className='member-balances' >
           <h4>Resulting Balances:</h4>
-          {transaction.member_transactions.map((memberTransaction) => {
-            return (
-              <p className='balance' key={memberTransaction.id}> &nbsp; &nbsp; &nbsp;<span className='member-name'>{memberTransaction.recipient_username}</span>{transaction.transaction_type == 'Payment' ?
-                <span>'s amount outstanding from <span className='member-name'>{transaction.user.username}</span> has decreased by <span className={transaction.transaction_type}>${memberTransaction.amount}</span></span> : <span className='balance-line'>'s balance owing to <span className='member-name'>{transaction.user.username}</span> has increased by: <span className={transaction.transaction_type}>${memberTransaction.amount}</span></span>}
-              </p>
-            );
-          })}
+          {transaction.member_transactions.map((memberTransaction) => (
+            <p className='balance' key={memberTransaction.id}>
+              {transaction.transaction_type == 'Payment' ?
+                <>
+                 {memberTransaction.recipient_username} received: ${memberTransaction.amount}
+                </>
+                :
+                <>
+                  {memberTransaction.recipient_username} owes: ${memberTransaction.amount}
+                </>
+              }
+            </p>
+          ))}
         </div>
         <p className='transaction-date'><span>Transaction Date: {format(new Date(transaction.transaction_date), 'MMMM dd, yyyy')}</span></p>
       </section>}
