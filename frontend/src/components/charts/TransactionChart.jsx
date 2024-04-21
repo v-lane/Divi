@@ -13,6 +13,7 @@ const TransactionChart = (props) => {
   user ? currentUser = user : '';
 
   const chartLabels = [];
+  const balanceNames = [];
   const dataSet1 = [];
   let sumBalances = 0;
   let largestUserBalance = '';
@@ -28,11 +29,12 @@ const TransactionChart = (props) => {
           return transaction.owner_id === user.id || transaction.recipient_id === user.id;
         });
 
+        
         const userBalance = userTransactions.reduce((accu, curr) => {
-          if (curr.owner_id === user.id) {
+          if (singleGroup.id === curr.group_id && curr.owner_id === user.id) {
             accu -= curr.amount;
           }
-          if (curr.owner_id === currentUser.id) {
+          if (singleGroup.id === curr.group_id && curr.owner_id === currentUser.id) {
             accu += curr.amount;
           }
           return accu;
