@@ -161,6 +161,7 @@ function App() {
       setActiveGroup(location.pathname.slice(7, 8));
     } else {
       setActiveGroup(0);
+      setActiveGroupDetails([])
     }
   }, [location]);
 

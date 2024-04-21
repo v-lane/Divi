@@ -65,40 +65,40 @@ puts 'UserGroups Created'
 ## Transactions
 puts 'Creating Transactions'
 
-# Transaction.create!(group_id: groups[0].id, transaction_type: 'Expense', amount: Faker::Number.number(digits: 3), user_id: users[0].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ), is_deleted: false)
-# Transaction.create!(group_id: groups[1].id, transaction_type: 'Expense', amount: Faker::Number.number(digits: 3), user_id: users[1].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
-# Transaction.create!(group_id: groups[2].id, transaction_type: 'Expense', amount: Faker::Number.number(digits: 3), user_id: users[2].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
-# Transaction.create!(group_id: groups[0].id, transaction_type: 'Expense', amount: Faker::Number.number(digits: 3), user_id: users[0].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
-# Transaction.create!(group_id: groups[1].id, transaction_type: 'Expense', amount: Faker::Number.number(digits: 3), user_id: users[1].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
-# Transaction.create!(group_id: groups[2].id, transaction_type: 'Expense', amount: Faker::Number.number(digits: 3), user_id: users[2].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
-# Transaction.create!(group_id: groups[0].id, transaction_type: 'Expense', amount: Faker::Number.number(digits: 3), user_id: users[0].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
-# Transaction.create!(group_id: groups[0].id, transaction_type: 'Payment', amount: Faker::Number.number(digits: 3), user_id: users[0].id, recipient_id: users[3].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
-# Transaction.create!(group_id: groups[0].id, transaction_type: 'Payment', amount: Faker::Number.number(digits: 3), user_id: users[0].id, recipient_id: users[6].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
-# Transaction.create!(group_id: groups[0].id, transaction_type: 'Payment', amount: Faker::Number.number(digits: 3), user_id: users[0].id, recipient_id: users[9].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
+Transaction.create!(group_id: groups[0].id, transaction_type: 'Expense', amount: Faker::Number.number(digits: 3), user_id: users[0].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ), is_deleted: false)
+Transaction.create!(group_id: groups[1].id, transaction_type: 'Expense', amount: Faker::Number.number(digits: 3), user_id: users[1].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
+Transaction.create!(group_id: groups[2].id, transaction_type: 'Expense', amount: Faker::Number.number(digits: 3), user_id: users[2].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
+Transaction.create!(group_id: groups[0].id, transaction_type: 'Expense', amount: Faker::Number.number(digits: 3), user_id: users[0].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
+Transaction.create!(group_id: groups[1].id, transaction_type: 'Expense', amount: Faker::Number.number(digits: 3), user_id: users[1].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
+Transaction.create!(group_id: groups[2].id, transaction_type: 'Expense', amount: Faker::Number.number(digits: 3), user_id: users[2].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
+Transaction.create!(group_id: groups[0].id, transaction_type: 'Expense', amount: Faker::Number.number(digits: 3), user_id: users[0].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
+Transaction.create!(group_id: groups[0].id, transaction_type: 'Payment', amount: Faker::Number.number(digits: 3), user_id: users[0].id, recipient_id: users[3].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
+Transaction.create!(group_id: groups[0].id, transaction_type: 'Payment', amount: Faker::Number.number(digits: 3), user_id: users[0].id, recipient_id: users[6].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
+Transaction.create!(group_id: groups[0].id, transaction_type: 'Payment', amount: Faker::Number.number(digits: 3), user_id: users[0].id, recipient_id: users[9].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-15' ) , is_deleted: false)
 
 puts 'Transactions Created'
 
 ## Member Transactions
 puts 'Creating Member Transactions'
 
-# transactions = Transaction.all
+transactions = Transaction.all
 
-# transactions.each do |transaction|
-#   if transaction.transaction_type == 'Expense'
-#     members = []
-#     user_groups = UserGroup.where(group_id: transaction.group_id)
-#     user_groups.each do |user_group|
-#       if transaction.user_id != user_group.user_id
-#         members.push(user_group.user_id)
-#       end
-#     end
-#     members.each do |member|
-#       MemberTransaction.create!(member_transaction_type: transaction.transaction_type, amount: transaction.amount / (members.length + 1), owner_id: transaction.user_id, recipient_id: member, group_id: transaction.group_id, transaction_id: transaction.id)
-#     end
-#   elsif transaction.transaction_type == 'Payment'
-#     MemberTransaction.create!(member_transaction_type: transaction.transaction_type, amount: transaction.amount, owner_id: transaction.user_id, recipient_id: transaction.recipient_id, group_id: transaction.group_id, transaction_id: transaction.id)
-#   end
-# end
+transactions.each do |transaction|
+  if transaction.transaction_type == 'Expense'
+    members = []
+    user_groups = UserGroup.where(group_id: transaction.group_id)
+    user_groups.each do |user_group|
+      if transaction.user_id != user_group.user_id
+        members.push(user_group.user_id)
+      end
+    end
+    members.each do |member|
+      MemberTransaction.create!(member_transaction_type: transaction.transaction_type, amount: transaction.amount / (members.length + 1), owner_id: transaction.user_id, recipient_id: member, group_id: transaction.group_id, transaction_id: transaction.id)
+    end
+  elsif transaction.transaction_type == 'Payment'
+    MemberTransaction.create!(member_transaction_type: transaction.transaction_type, amount: transaction.amount, owner_id: transaction.user_id, recipient_id: transaction.recipient_id, group_id: transaction.group_id, transaction_id: transaction.id)
+  end
+end
 
 puts 'Member Transactions Created'
 

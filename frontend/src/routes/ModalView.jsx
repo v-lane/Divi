@@ -40,8 +40,8 @@ const ModalView = (props) => {
         {useModalView.deleteProfileView && <DeleteUserProfile cancelDelete={cancelDelete} deleteUser={deleteUser} userProfileData={userProfileData} useModalView={useModalView}/>}
         {useModalView.deleteConfirmation && <UserDeleted userProfileData={userProfileData} useModalView={useModalView} />}
         {useModalView.editUser && <EditUserForm userProfileData={userProfileData} cancelDelete={cancelDelete} useModalView={useModalView} setUser={setUser} />}
-        {useModalView.addExpense && <AddExpenseForm userProfileData={userProfileData} useModalView={useModalView} group={group} setTransactions={setTransactions}/>}
-        {useModalView.addPayment && <AddPaymentForm userProfileData={userProfileData} useModalView={useModalView} group={group} setTransactions={setTransactions}/>}
+        {useModalView.addExpense && <AddExpenseForm userProfileData={userProfileData} useModalView={useModalView} group={group} setTransactions={setTransactions} activeGroupDetails={activeGroupDetails}/>}
+        {useModalView.addPayment && <AddPaymentForm userProfileData={userProfileData} useModalView={useModalView} group={group} setTransactions={setTransactions} activeGroupDetails={activeGroupDetails}/>}
         {useModalView.transactionDetails && <TransactionDetails isLoading={isLoading} transactions={transactions} activeTransactionDetails={activeTransactionDetails} userProfileData={userProfileData} useModalView={useModalView} group={group} setTransactions={setTransactions}/>}
         {useModalView.addGroupMemberView && <AddMemberForm activeGroup={activeGroup} activeGroupDetails={activeGroupDetails} useModalView={useModalView}/>}
       </Box>

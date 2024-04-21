@@ -5,8 +5,8 @@ import { Button, MenuItem, TextField } from "@mui/material";
 import axios from 'axios';
 
 const AddExpenseForm = (props) => {
-  const { userProfileData, useModalView, group, setTransactions } = props;
-  const groupNames = group.map((item) => item.name);
+  const { userProfileData, useModalView, group, setTransactions, activeGroupDetails } = props;
+  const groupNames = activeGroupDetails.name ? [activeGroupDetails.name] :group.map((item) => item.name);
 
   // const navigate = useNavigate();
   const [formValue, setFormValue] = useState({
@@ -50,7 +50,7 @@ const AddExpenseForm = (props) => {
         select
         name="group_name"
         label="Group Name"
-        value={formValue.group_name}
+        value={activeGroupDetails.name ? activeGroupDetails.name : formValue.group_name}
         onChange={handleChange}
         >
         {groupNames.map((type, index) => (
@@ -67,6 +67,8 @@ const AddExpenseForm = (props) => {
         value={formValue.amount}
         onChange={handleChange}
       />
+        <p className="disclaimer">+ Posting an expense will split the cost evenly between all group members, including yourself.</p>
+        <p className="disclaimer">&nbsp; [ Example: a $10 payment to a group with 4 members will assign $2.50 to each other member ]</p>
       <div>
         <p className="logo"> DIVI</p>
       </div>

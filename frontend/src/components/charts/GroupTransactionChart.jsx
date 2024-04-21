@@ -30,7 +30,6 @@ const TransactionChart = (props) => {
       const groupTransactions = allMemberTransactions.filter((transaction) => {
         return transaction.group_id === singleGroup.id;
       });
-      console.log(groupTransactions)
       for (let i = 0; i < chartLabels.length; i++) {
         let member = memberIds[i];
         const memberBalance = groupTransactions.reduce((accu, curr) => {
@@ -47,7 +46,6 @@ const TransactionChart = (props) => {
         }
       }
     }
-    console.log(allMemberTransactions)
   };
 
   if (dataSet1.length > 0) {

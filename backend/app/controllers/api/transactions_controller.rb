@@ -23,7 +23,7 @@ class Api::TransactionsController < ApplicationController
   end
     
   def show_by_group
-    transactions=Transaction.where(group_id: params[:id])
+    transactions=Transaction.where(group_id: params[:id]).order(transaction_date: :desc)
     render json: transactions, include: [:group, :user]
 
   end
