@@ -187,7 +187,7 @@ function App() {
 
               <Route path='/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} allMemberTransactions={allMemberTransactions} transactionData={transactions} setActiveTransaction={setActiveTransaction} userGroups={group} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} />} />
 
-              <Route element={<OneSectionBody user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} notifications={notifications} />}>
+              <Route element={<OneSectionBody setActiveTransaction={setActiveTransaction} user={user} memberTransactions={memberTransactions} transactionData={transactions} userGroups={group} openModal={openModal} notifications={notifications} />}>
                 <Route path='all_groups' element={<GroupsAll />} />
                 <Route path='all_transactions' element={<TransactionsAll />} />
                 <Route path='all_notifications' element={<NotificationsAll />} />
@@ -195,7 +195,7 @@ function App() {
 
               <Route path='group/:id/dashboard/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} allMemberTransactions={allMemberTransactions} setActiveTransaction={setActiveTransaction} transactionData={transactions} userGroups={group} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} activeGroupTransactions={activeGroupTransactions}/>} />
 
-              <Route element={<OneSectionBody user={user} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} activeGroupTransactions={activeGroupTransactions} />}>
+              <Route element={<OneSectionBody setActiveTransaction={setActiveTransaction} user={user} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} activeGroupTransactions={activeGroupTransactions} />}>
                 <Route path='group/:id/dashboard/all_transactions' element={<TransactionsAll />} />
               </Route>
 
