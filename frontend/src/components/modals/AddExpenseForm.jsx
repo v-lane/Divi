@@ -25,7 +25,7 @@ const AddExpenseForm = (props) => {
     event.preventDefault();
     const transactionData = {
       user_id: userProfileData.id,
-      group_name: formValue.group_name,
+      group_name: activeGroupDetails.name ? activeGroupDetails.name : formValue.group_name,
       transaction_type: 'Expense',
       amount: parseFloat(formValue.amount),
       is_deleted: false

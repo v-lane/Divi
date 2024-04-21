@@ -5,16 +5,22 @@ import { Button, MenuItem, TextField } from "@mui/material";
 import axios from 'axios';
 
 const AddPaymentForm = (props) => {
-  const { userProfileData, useModalView, group, setTransactions } = props;
+  const { userProfileData, useModalView, group, setTransactions, activeGroupDetails } = props;
   let currentUser = '';
   userProfileData ? currentUser = userProfileData : '';
-  const groupNames = group.map((item) => item.name);
+  const groupNames = activeGroupDetails.name ? [activeGroupDetails.name] :group.map((item) => item.name);
   const memberNames = [];
 
-  for (const singleGroup of group) {
-    for (const user of singleGroup.users) {
-      if (user.id !== currentUser.id){
-        memberNames.push(`${singleGroup.name} - ${user.username}`);
+  if (activeGroupDetails.users){
+    for (const user of activeGroupDetails.users) {
+      user.username === userProfileData.username ? '' : memberNames.push(`${activeGroupDetails.name} - ${user.username}`)
+    }
+  } else {
+    for (const singleGroup of group) {
+  for (const user of singleGroup.users) {
+    if (user.id !== currentUser.id){
+      memberNames.push(`${singleGroup.name} - ${user.username}`);
+    }
       }
     }
   }
@@ -38,7 +44,7 @@ const AddPaymentForm = (props) => {
     const transactionData = {
       user_id: userProfileData.id,
       recipient_name: formValue.member_name.split('-')[1].trim(),
-      group_name: formValue.group_name,
+      group_name: activeGroupDetails.name ? activeGroupDetails.name : formValue.group_name,
       transaction_type: 'Payment',
       amount: parseFloat(formValue.amount),
       is_deleted: false
@@ -49,6 +55,9 @@ const AddPaymentForm = (props) => {
       axios.get(`/api/transactions/${userProfileData.id}`)
       .then((res) => setTransactions(res.data))
       .then(useModalView.closeModal())
+      // .then(setTimeout(() => {
+      //   useModalView.closeModal()
+      // }, 1000))
      })
      .catch((error) => {
        console.error("Error creating post:", error);
@@ -65,7 +74,7 @@ const AddPaymentForm = (props) => {
         select
         name="group_name"
         label="Group Name"
-        value={formValue.group_name}
+        value={activeGroupDetails.name ? activeGroupDetails.name : formValue.group_name}
         onChange={handleChange}
         >
         {groupNames.map((type, index) => (
