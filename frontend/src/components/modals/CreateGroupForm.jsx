@@ -86,7 +86,6 @@ const CreateGroupForm = ({ useModalView }) => {
          .post(`/api/user_groups`, userGroupDataOwner)
          .then((response) => {
            console.log('post created:', response.data);
-           navigate('/');
            useModalView.closeModal();
          });
      })
