@@ -3,12 +3,12 @@ class Api::TransactionsController < ApplicationController
   # GET /transactions/1
   def show
     usergroups = UserGroup.where(user_id: params[:id])
-    transactions = Transaction.where(group_id: usergroups.pluck(:group_id)).includes(:group, :user).order(transaction_date: :desc)
+    transactions = Transaction.where(group_id: usergroups.pluck(:group_id)).includes(:group, :user).order(created_at: :desc)
     render json: transactions.as_json(include: { group: { only: :name }, user: { only: :username }})
   end
 
   def show_by_id
-    transaction = Transaction.includes(:group, :user, :member_transactions).find(params[:id])
+    transaction = Transaction.includes(:group, :user, :member_transactions).find(params[:id]).order(created_at: :desc)
   
     transaction.member_transactions.each do |member_transaction|
       recipient_user = User.find(member_transaction.recipient_id)
@@ -23,7 +23,7 @@ class Api::TransactionsController < ApplicationController
   end
     
   def show_by_group
-    transactions=Transaction.where(group_id: params[:id]).order(transaction_date: :desc)
+    transactions=Transaction.where(group_id: params[:id]).order(created_at: :desc)
     render json: transactions, include: [:group, :user]
 
   end
