@@ -1,26 +1,31 @@
 import React, { useState } from "react";
 import '/src/styles/AddPaymentForm.scss';
 import { Link, useLocation } from "react-router-dom";
-import { Button, MenuItem, TextField } from "@mui/material";
+import { Button, MenuItem, TextField, Alert } from "@mui/material";
 import axios from 'axios';
 
 const AddPaymentForm = (props) => {
   const { userProfileData, useModalView, group, setTransactions, activeGroupDetails } = props;
   let currentUser = '';
   userProfileData ? currentUser = userProfileData : '';
-  const groupNames = activeGroupDetails.name ? [activeGroupDetails.name] :group.map((item) => item.name);
+  const groupNames = activeGroupDetails.name ? [activeGroupDetails.name] : group.map((item) => item.name);
   const memberNames = [];
+  const [formError, setFormError] = useState(null);
 
-  if (activeGroupDetails.users){
+  const handleClose = () => {
+    setFormError(null);
+  };
+
+  if (activeGroupDetails.users) {
     for (const user of activeGroupDetails.users) {
-      user.username === userProfileData.username ? '' : memberNames.push(`${activeGroupDetails.name} - ${user.username}`)
+      user.username === userProfileData.username ? '' : memberNames.push(`${activeGroupDetails.name} - ${user.username}`);
     }
   } else {
     for (const singleGroup of group) {
-  for (const user of singleGroup.users) {
-    if (user.id !== currentUser.id){
-      memberNames.push(`${singleGroup.name} - ${user.username}`);
-    }
+      for (const user of singleGroup.users) {
+        if (user.id !== currentUser.id) {
+          memberNames.push(`${singleGroup.name} - ${user.username}`);
+        }
       }
     }
   }
@@ -29,36 +34,42 @@ const AddPaymentForm = (props) => {
   const [formValue, setFormValue] = useState({
     group_name: '',
     member_name: '',
-    amount: 0
+    amount: ''
   });
 
   const handleChange = (event) => {
     setFormValue({
       ...formValue,
-      [event.target.name]: event.target.value 
+      [event.target.name]: event.target.value
     });
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const transactionData = {
-      user_id: userProfileData.id,
-      recipient_name: formValue.member_name.split('-')[1].trim(),
-      group_name: activeGroupDetails.name ? activeGroupDetails.name : formValue.group_name,
-      transaction_type: 'Payment',
-      amount: parseFloat(formValue.amount),
-      is_deleted: false
-    };
-     axios
-     .post('/api/transactions/', transactionData)
-     .then((response) => {
-      axios.get(`/api/transactions/${userProfileData.id}`)
-      .then((res) => setTransactions(res.data))
-      .then(useModalView.closeModal())
-     })
-     .catch((error) => {
-       console.error("Error creating post:", error);
-     });
+
+    if (formValue.amount < 1) {
+      setFormError(`Payment Amount must be greater than $ 1.00`);
+    } else {
+
+      const transactionData = {
+        user_id: userProfileData.id,
+        recipient_name: formValue.member_name.split('-')[1].trim(),
+        group_name: activeGroupDetails.name ? activeGroupDetails.name : formValue.group_name,
+        transaction_type: 'Payment',
+        amount: parseFloat(formValue.amount),
+        is_deleted: false
+      };
+      axios
+        .post('/api/transactions/', transactionData)
+        .then((response) => {
+          axios.get(`/api/transactions/${userProfileData.id}`)
+            .then((res) => setTransactions(res.data))
+            .then(useModalView.closeModal());
+        })
+        .catch((error) => {
+          console.error("Error creating post:", error);
+        });
+    }
   };
 
   const filteredMembers = !activeGroupDetails.name && formValue.group_name ? memberNames.filter((name) => name.split(' -').includes(formValue.group_name)) : [];
@@ -66,6 +77,11 @@ const AddPaymentForm = (props) => {
 
   return (
     <form className='new-payment-form' autoComplete="off" onSubmit={handleSubmit}>
+      
+      {formError && <Alert severity="error" onClose={handleClose}>
+        {formError}
+      </Alert>}
+      
       <TextField
         id='group-name'
         required
@@ -74,7 +90,7 @@ const AddPaymentForm = (props) => {
         label="Group Name"
         value={activeGroupDetails.name ? activeGroupDetails.name : formValue.group_name}
         onChange={handleChange}
-        >
+      >
         {groupNames.map((type, index) => (
           <MenuItem key={index} value={type}>{type}</MenuItem>
         ))}
@@ -88,7 +104,7 @@ const AddPaymentForm = (props) => {
         label="Member Name"
         value={formValue.member_name}
         onChange={handleChange}
-        >
+      >
         {displayNames.map((type, index) => (
           <MenuItem key={index} value={type}>{type}</MenuItem>
         ))}
