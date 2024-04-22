@@ -121,7 +121,10 @@ function App() {
     if (reloadSection === 'groups') {
       axios
         .get(`/api/groups/${userId}`)
-        .then((res) => setGroup(res.data));
+        .then((res) => {
+          setGroup(res.data);
+          setReloadSection(null);
+        });
     }
 
   }, [reloadSection]);
