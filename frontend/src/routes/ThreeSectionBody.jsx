@@ -20,9 +20,6 @@ const ThreeSectionBody = (props) => {
   const groupTransactions = activeGroupDetails.id ? transactionData.filter((transaction) => transaction.group_id === activeGroupDetails.id) : [];
   const recentGroupTransactions = (groupTransactions && groupTransactions.slice(0, 5))
 
-  console.log('transactions:', transactionData, 'recents:', recentTransactionData, 'recentGroupTrans:', recentGroupTransactions)
-
-
   return (
     <section className='body-articles'>
       <div className='left'>

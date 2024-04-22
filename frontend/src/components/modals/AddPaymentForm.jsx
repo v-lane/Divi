@@ -61,10 +61,8 @@ const AddPaymentForm = (props) => {
      });
   };
 
-  const filteredMembers = !activeGroupDetails.name && formValue.group_name ? memberNames.filter((name) => name.split(' ').includes(formValue.group_name)) : memberNames;
-  console.log(formValue.group_name, memberNames, filteredMembers)
-
-
+  const filteredMembers = !activeGroupDetails.name && formValue.group_name ? memberNames.filter((name) => name.split(' -').includes(formValue.group_name)) : [];
+  const displayNames = activeGroupDetails.name ? memberNames : filteredMembers;
 
   return (
     <form className='new-payment-form' autoComplete="off" onSubmit={handleSubmit}>
@@ -91,7 +89,7 @@ const AddPaymentForm = (props) => {
         value={formValue.member_name}
         onChange={handleChange}
         >
-        {filteredMembers.map((type, index) => (
+        {displayNames.map((type, index) => (
           <MenuItem key={index} value={type}>{type}</MenuItem>
         ))}
       </TextField>
