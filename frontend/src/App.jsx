@@ -227,7 +227,7 @@ function App() {
 
               <Route path='group/:id/dashboard/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} allMemberTransactions={allMemberTransactions} setActiveTransaction={setActiveTransaction} transactionData={transactions} userGroups={group} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} activeGroupTransactions={activeGroupTransactions} />} />
 
-              <Route element={<OneSectionBody setActiveTransaction={setActiveTransaction} user={user} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} activeGroupTransactions={activeGroupTransactions} />}>
+              <Route element={<OneSectionBody setActiveTransaction={setActiveTransaction} user={user} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} transactionData={transactions} activeGroupTransactions={activeGroupTransactions} />}>
                 <Route path='group/:id/dashboard/all_transactions' element={<TransactionsAll />} />
               </Route>
 

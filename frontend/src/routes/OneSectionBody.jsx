@@ -14,14 +14,15 @@ const OneSectionBody = (props) => {
   const { user, userGroups, transactionData, memberTransactions, setActiveTransaction, openModal, notifications, activeGroup, activeGroupDetails, activeGroupTransactions } = props;
   const location = useLocation();
   const usersForGroupTransactions = (activeGroupDetails && Object.keys(activeGroupDetails).length > 0 && activeGroupDetails.users)
+  const groupTransactions = activeGroup ? transactionData.filter((transaction) => transaction.group_id === activeGroupDetails.id) : [];
 
   return (
     <section className='one-section-body'>
       <article className='main-article'>
         {location.pathname === '/all_groups' && <GroupsAll userGroups={userGroups} openModal={openModal}/>}
-        {location.pathname === '/all_transactions' && <TransactionsAll transactionData={transactionData} setActiveTransaction={setActiveTransaction} openModal={openModal}/>}
+        {location.pathname === '/all_transactions' && <TransactionsAll transactionData={transactionData} setActiveTransaction={setActiveTransaction} activeGroupDetails={activeGroupDetails} openModal={openModal}/>}
         {location.pathname === '/all_notifications' && <NotificationsAll notifications={notifications}/>}
-        {location.pathname.slice(-26) === 'dashboard/all_transactions' && <TransactionsAll setActiveTransaction={setActiveTransaction} activeGroupDetails={activeGroupDetails} transactionData={activeGroupTransactions} openModal={openModal} users={usersForGroupTransactions} activeGroup={activeGroup}/>}
+        {location.pathname.slice(-26) === 'dashboard/all_transactions' && <TransactionsAll setActiveTransaction={setActiveTransaction} activeGroupDetails={activeGroupDetails} transactionData={groupTransactions} openModal={openModal} users={usersForGroupTransactions} activeGroup={activeGroup}/>}
 
       </article>
     </section>

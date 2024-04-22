@@ -6,14 +6,14 @@ import { Link, useLocation } from 'react-router-dom';
 import '../../styles/TransactionAll.scss';
 
 const TransactionsAll = (props) => {
-  const { transactionData, openModal, users, activeGroupTransactions, setActiveTransaction, activeGroup } = props;
+  const { transactionData, openModal, users, activeGroupDetails, activeGroupTransactions, setActiveTransaction, activeGroup } = props;
   const location = useLocation();
 
   return (
     <>
-      <h1>All Transactions</h1>
+      <h1>{activeGroup ? `All Transactions for ${activeGroupDetails.name}` : `All Transactions`}</h1>
       <ul style={{ listStyleType: 'none', padding: 0 }}>
-        {transactionData && transactionData.map(transaction => (
+        {activeGroup && transactionData.map(transaction => (
           <TransactionItem
             key={transaction.id}
             transaction={transaction}
@@ -26,7 +26,7 @@ const TransactionsAll = (props) => {
           />
         ))}
 
-        {activeGroupTransactions && activeGroupTransactions.map(transaction => (
+        {!activeGroup && transactionData.map(transaction => (
           <TransactionItem
             key={transaction.id}
             transaction={transaction}
