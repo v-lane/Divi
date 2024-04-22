@@ -49,7 +49,7 @@ function App() {
   const [activeTransaction, setActiveTransaction] = useState(0);
   const [activeTransactionDetails, setActiveTransactionDetails] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const [reloadSection, setReloadSection] = useState(false)
+  const [reloadSection, setReloadSection] = useState(false);
 
   const {
     profileView,
@@ -99,29 +99,29 @@ function App() {
   useEffect(() => {
     if (activeGroup > 0) {
       axios
-      .get(`/api/users_by_group/${activeGroup}`)
-      .then((res) => {
-        setActiveGroupDetails(res.data);
-      });
+        .get(`/api/users_by_group/${activeGroup}`)
+        .then((res) => {
+          setActiveGroupDetails(res.data);
+        });
     }
   }, [activeGroup]);
-  
+
   // reload member details in group dashboard path if reload true
   // reload group details in user dashboard path if reload true
   useEffect(() => {
     if (reloadSection === 'members') {
       axios
-      .get(`/api/users_by_group/${activeGroup}`)
-      .then((res) => {
-        setReloadSection(null)
-        setActiveGroupDetails(res.data);
-      });
+        .get(`/api/users_by_group/${activeGroup}`)
+        .then((res) => {
+          setReloadSection(null);
+          setActiveGroupDetails(res.data);
+        });
     }
 
     if (reloadSection === 'groups') {
       axios
-      .get(`/api/groups/${userId}`)
-      .then((res) => setGroup(res.data));
+        .get(`/api/groups/${userId}`)
+        .then((res) => setGroup(res.data));
     }
 
   }, [reloadSection]);
@@ -161,7 +161,7 @@ function App() {
       .get(`/api/member_transactions/${userId}`)
       .then((res) => setMemberTransactions(res.data));
   }, [transactions]);
-  
+
   useEffect(() => {
     axios
       .get(`/api/member_transactions/`)
@@ -179,10 +179,15 @@ function App() {
   useEffect(() => {
     const checkIfGroup = location.pathname.slice(0, 6);
     if (checkIfGroup === '/group') {
-      setActiveGroup(location.pathname.slice(7, 8));
+      if (isNaN(location.pathname.slice(7, 9))) {
+        setActiveGroup(location.pathname.slice(7, 8));
+      }
+      else {
+        setActiveGroup(location.pathname.slice(7, 9));
+      }
     } else {
       setActiveGroup(0);
-      setActiveGroupDetails([])
+      setActiveGroupDetails([]);
     }
   }, [location]);
 
@@ -195,7 +200,7 @@ function App() {
     }
   }, []);
 
- 
+
 
 
   return (
@@ -203,7 +208,7 @@ function App() {
       <StyledEngineProvider injectFirst>
         <ThemeProvider theme={theme}>
           <header>
-            <TopNavigationBar location={background || location} user={user} activeGroup={activeGroup} activeGroupDetails={activeGroupDetails}/>
+            <TopNavigationBar location={background || location} user={user} activeGroup={activeGroup} activeGroupDetails={activeGroupDetails} />
           </header>
           <main>
             <SideNavigationBar location={background || location} openModal={openModal} activeGroup={activeGroup} user={user} activeGroupDetails={activeGroupDetails} />
@@ -217,7 +222,7 @@ function App() {
                 <Route path='all_notifications' element={<NotificationsAll />} />
               </Route>
 
-              <Route path='group/:id/dashboard/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} allMemberTransactions={allMemberTransactions} setActiveTransaction={setActiveTransaction} transactionData={transactions} userGroups={group} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} activeGroupTransactions={activeGroupTransactions}/>} />
+              <Route path='group/:id/dashboard/' element={<ThreeSectionBody user={user} memberTransactions={memberTransactions} allMemberTransactions={allMemberTransactions} setActiveTransaction={setActiveTransaction} transactionData={transactions} userGroups={group} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} activeGroupTransactions={activeGroupTransactions} />} />
 
               <Route element={<OneSectionBody setActiveTransaction={setActiveTransaction} user={user} activeGroup={activeGroup} openModal={openModal} activeGroupDetails={activeGroupDetails} activeGroupTransactions={activeGroupTransactions} />}>
                 <Route path='group/:id/dashboard/all_transactions' element={<TransactionsAll />} />
@@ -232,7 +237,7 @@ function App() {
                   <Route path='profile-delete' element={<DeleteUserProfile />} />
                   <Route path='delete-confirmation' element={<UserDeleted />} />
                   <Route path='profile-edit' element={<EditUserForm />} />
-                  
+
                   <Route path='add-expense' element={<AddExpenseForm />} />
                   <Route path='group/:id/dashboard/add-expense' element={<AddExpenseForm />} />
                   <Route path='group/:id/dashboard/all_transactions/add-expense' element={<AddExpenseForm />} />
@@ -240,10 +245,10 @@ function App() {
                   <Route path='add-payment' element={<AddPaymentForm />} />
                   <Route path='group/:id/dashboard/add-payment' element={<AddPaymentForm />} />
                   <Route path='group/:id/dashboard/all_transactions/add-payment' element={<AddPaymentForm />} />
-                  
+
                   <Route path='transaction-details/:id' element={<TransactionDetails />} />
                   <Route path='group/:id/dashboard/transaction-details/:id' element={<TransactionDetails />} />
-                  
+
                   <Route path='group/:id/dashboard/add_group_member' element={<AddMemberForm />} />
 
                 </Route>
