@@ -8,7 +8,7 @@ class Api::TransactionsController < ApplicationController
   end
 
   def show_by_id
-    transaction = Transaction.includes(:group, :user, :member_transactions).find(params[:id]).order(created_at: :desc)
+    transaction = Transaction.includes(:group, :user, :member_transactions).find(params[:id])
   
     transaction.member_transactions.each do |member_transaction|
       recipient_user = User.find(member_transaction.recipient_id)
