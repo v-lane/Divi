@@ -55,14 +55,14 @@ const AddPaymentForm = (props) => {
       axios.get(`/api/transactions/${userProfileData.id}`)
       .then((res) => setTransactions(res.data))
       .then(useModalView.closeModal())
-      // .then(setTimeout(() => {
-      //   useModalView.closeModal()
-      // }, 1000))
      })
      .catch((error) => {
        console.error("Error creating post:", error);
      });
   };
+
+  const filteredMembers = !activeGroupDetails.name && formValue.group_name ? memberNames.filter((name) => name.split(' ').includes(formValue.group_name)) : memberNames;
+  console.log(formValue.group_name, memberNames, filteredMembers)
 
 
 
@@ -91,7 +91,7 @@ const AddPaymentForm = (props) => {
         value={formValue.member_name}
         onChange={handleChange}
         >
-        {memberNames.map((type, index) => (
+        {filteredMembers.map((type, index) => (
           <MenuItem key={index} value={type}>{type}</MenuItem>
         ))}
       </TextField>
