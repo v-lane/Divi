@@ -27,8 +27,14 @@ const AddExpenseForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (formValue.amount < activeGroupDetails.users.length) {
-      setFormError(`Expense Amount must be greater than $ ${activeGroupDetails.users.length}.00`);
+    let groupLength = 10;
+
+    if (activeGroupDetails.users) {
+      groupLength = activeGroupDetails.users.length
+    }
+
+    if (formValue.amount < groupLength) {
+      setFormError(`Expense Amount must be greater than $ ${groupLength}.00`);
 
     } else {
       const transactionData = {
