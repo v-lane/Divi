@@ -11,6 +11,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails }) => {
   const location = useLocation();
+  // console.log('current location', location.pathname);
 
   return (
     <aside className="side-nav-bar">
@@ -26,22 +27,22 @@ const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails })
           <AccordionDetails>
             <ul>
               <Link to="/" underline="none">
-                <li className="active">
+                <li className={location.pathname === '/' ? "active" : ''}>
                   Dashboard
                 </li>
               </Link>
               <Link to="all_transactions" underline="none">
-                <li>
+                <li className={location.pathname === '/all_transactions' ? "active" : ''}>
                   Transactions
                 </li>
               </Link>
               <Link to="all_groups" underline="none">
-                <li>
+                <li className={location.pathname === '/all_groups' ? "active" : ''}>
                   Groups
                 </li>
               </Link>
               <Link to="all_notifications" underline="none">
-                <li>
+                <li className={location.pathname === '/all_notifications' ? "active" : ''}>
                   Notifications
                 </li>
               </Link>
@@ -57,12 +58,12 @@ const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails })
               <AccordionDetails>
                 <ul>
                   <Link to="add-expense" underline="none" state={{ background: location }} onClick={(() => openModal('add-expense'))}>
-                    <li>
+                    <li className={location.pathname === '/add-expense' ? "active" : ''}>
                       Add Expense
                     </li>
                   </Link>
                   <Link to="add-payment" underline="none" state={{ background: location }} onClick={(() => openModal('add-payment'))} >
-                    <li>
+                    <li className={location.pathname === '/add-payment' ? "active" : ''}>
                       Add Payment
                     </li>
                   </Link>
@@ -80,7 +81,7 @@ const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails })
               <AccordionDetails>
                 <ul>
                   <Link to="new-group" state={{ background: location }} onClick={(() => openModal('new-group'))}>
-                    <li>
+                    <li className={location.pathname === '/new-group' ? "active" : ''}>
                       Create New Group
                     </li>
                   </Link>
@@ -104,12 +105,12 @@ const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails })
             <AccordionDetails>
               <ul>
                 <Link to={`group/${activeGroup}/dashboard/`} underline="none">
-                  <li>
+                  <li className={location.pathname === `/group/${activeGroup}/dashboard/` ? "active" : ''}>
                     Dashboard
                   </li>
                 </Link>
                 <Link to={`group/${activeGroup}/dashboard/all_transactions`} underline="none">
-                  <li>
+                  <li className={location.pathname === `/group/${activeGroup}/dashboard/all_transactions` ? "active" : ''}>
                     Transactions
                   </li>
                 </Link>
@@ -126,12 +127,12 @@ const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails })
                 <AccordionDetails>
                   <ul>
                     <Link to={`group/${activeGroup}/dashboard/add-expense`} underline="none" state={{ background: location }} onClick={(() => openModal('add-expense'))}>
-                      <li>
+                    <li className={(location.pathname === `/group/${activeGroup}/dashboard/add-expense` || location.pathname === `/group/${activeGroup}/dashboard/all_transactions/add-expense`) ? "active" : ''}>
                         Add Expense
                       </li>
                     </Link>
                     <Link to={`group/${activeGroup}/dashboard/add-payment`} underline="none" state={{ background: location }} onClick={(() => openModal('add-payment'))}>
-                      <li>
+                    <li className={(location.pathname === `/group/${activeGroup}/dashboard/add-payment` || location.pathname === `/group/${activeGroup}/dashboard/all_transactions/add-payment`) ? "active" : ''}>
                         Add Payment
                       </li>
                     </Link>
