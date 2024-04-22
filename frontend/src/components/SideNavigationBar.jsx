@@ -104,8 +104,8 @@ const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails })
             </AccordionSummary>
             <AccordionDetails>
               <ul>
-                <Link to={`group/${activeGroup}/dashboard/`} underline="none">
-                  <li className={location.pathname === `/group/${activeGroup}/dashboard/` ? "active" : ''}>
+                <Link to={`group/${activeGroup}/dashboard`} underline="none">
+                  <li className={location.pathname === `/group/${activeGroup}/dashboard` ? "active" : ''}>
                     Dashboard
                   </li>
                 </Link>
@@ -127,12 +127,12 @@ const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails })
                 <AccordionDetails>
                   <ul>
                     <Link to={`group/${activeGroup}/dashboard/add-expense`} underline="none" state={{ background: location }} onClick={(() => openModal('add-expense'))}>
-                    <li className={(location.pathname === `/group/${activeGroup}/dashboard/add-expense` || location.pathname === `/group/${activeGroup}/dashboard/all_transactions/add-expense`) ? "active" : ''}>
+                      <li className={(location.pathname === `/group/${activeGroup}/dashboard/add-expense` || location.pathname === `/group/${activeGroup}/dashboard/all_transactions/add-expense`) ? "active" : ''}>
                         Add Expense
                       </li>
                     </Link>
                     <Link to={`group/${activeGroup}/dashboard/add-payment`} underline="none" state={{ background: location }} onClick={(() => openModal('add-payment'))}>
-                    <li className={(location.pathname === `/group/${activeGroup}/dashboard/add-payment` || location.pathname === `/group/${activeGroup}/dashboard/all_transactions/add-payment`) ? "active" : ''}>
+                      <li className={(location.pathname === `/group/${activeGroup}/dashboard/add-payment` || location.pathname === `/group/${activeGroup}/dashboard/all_transactions/add-payment`) ? "active" : ''}>
                         Add Payment
                       </li>
                     </Link>
@@ -145,10 +145,10 @@ const SideNavigationBar = ({ openModal, activeGroup, user, activeGroupDetails })
           </Accordion>
         }
       </header>
-      <footer>
+      <footer className={(location.pathname === `/profile` || location.pathname === `/profile`) ? "active" : ''}>
         <ul>
           <Link to="profile" state={{ background: location }} onClick={(() => openModal('profile'))}>
-            <li >
+            <li>
               My Profile
             </li>
           </Link>

@@ -1,7 +1,7 @@
 .side-nav-bar {
   position: fixed;
   left: 0;
-  bottom:0;
+  bottom: 0;
   width: 15vw;
   height: 92%;
   display: flex;
@@ -14,7 +14,7 @@
   border-left: 0px;
   border-bottom: 0px;
   // max-height: calc(100vh - 4rem);
-  
+
   header {
     overflow-y: auto;
     padding-bottom: 3rem;
@@ -22,15 +22,18 @@
 
   a {
     text-decoration: none;
+    color: var(--text-color-primary);
+
   }
-  
+
   ul {
     list-style-type: none;
     padding: 0;
+
     li {
       padding-left: 1em;
-      padding-bottom: .25em;     
-      padding-top: .25em;     
+      padding-bottom: .25em;
+      padding-top: .25em;
     }
   }
 
@@ -38,19 +41,16 @@
     font-weight: 800;
     background-color: var(--primary-color-200);
   }
-  
-  a {
-    color: var(--text-color-primary);
 
-  }
   li:hover {
     font-weight: 800;
     background-color: var(--primary-color-200);
   }
-  
-  #username-header, #groupname-header {
+
+  #username-header,
+  #groupname-header {
     background-color: var(--primary-color-600);
-    border: 4px solid var(--text-color-primary);
+    border: 2px solid var(--text-color-primary);
     border-bottom: 0;
     border-left: 0;
     border-right: 0;
@@ -62,24 +62,29 @@
   // }
 
 
-  h2, h3 {
+  h2,
+  h3 {
     margin: 0;
     border: 0;
     padding: 0;
   }
 
-  #transactions-header, #groups-header, #group-transactions-header {
+  #transactions-header,
+  #groups-header,
+  #group-transactions-header {
     background-color: var(--primary-color-400);
     width: 100%;
-    border: 2px solid var(--text-color-primary);
+    border: 1px solid var(--text-color-primary);
     border-bottom: 0;
     border-left: 0;
     border-right: 0;
     margin-top: 0.5em;
+    box-shadow: 0 1px 15px rgb(143, 143, 143);
+
   }
 
   footer {
-    position:absolute;
+    position: absolute;
     bottom: 0;
     background-color: var(--primary-color-100);
     width: 100%;
@@ -87,10 +92,17 @@
     border-left: 0;
     border-right: 0;
 
-    ul li{
+    ul li {
       padding-left: 0;
       text-align: center;
+
     }
+  }
+
+  footer:hover {
+    font-weight: 800;
+    background-color: var(--primary-color-200);
+
   }
 
 
@@ -109,7 +121,10 @@
     box-shadow: none;
   }
 
-  .css-eqpfi5-MuiAccordionSummary-content.Mui-expanded, .css-eqpfi5-MuiAccordionSummary-content.Mui-expanded, .css-1f773le-MuiButtonBase-root-MuiAccordionSummary-root, .css-eqpfi5-MuiAccordionSummary-content {
+  .css-eqpfi5-MuiAccordionSummary-content.Mui-expanded,
+  .css-eqpfi5-MuiAccordionSummary-content.Mui-expanded,
+  .css-1f773le-MuiButtonBase-root-MuiAccordionSummary-root,
+  .css-eqpfi5-MuiAccordionSummary-content {
     margin: 0;
   }
 }
