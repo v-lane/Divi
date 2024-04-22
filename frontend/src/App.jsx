@@ -49,6 +49,7 @@ function App() {
   const [activeTransaction, setActiveTransaction] = useState(0);
   const [activeTransactionDetails, setActiveTransactionDetails] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [reloadSection, setReloadSection] = useState(false)
 
   const {
     profileView,
@@ -94,16 +95,29 @@ function App() {
       .then((res) => setGroup(res.data));
   }, []);
 
-  // fetch data for a specific group
+  // fetch data for a specific group when on group dashboard or
+  
   useEffect(() => {
     if (activeGroup > 0) {
       axios
-        .get(`/api/users_by_group/${activeGroup}`)
-        .then((res) => {
-          setActiveGroupDetails(res.data);
-        });
+      .get(`/api/users_by_group/${activeGroup}`)
+      .then((res) => {
+        setActiveGroupDetails(res.data);
+      });
     }
-  }, [activeGroup]);
+  }, [activeGroup, reloadSection]);
+  
+  // reload member details in group dashboard path if reload true
+  // useEffect(() => {
+  //   if (reloadSection && activeGroup > 0) {
+  //     axios
+  //       .get(`/api/users_by_group/${activeGroup}`)
+  //       .then((res) => {
+  //         setActiveGroupDetails(res.data);
+  //         setReloadSection(false)
+  //       });
+  //   }
+  // }, [reloadSection]);
 
   // fetch transactions data for active group
   useEffect(() => {
@@ -174,6 +188,10 @@ function App() {
     }
   }, []);
 
+ 
+
+  // reload group details in user dashboard path if reload true
+
   return (
     <div className='App'>
       <StyledEngineProvider injectFirst>
@@ -202,7 +220,7 @@ function App() {
             </Routes>
             {background && (
               <Routes>
-                <Route element={<ModalView isLoading={isLoading} deleteUser={deleteUser} userProfileData={user} setUser={setUser} group={group} transactions={transactions} setTransactions={setTransactions} activeTransactionDetails={activeTransactionDetails} activeGroup={activeGroup} activeGroupDetails={activeGroupDetails} useModalView={{ profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, addExpense, addPayment, transactionDetails, addGroupMemberView, closeModal, openModal, navigateModal }} />} >
+                <Route element={<ModalView setReloadSection={setReloadSection} isLoading={isLoading} deleteUser={deleteUser} userProfileData={user} setUser={setUser} group={group} transactions={transactions} setTransactions={setTransactions} activeTransactionDetails={activeTransactionDetails} activeGroup={activeGroup} activeGroupDetails={activeGroupDetails} useModalView={{ profileView, newGroupView, deleteProfileView, deleteConfirmation, editUser, addExpense, addPayment, transactionDetails, addGroupMemberView, closeModal, openModal, navigateModal }} />} >
                   <Route path='profile' element={<UserProfile />} />
                   <Route path='new-group' element={<CreateGroupForm />} />
                   <Route path='profile-delete' element={<DeleteUserProfile />} />

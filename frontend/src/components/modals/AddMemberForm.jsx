@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import '../../styles/AddMemberForm.scss';
@@ -9,12 +9,12 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 
 
-const AddMemberForm = ({ activeGroup, activeGroupDetails, useModalView }) => {
+const AddMemberForm = ({ setReloadSection, activeGroup, activeGroupDetails, useModalView }) => {
   const [newMembers, setNewMembers] = useState(1);
   const [formError, setFormError] = useState(null);
   const [formData, setFormData] = useState([{ id: 0, email: '' }]);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleClose = () => {
     console.log('click close');
@@ -79,8 +79,9 @@ const AddMemberForm = ({ activeGroup, activeGroupDetails, useModalView }) => {
                 .post(`/api/user_groups`, userGroupDataMember)
                 .then(response => {
                   console.log('User Member record created. Notification record needs to be created');
-                  useModalView.closeModal()
-                  
+                  setReloadSection(true);
+                  useModalView.closeModal();
+
                   ///////////////////////
                   //ADD LOGIC HERE TO CREATE NOTIFICATION FOR GROUP MEMBER
                   ///////////////////////          

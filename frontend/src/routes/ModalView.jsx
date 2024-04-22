@@ -16,7 +16,7 @@ import Icon from '@mui/material/Icon';
 
 
 const ModalView = (props) => {
-  const { isLoading, activeGroup, cancelDelete, deleteUser, userProfileData, activeGroupDetails, useModalView, setUser, group, transactions, setTransactions, activeTransactionDetails, setActiveTransaction } = props;
+  const { setReloadSection, isLoading, activeGroup, cancelDelete, deleteUser, userProfileData, activeGroupDetails, useModalView, setUser, group, transactions, setTransactions, activeTransactionDetails, setActiveTransaction } = props;
 
   return (
     <section className="overlay">
@@ -43,7 +43,7 @@ const ModalView = (props) => {
         {useModalView.addExpense && <AddExpenseForm userProfileData={userProfileData} useModalView={useModalView} group={group} setTransactions={setTransactions} activeGroupDetails={activeGroupDetails}/>}
         {useModalView.addPayment && <AddPaymentForm userProfileData={userProfileData} useModalView={useModalView} group={group} setTransactions={setTransactions} activeGroupDetails={activeGroupDetails}/>}
         {useModalView.transactionDetails && <TransactionDetails isLoading={isLoading} transactions={transactions} activeTransactionDetails={activeTransactionDetails} userProfileData={userProfileData} useModalView={useModalView} group={group} setTransactions={setTransactions}/>}
-        {useModalView.addGroupMemberView && <AddMemberForm activeGroup={activeGroup} activeGroupDetails={activeGroupDetails} useModalView={useModalView}/>}
+        {useModalView.addGroupMemberView && <AddMemberForm setReloadSection={setReloadSection} activeGroup={activeGroup} activeGroupDetails={activeGroupDetails} useModalView={useModalView}/>}
       </Box>
     </section>
   );
