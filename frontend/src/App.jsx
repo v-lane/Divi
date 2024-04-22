@@ -95,8 +95,7 @@ function App() {
       .then((res) => setGroup(res.data));
   }, []);
 
-  // fetch data for a specific group when on group dashboard or
-  
+  // fetch data for a specific group when on group dashboard  
   useEffect(() => {
     if (activeGroup > 0) {
       axios
@@ -105,19 +104,27 @@ function App() {
         setActiveGroupDetails(res.data);
       });
     }
-  }, [activeGroup, reloadSection]);
+  }, [activeGroup]);
   
   // reload member details in group dashboard path if reload true
-  // useEffect(() => {
-  //   if (reloadSection && activeGroup > 0) {
-  //     axios
-  //       .get(`/api/users_by_group/${activeGroup}`)
-  //       .then((res) => {
-  //         setActiveGroupDetails(res.data);
-  //         setReloadSection(false)
-  //       });
-  //   }
-  // }, [reloadSection]);
+  // reload group details in user dashboard path if reload true
+  useEffect(() => {
+    if (reloadSection === 'members') {
+      axios
+      .get(`/api/users_by_group/${activeGroup}`)
+      .then((res) => {
+        setReloadSection(null)
+        setActiveGroupDetails(res.data);
+      });
+    }
+
+    if (reloadSection === 'groups') {
+      axios
+      .get(`/api/groups/${userId}`)
+      .then((res) => setGroup(res.data));
+    }
+
+  }, [reloadSection]);
 
   // fetch transactions data for active group
   useEffect(() => {
@@ -190,7 +197,6 @@ function App() {
 
  
 
-  // reload group details in user dashboard path if reload true
 
   return (
     <div className='App'>

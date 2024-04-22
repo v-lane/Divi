@@ -36,7 +36,7 @@ const ModalView = (props) => {
           </h2>
         </header>
         {useModalView.profileView && <UserProfile userProfileData={userProfileData} useModalView={useModalView} />}
-        {useModalView.newGroupView && <CreateGroupForm useModalView={useModalView}/>}
+        {useModalView.newGroupView && <CreateGroupForm setReloadSection={setReloadSection} useModalView={useModalView}/>}
         {useModalView.deleteProfileView && <DeleteUserProfile cancelDelete={cancelDelete} deleteUser={deleteUser} userProfileData={userProfileData} useModalView={useModalView}/>}
         {useModalView.deleteConfirmation && <UserDeleted userProfileData={userProfileData} useModalView={useModalView} />}
         {useModalView.editUser && <EditUserForm userProfileData={userProfileData} cancelDelete={cancelDelete} useModalView={useModalView} setUser={setUser} />}

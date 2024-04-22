@@ -8,7 +8,7 @@ import { Button, FormControl, Input, Select, InputLabel, MenuItem, TextField } f
 
 
 
-const CreateGroupForm = ({ useModalView }) => {
+const CreateGroupForm = ({ setReloadSection, useModalView }) => {
   const groupTypes = ['Household', 'Trip', 'Personal'];
   const navigate = useNavigate();
   const [formValue, setFormValue] = useState({
@@ -86,6 +86,7 @@ const CreateGroupForm = ({ useModalView }) => {
          .post(`/api/user_groups`, userGroupDataOwner)
          .then((response) => {
            console.log('post created:', response.data);
+           setReloadSection('groups')
            useModalView.closeModal();
          });
      })

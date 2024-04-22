@@ -79,7 +79,7 @@ const AddMemberForm = ({ setReloadSection, activeGroup, activeGroupDetails, useM
                 .post(`/api/user_groups`, userGroupDataMember)
                 .then(response => {
                   console.log('User Member record created. Notification record needs to be created');
-                  setReloadSection(true);
+                  setReloadSection('members');
                   useModalView.closeModal();
 
                   ///////////////////////
