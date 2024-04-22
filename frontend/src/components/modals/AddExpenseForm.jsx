@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import '/src/styles/AddExpenseForm.scss';
-import { Link, useLocation } from "react-router-dom";
 import { Button, MenuItem, TextField } from "@mui/material";
 import axios from 'axios';
 
@@ -8,7 +7,6 @@ const AddExpenseForm = (props) => {
   const { userProfileData, useModalView, group, setTransactions, activeGroupDetails } = props;
   const groupNames = activeGroupDetails.name ? [activeGroupDetails.name] :group.map((item) => item.name);
 
-  // const navigate = useNavigate();
   const [formValue, setFormValue] = useState({
     group_name: '',
     amount: 0
