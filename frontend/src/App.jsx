@@ -242,10 +242,12 @@ function App() {
                   <Route path='profile-edit' element={<EditUserForm />} />
 
                   <Route path='add-expense' element={<AddExpenseForm />} />
+                  <Route path='all_transactions/add-expense' element={<AddExpenseForm />} />
                   <Route path='group/:id/dashboard/add-expense' element={<AddExpenseForm />} />
                   <Route path='group/:id/dashboard/all_transactions/add-expense' element={<AddExpenseForm />} />
 
                   <Route path='add-payment' element={<AddPaymentForm />} />
+                  <Route path='all_transactions/add-payment' element={<AddPaymentForm />} />
                   <Route path='group/:id/dashboard/add-payment' element={<AddPaymentForm />} />
                   <Route path='group/:id/dashboard/all_transactions/add-payment' element={<AddPaymentForm />} />
 

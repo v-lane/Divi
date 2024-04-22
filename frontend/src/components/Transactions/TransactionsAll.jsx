@@ -40,7 +40,7 @@ const TransactionsAll = (props) => {
       </ul>
       <footer className='all-transactions-footer'>
 
-        {activeGroup ?
+        {activeGroup &&
           <div>
             <Link to={`group/${activeGroup}/dashboard/all_transactions/add-expense`} state={{ background: location }} onClick={(() => openModal('add-expense'))} >
               <ButtonStandard buttonName={'Add Expense'} />
@@ -49,12 +49,24 @@ const TransactionsAll = (props) => {
               <ButtonStandard buttonName={'Add Payment'} />
             </Link>
           </div>
-          :
+        }
+
+        {location.pathname === '/' &&
           <div>
             <Link to='add-expense' state={{ background: location }} onClick={(() => openModal('add-expense'))} >
               <ButtonStandard buttonName={'Add Expense'} />
             </Link>
             <Link to='add-payment' state={{ background: location }} onClick={(() => openModal('add-payment'))}>
+              <ButtonStandard buttonName={'Add Payment'} />
+            </Link>
+          </div>
+        }
+        {location.pathname === '/all_transactions' &&
+          <div>
+            <Link to='all_transactions/add-expense' state={{ background: location }} onClick={(() => openModal('add-expense'))} >
+              <ButtonStandard buttonName={'Add Expense'} />
+            </Link>
+            <Link to='all_transactions/add-payment' state={{ background: location }} onClick={(() => openModal('add-payment'))}>
               <ButtonStandard buttonName={'Add Payment'} />
             </Link>
           </div>
