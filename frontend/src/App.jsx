@@ -118,22 +118,13 @@ function App() {
         });
     }
 
-    if (reloadSection === 'groups') {
+    if (reloadSection === 'groups' || reloadSection === 'members') {
       axios
         .get(`/api/groups/${userId}`)
         .then((res) => {
           setGroup(res.data);
           setReloadSection(null);
         });
-    }
-
-    if (reloadSection === 'chart') {
-      axios
-      .get(`/api/groups/${userId}`)
-      .then((res) => {
-        setGroup(res.data);
-        setReloadSection(null);
-      });
     }
 
   }, [reloadSection]);

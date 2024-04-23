@@ -80,7 +80,6 @@ const AddMemberForm = ({ setReloadSection, activeGroup, activeGroupDetails, useM
                 .then(response => {
                   console.log('User Member record created. Notification record needs to be created');
                   setReloadSection('members');
-                  setReloadSection('chart')
                   useModalView.closeModal();
 
                   ///////////////////////
