@@ -17,7 +17,6 @@ const AddMemberForm = ({ setReloadSection, activeGroup, activeGroupDetails, useM
   const navigate = useNavigate();
 
   const handleClose = () => {
-    console.log('click close');
     setFormError(null);
   };
 
@@ -59,7 +58,6 @@ const AddMemberForm = ({ setReloadSection, activeGroup, activeGroupDetails, useM
       axios
         .get(`/api/users_email/${urlString}`)
         .then(response => {
-          console.log('response.data', response);
           if (response.data) {
             const userGroupDataMember = {
               user_id: response.data.id,
@@ -72,13 +70,11 @@ const AddMemberForm = ({ setReloadSection, activeGroup, activeGroupDetails, useM
               setFormError(`${newMember.email} is already a member of the group and cannot be added again.`);
 
             } else {
-              console.log('User is NOT in group, continue');
 
               // save group member to UserGroups
               axios
                 .post(`/api/user_groups`, userGroupDataMember)
                 .then(response => {
-                  console.log('User Member record created. Notification record needs to be created');
                   setReloadSection('members');
                   useModalView.closeModal();
 
@@ -88,7 +84,6 @@ const AddMemberForm = ({ setReloadSection, activeGroup, activeGroupDetails, useM
                 });
             }
           } else {
-            console.log('User does not exist. Notification email needs to be created');
             setFormError(`${newMember.email} does not have a Divi account. They have been sent an invite to create an account to join your group. When they do, you will receive a notification and they will show in the group members list. Feel free to send invites to other emails or close this form.`);
           }
         })

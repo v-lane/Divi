@@ -1,7 +1,6 @@
 import React from "react";
 
 import '../styles/TopNavigationBar.scss';
-import Icon from '@mui/material/Icon';
 import { Button, Badge } from "@mui/material";
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 

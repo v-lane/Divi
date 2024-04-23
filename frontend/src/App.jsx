@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useNavigate, useLocation } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 import axios from 'axios';
 
 import './App.scss';
@@ -32,7 +32,6 @@ import TransactionDetails from './components/modals/TransactionDetails';
 import AddMemberForm from './components/modals/AddMemberForm';
 
 function App() {
-  const navigate = useNavigate();
   const location = useLocation();
   const background = location.state && location.state.background;
 
@@ -108,6 +107,7 @@ function App() {
 
   // reload member details in group dashboard path if reload true
   // reload group details in user dashboard path if reload true
+  // also reloads chart data
   useEffect(() => {
     if (reloadSection === 'members') {
       axios

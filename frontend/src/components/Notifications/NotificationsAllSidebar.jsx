@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import '../../styles/NotificationsAll.scss';
-// import GroupsAllList from './GroupsAllList';
 import NotificationsAllSidebarTabPanel from './NotificationsAllSidebarTabPanel';
 
 import Tabs from '@mui/material/Tabs';

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import '../../styles/NotificationsAll.scss';
-// import GroupsAllList from './GroupsAllList';
 import NotificationsAllSidebar from './NotificationsAllSidebar';
 import NotificationsMain from './NotificationsMain';
 import ButtonStandard from '../ButtonStandard';

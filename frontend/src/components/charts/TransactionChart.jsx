@@ -13,7 +13,6 @@ const TransactionChart = (props) => {
   user ? currentUser = user : '';
 
   const chartLabels = [];
-  const balanceNames = [];
   const dataSet1 = [];
   let sumBalances = 0;
   let largestUserBalance = '';

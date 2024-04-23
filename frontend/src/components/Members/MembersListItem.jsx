@@ -1,7 +1,7 @@
 import React from 'react';
 import MembersListItemBullet from './MembersListItemBullet';
 
-const MembersListItem = ({ member, activeGroupDetails, memberTransactions, allMemberTransactions }) => {
+const MembersListItem = ({ member, activeGroupDetails, allMemberTransactions }) => {
 
   const otherMembers = activeGroupDetails.users.filter((user) => user.id !== member.id);
   const membersAndTotals = [];

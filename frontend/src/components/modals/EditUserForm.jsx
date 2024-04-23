@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import {useNavigate} from "react-router-dom"
 import axios from 'axios'
-import { Button, MenuItem, TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import '/src/styles/EditUserForm.scss'
 
 const EditUserForm = (props) => {

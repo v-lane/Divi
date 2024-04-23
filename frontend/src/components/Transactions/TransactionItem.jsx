@@ -8,11 +8,6 @@ const TransactionItem = (props) => {
 
   const { } = props;
 
-  // let slice = true;
-  // slice = props.slice;
-  // let transactions = []
-  // slice ? transactions = props.transactionData.flat().slice(0, 5) : transactions = props.transactionData.flat();
-
   const launchTransaction = (transactionId) => {
     setActiveTransaction(transactionId);
   };

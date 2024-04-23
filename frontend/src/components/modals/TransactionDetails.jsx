@@ -1,10 +1,9 @@
 import React from 'react';
 import { format } from 'date-fns';
-import LaunchButton from '../LaunchButton';
 import '/src/styles/TransactionDetails.scss';
 
 const TransactionDetails = (props) => {
-  const { transactions, activeTransactionDetails, group, isLoading } = props;
+  const { activeTransactionDetails, isLoading } = props;
 
   const transaction = activeTransactionDetails;
 

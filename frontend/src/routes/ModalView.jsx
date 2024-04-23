@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import '../styles/ModalView.scss';
 import UserProfile from '../components/modals/UserProfile';
@@ -16,7 +16,7 @@ import Icon from '@mui/material/Icon';
 
 
 const ModalView = (props) => {
-  const { setReloadSection, isLoading, activeGroup, cancelDelete, deleteUser, userProfileData, activeGroupDetails, useModalView, setUser, group, transactions, setTransactions, activeTransactionDetails, setActiveTransaction } = props;
+  const { setReloadSection, isLoading, activeGroup, cancelDelete, deleteUser, userProfileData, activeGroupDetails, useModalView, setUser, group, transactions, setTransactions, activeTransactionDetails } = props;
 
   return (
     <section className="overlay">

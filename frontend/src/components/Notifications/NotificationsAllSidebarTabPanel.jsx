@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import '../../styles/NotificationsAll.scss';
 import NotificationsAllSidebarTabPanelItem from './NotificationsAllSidebarTabPanelItem';
-// import GroupsAllList from './GroupsAllList';
 
 function NotificationsAllSidebarTabPanel(props) {
   const { value, notificationsData, setFullView, fullView } = props;

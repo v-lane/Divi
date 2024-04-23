@@ -1,7 +1,6 @@
 import React from 'react'
 import '/src/styles/DeleteUserProfile.scss'
 import { Button } from "@mui/material";
-import ButtonStandard from '../ButtonStandard';
 
 const DeleteUserProfile = (props) => {
 

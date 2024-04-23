@@ -1,12 +1,11 @@
 import React from "react";
 import TransactionItem from "./TransactionItem";
-import ButtonAll from "../ButtonAll";
 import ButtonStandard from "../ButtonStandard";
 import { Link, useLocation } from 'react-router-dom';
 import '../../styles/TransactionAll.scss';
 
 const TransactionsAll = (props) => {
-  const { transactionData, openModal, users, activeGroupDetails, activeGroupTransactions, setActiveTransaction, activeGroup } = props;
+  const { transactionData, openModal, users, activeGroupDetails, setActiveTransaction, activeGroup } = props;
   const location = useLocation();
 
   return (

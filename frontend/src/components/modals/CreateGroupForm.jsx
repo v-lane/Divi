@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import '../../styles/CreateGroupForm.scss';
 
-import { Button, FormControl, Input, Select, InputLabel, MenuItem, TextField } from "@mui/material";
+import { Button, MenuItem, TextField } from "@mui/material";
 
 
 
@@ -51,12 +51,10 @@ const CreateGroupForm = ({ setReloadSection, useModalView }) => {
        if (formValue.memberEmail) {
         const emailArr = formValue.memberEmail.split('.')
         const urlString = `start=${emailArr[0]}&end=${emailArr[1]}`
-        console.log('urlString',urlString);
 
          axios
            .get(`/api/users_email/${urlString}`)
            .then(response => {
-            console.log('response.data', response);
              if (response.data) {
                const userGroupDataMember = {
                  user_id: response.data.id,
@@ -67,13 +65,11 @@ const CreateGroupForm = ({ setReloadSection, useModalView }) => {
                axios
                  .post(`/api/user_groups`, userGroupDataMember)
                  .then(response => {
-                   console.log('User Member record created. Notification record needs to be created');
                    ///////////////////////
                    //ADD LOGIC HERE TO CREATE NOTIFICATION FOR GROUP MEMBER
                    ///////////////////////
                  })
              } else {
-               console.log('User does not exist. Notification email needs to be created');
                //////////////////
                //ADD LOGIC HERE TO CREATE NOTIFICATION (EMAIL)
                //////////////////
@@ -85,7 +81,6 @@ const CreateGroupForm = ({ setReloadSection, useModalView }) => {
        axios
          .post(`/api/user_groups`, userGroupDataOwner)
          .then((response) => {
-           console.log('post created:', response.data);
            setReloadSection('groups')
            useModalView.closeModal();
          });

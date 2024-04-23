@@ -11,7 +11,7 @@ import { useLocation } from 'react-router-dom';
 
 
 const ThreeSectionBody = (props) => {
-  const { user, userGroups, transactionData, memberTransactions, openModal, activeGroup, activeGroupDetails, activeGroupTransactions, setActiveTransaction, allMemberTransactions } = props;
+  const { user, userGroups, transactionData, memberTransactions, openModal, activeGroup, activeGroupDetails, setActiveTransaction, allMemberTransactions } = props;
 
   const location = useLocation();
 
