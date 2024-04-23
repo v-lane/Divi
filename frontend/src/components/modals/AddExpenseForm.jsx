@@ -88,7 +88,7 @@ const AddExpenseForm = (props) => {
         onChange={handleChange}
       />
       <p className="disclaimer">+ Posting an expense will split the cost evenly between all group members, including yourself.</p>
-      <p className="disclaimer">&nbsp; [ Example: a $20 payment to a group with 4 total members will assign $5 to each other member ]</p>
+      <p className="disclaimer">&nbsp; [ Example: a $20 expense to a group with 4 total members will assign $5 to each other member ]</p>
       <div>
         <p className="logo"> DIVI</p>
       </div>
