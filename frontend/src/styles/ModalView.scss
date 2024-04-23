@@ -7,6 +7,7 @@
   height: 100vh;
   /* color */
   background-color: var(--modal-page-background);
+  z-index: 8;
 }
 
 .modal {
