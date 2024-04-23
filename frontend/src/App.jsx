@@ -127,6 +127,15 @@ function App() {
         });
     }
 
+    if (reloadSection === 'chart') {
+      axios
+      .get(`/api/groups/${userId}`)
+      .then((res) => {
+        setGroup(res.data);
+        setReloadSection(null);
+      });
+    }
+
   }, [reloadSection]);
 
   // fetch transactions data for active group
