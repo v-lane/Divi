@@ -38,7 +38,7 @@ class Api::TransactionsController < ApplicationController
       transaction_type: params[:transaction][:transaction_type],
       amount: params[:transaction][:amount],
       recipient_id: recipient.present? ? recipient.id : nil,
-      transaction_date: Date.today.strftime("%a, %d %b %Y"),
+      transaction_date: Time.now,
       is_deleted: params[:transaction][:is_deleted]
     }
 
