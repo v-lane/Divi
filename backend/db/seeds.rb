@@ -78,8 +78,8 @@ puts 'UserGroups Created'
 ## Transactions
 puts 'Creating Transactions'
 
-Transaction.create!(group_id: groups[0].id, transaction_type: 'Expense', amount: 150, user_id: users[0].id, transaction_date: Faker::Date.between( from: '2024-04-01', to: '2024-04-02' ), is_deleted: false)
-Transaction.create!(group_id: groups[0].id, transaction_type: 'Expense', amount: 320, user_id: users[3].id, transaction_date: Faker::Date.between( from: '2024-04-03', to: '2024-04-06' ) , is_deleted: false)
+Transaction.create!(group_id: groups[0].id, transaction_type: 'Expense', amount: 150, user_id: users[0].id, transaction_date: Faker::Time.between( from: '2024-04-01', to: '2024-04-04' ), is_deleted: false)
+Transaction.create!(group_id: groups[0].id, transaction_type: 'Expense', amount: 320, user_id: users[3].id, transaction_date: Faker::Time.between( from: '2024-04-04', to: '2024-04-05' ) , is_deleted: false)
 Transaction.create!(group_id: groups[0].id, transaction_type: 'Payment', amount: 40, user_id: users[9].id, recipient_id: users[0].id, transaction_date: Faker::Date.between( from: '2024-04-06', to: '2024-04-08' ) , is_deleted: false)
 Transaction.create!(group_id: groups[0].id, transaction_type: 'Expense', amount: 100, user_id: users[9].id, transaction_date: Faker::Date.between( from: '2024-04-06', to: '2024-04-08' ) , is_deleted: false)
 Transaction.create!(group_id: groups[0].id, transaction_type: 'Payment', amount: 50, user_id: users[9].id, recipient_id: users[0].id, transaction_date: Faker::Date.between( from: '2024-04-10', to: '2024-04-15' ) , is_deleted: false)

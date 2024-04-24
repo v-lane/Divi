@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_19_190423) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_24_160702) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_19_190423) do
     t.string "transaction_type"
     t.integer "amount"
     t.integer "recipient_id"
-    t.date "transaction_date"
+    t.datetime "transaction_date"
     t.boolean "is_deleted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
