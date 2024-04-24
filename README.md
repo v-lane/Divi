@@ -6,7 +6,9 @@ Expenses are automatically divided between all group members, so you don't need 
 ## Screenshots
 
 Example
-!["Example"](example.com)
+!["User's Main Dashboard"](https://github.com/v-lane/Divi/blob/main/docs/Screenshot%202024-04-24%20at%209.47.57%E2%80%AFAM.png?raw=true)
+!["Single Group Dashboard"](https://github.com/v-lane/Divi/blob/main/docs/Screenshot%202024-04-24%20at%209.48.48%E2%80%AFAM.png?raw=true)
+!["Create New Group Form"](https://github.com/v-lane/Divi/blob/main/docs/Screenshot%202024-04-24%20at%209.50.38%E2%80%AFAM.png?raw=true)
 
 
 ## Setup
